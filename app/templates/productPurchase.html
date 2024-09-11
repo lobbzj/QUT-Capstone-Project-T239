@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main>
+    <div class="container">
+      <div class="row">
+        <img id="productImage" src="https://vitruvianform.com/cdn/shop/files/Shop_Standardkit_prohandles_f390aff3-d7c2-4ed6-981e-2385847b60b8_800x.jpg?v=1713416875" class="rounded" alt="Product Image" />
+      </div>
+      <div class="row">
+        <label for="productListDatae">List date of Product</label>
+        <div class="col-8">
+          <h1>Dummy Text</h1>
+          <p>This is a summary</p>
+          <div class="row">
+            <div class="col-6">
+              <img src="" alt="Seller Image" />
+              <p>Seller Name</p>
+            </div>
+            <div class="col-6">
+              <button>Visit Shop</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="container">
+            <form action="" method="" class="p-0">
+              <div class="form-group">
+                <div class="row">
+                  <label for="productName" class="mb-3">Name of Product</label>
+                </div>
+                <label for="productPrice">Price of product</label>
+                <!-- Buttons not programmed yet -->
+                <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                <input class="product-qty" type="number" name="product-qty" min="0" max="10" value="1" />
+                <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
+              </div>
+              <button style="margin-top: 10px;" type="submit" class="btn btn-primary w-100">Purchase</button>
+            </form>
+            <button type="submit" style="margin-top: 10px;" class="btn btn-primary w-100">Tech Details</button>
+            <p>To read more about this technology, visit the Tech Details page by clicking on the above button</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
