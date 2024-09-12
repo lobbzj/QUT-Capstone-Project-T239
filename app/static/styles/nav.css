@@ -1,0 +1,20 @@
+.navbar 
+    {
+     background-color: black; /* Set background to black */
+    }
+    
+.nav-link 
+    {
+     color: white !important; /* Make the text white */
+    }
+    
+.no-underline 
+    {
+     text-decoration: none; /* Remove underline */
+    }
+    
+.nav-link:hover 
+    {
+     color: #d41f1f !important; /* Optional: Change color on hover */
+    }
+
