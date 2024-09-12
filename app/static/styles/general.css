@@ -1,0 +1,46 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul li a {
+    color: #000000;
+    text-decoration: none;
+    /* Remove underline for footer links*/
+}
+
+.mt-custom {
+    margin-top: 100px;
+}
+
+.btn {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #4F9E3D;
+    margin-top: 20px;
+
+}
+
+.btn-primary:hover {
+    background-color: #50AE3A;
+}
+
+.btn-secondary {
+    background-color: #4F78C9;
+    margin-top: 20px;
+}
+
+.btn-tertiary {
+    background-color: #EAEDFF;
+    color: #4F78C9;
+}
+
+#productImage {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 1px 10px #000000;
+    margin-top: 20px;
+}
