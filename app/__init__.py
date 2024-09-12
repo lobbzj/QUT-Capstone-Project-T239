@@ -7,4 +7,6 @@ def create_app():
     app.secret_key = 'asecret'
     from . import views
     app.register_blueprint(views.mainbp)
+    from . import register
+    app.register_blueprint(register.registerbp)
     return app
