@@ -9,4 +9,6 @@ def create_app():
     app.register_blueprint(views.mainbp)
     from . import register
     app.register_blueprint(register.registerbp)
+    from . import login
+    app.register_blueprint(login.loginbp)
     return app

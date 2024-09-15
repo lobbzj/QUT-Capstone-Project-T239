@@ -6,9 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-7 flex-column justify-content-center px-9">
             <div class="mx-auto" style="max-width: 400px;">
-                <h1 class="text-center mt-custom">New Here?</h1>
+                <h1 class="text-center mt-custom">WELCOME BACK</h1>
                 <br>
-                <p class="text-center text-secondary">Don't Worry! Become a Member by entering your details.</p>
+                <p class="text-center text-secondary">Welcome back! Please enter your details.</p>
                 <br>
                 <br>
                 <form method="POST">
@@ -16,12 +16,9 @@
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
                     </div>
+                    <br>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="********">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="********">
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -29,24 +26,25 @@
                             <input type="checkbox" id="rememberMe">
                             <label for="rememberMe" class="ms-2"><strong>Remember me</strong></label>
                         </div>
+                        <a href="#" class="text-decoration-none"><strong>Forgot password</strong></a>
                     </div>
                     <br>
                     <br>
                     <div class="d-grid gap-4 col-12 mx-auto">
-                        <button class="btn btn-danger" type="button">Register</button>
+                        <button class="btn btn-success" type="button">Sign in</button>
                         <button class="btn btn-light border border-2 border-dark" type="button">
                             <img src="../static/img/google.png" alt="Google" style="width: 20px;">
                             <strong>Sign in with Google</strong>
                         </button>
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-secondary">Already a member? <a href="/login" class="text-danger"><strong>Login</strong></a></p>
+                        <p class="text-secondary">Don`t have an account? <a href="/register" class="text-danger"><strong>Register</strong></a></p>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-md-5 p-0">
-            <img src="../static/img/register.jpg"  class="img-fluid" alt="Register" style="object-fit: cover;">
+            <img src="../static/img/login.jpg"  class="img-fluid" alt="Register" style="object-fit: cover;">
         </div>
     </div>
 </div>
