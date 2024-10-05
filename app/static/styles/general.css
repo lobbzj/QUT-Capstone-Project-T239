@@ -1,7 +1,19 @@
 ul li a
 {
-    color: #000000;
+    color: white;
     text-decoration: none; /* Remove underline for footer links*/
+}
+
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding-left: 0; /* Remove default padding */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+    border-bottom: 1px solid #000; /* Add a bottom line on hover */
+    padding-bottom: 2px; /* Add some space between text and bottom line */
+    color: inherit; /* Inherit text color */
 }
 
 .mt-custom
@@ -9,3 +21,12 @@ ul li a
     margin-top: 100px;
 }
 
+footer{
+    font-family: cordia new;
+}
+
+.icon-link, .icon-link:hover {
+    text-decoration: none; /* Ensure no underline on hover */
+    border-bottom: none; /* Remove any bottom border */
+    padding-bottom: 0; /* Reset padding */
+}

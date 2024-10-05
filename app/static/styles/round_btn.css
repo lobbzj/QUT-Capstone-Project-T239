@@ -1,0 +1,25 @@
+.btn-circle {
+            width: 50px;   /* Adjust the width */
+            height: 50px;  /* Adjust the height */
+            display: flex;  /* Center icon vertically */
+            align-items: center; /* Center icon vertically */
+            justify-content: center; /* Center icon horizontally */
+            padding: 0; /* Remove padding */
+        }
+
+.check-after:checked + .btn::after {
+    content: '';
+    position: absolute;
+    top: -5px; /* Position above the button */
+    left: -5px; /* Position to the left of the button */
+    right: -5px; /* Position to the right of the button */
+    bottom: -5px; /* Position below the button */
+    border: 3px solid rgba(1, 7, 15, 0.835); /* Adjust the border color */
+    border-radius: 50%; /* Make it circular */
+    transition: border-color 0.3s ease; /* Add transition effect */
+    z-index: -1; /* Send the ring behind the button */
+}
+/* Optional: Change the ring color when hovered */
+.check-after:checked + .btn:hover::after {
+    border-color: gray; /* Darker ring color on hover */
+}

@@ -1,11 +1,11 @@
 .navbar 
     {
-     background-color: black; /* Set background to black */
+     background-color: rgb(255, 255, 255); /* Set background to black */
     }
     
 .nav-link 
     {
-     color: white !important; /* Make the text white */
+     color: black !important; /* Make the text white */
     }
     
 .no-underline 
