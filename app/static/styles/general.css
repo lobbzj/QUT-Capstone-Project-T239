@@ -9,7 +9,7 @@ ul {
     padding-left: 0; /* Remove default padding */
 }
 
-a:hover {
+footer a:hover {
     text-decoration: underline; /* Add underline on hover */
     border-bottom: 1px solid #000; /* Add a bottom line on hover */
     padding-bottom: 2px; /* Add some space between text and bottom line */
