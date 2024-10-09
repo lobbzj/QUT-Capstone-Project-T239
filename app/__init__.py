@@ -11,4 +11,6 @@ def create_app():
     app.register_blueprint(register.registerbp)
     from . import login
     app.register_blueprint(login.loginbp)
+    from . import checkout
+    app.register_blueprint(checkout.checkoutbp)
     return app
