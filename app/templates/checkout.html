@@ -29,7 +29,7 @@
             <div style="font-size: 15px; font-weight: bold">
             <select id="fruits" name="fruits">
                 <option value="Standard">Standard: Arrives 14-21 days (12 Sep 2025 - 19 Sep 2025)</option>
-                <option value="Express">Express: Arrives 3-5 days (1 Sep 2025 - 3 Sep 2025)</option>
+                <option value="Express">Express: Arrives 3-5 days (1 Sep 2025 - 3 Sep 2025) +$50</option>
             </select></p>
           </div>
 
@@ -49,15 +49,61 @@
           <div style="font-size: 20px; font-weight: bold">
           <div class="col-10">
             <p>Payment Method</p>
-            <button class="image-button" onclick="alert('Button clicked!')">
-              <img src="..static/img/visa.jpeg" alt="visa">
+            <button class="image-button">
+              <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
+            </button>
+
+            <button class="image-button">
+              <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
             </button>
             </div>
+          </div>
+        </div>
+      </div>
+      
+      <table style="position: fixed; top: 100px; right: 5px; border-collapse: collapse; margin: 0; background: none;">
+        <tr>
+            
+            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
+            <td><input type="text" value="Your Order" style="width: 150px; border: none; font-size: 15px; font-weight: bold; text-align: center;"></td>
+            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="Item Name" style="width: 150px; border: none; font-size: 15px; text-decoration: underline; text-align: center;"></td>
+            <td><input type="text" value="Qty" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="sub total" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="Smart Watch AA" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="Shipping" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="Free" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+      
+        <tr>
+          <td><input type="text" value="Total (GST included)" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+
         
+    </table>
+    <hr style="position: fixed; top: 220px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
+    <hr style="position: fixed; top: 250px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
+
+    </div>
+  </div>
+  
+
+      
+      
           
 
-        </div>  
-      </div>
+      </div> 
     </div>
   </div>
 </main>
