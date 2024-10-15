@@ -26,4 +26,8 @@ def create_app():
     app.register_blueprint(login.loginbp)
     from . import create
     app.register_blueprint(create.createbp)
+    from . import confirmation
+    app.register_blueprint(confirmation.confirmationbp)
+    from . import checkout
+    app.register_blueprint(checkout.checkoutbp)
     return app

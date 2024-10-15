@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+  <div class = "container">
+    <div class="row">
+      <div class="col-10 order-first">
+        <div style="font-size: 30px; font-weight: bold">
+          <p>Order Details</p>
+        </div>
+
+        <div class="row">
+          <div style="font-size: 20px; font-weight: bold">
+          <div class="col-10">
+          <p>Customer Information</p>
+
+          <div style="font-size: 15px; font-weight: bold">
+          <p><input class="input" type="text" placeholder="First Name" name="FirstName" required> <input class="input" type="text" placeholder="Middle Name (Optional)" name="MiddleName"> </p>
+          <p><input class="input" type="text" placeholder="Surname" name="SurName" required></p>
+          <p><input class="input" type="text" placeholder="Phone Number" name="PhoneNumber" required></p>
+          <p><input class="input" type="text" placeholder="Email" name="Email" required></p>
+        </div>
+
+        <div class ="row">
+          <div style="font-size: 20px; font-weight: bold">
+          <div class="col-10">
+            <label for="shipping">Shipping Method</label> </p>
+            <div style="font-size: 15px; font-weight: bold">
+            <select id="ship" name="ship">
+                <option value="Standard">Standard: Arrives 14-21 days (12 Sep 2025 - 19 Sep 2025)</option>
+                <option value="Express">Express: Arrives 3-5 days (1 Sep 2025 - 3 Sep 2025) +$50</option>
+            </select></p>
+          </div>
+
+        <div class ="row">
+          <div style="font-size: 20px; font-weight: bold">
+          <div class="col-10">
+            <p>Shipping Address</p>
+            <div style="font-size: 15px; font-weight: bold">
+              <p><input class="input" type="text" placeholder="Address line 1" name="Addressline1" required></p>
+              <p><input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2"></p>
+              <p><input class="input" type="text" placeholder="Suburb" name="Suburb" required> <input class="input" type="text" placeholder="Postal code" name="PostalCode"> </p>
+              <p><input class="input" type="text" placeholder="City" name="City" required></p>
+              <p><input class="input" type="text" placeholder="State" name="State" required></p>
+          </div>
+
+        <div class ="row">
+          <div style="font-size: 20px; font-weight: bold">
+          <div class="col-10">
+            <p>Payment Method</p>
+            <button class="image-button">
+              <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
+            </button>
+
+            <button class="image-button">
+              <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
+            </button>
+            </div>
+            <p> </p>
+          </div>
+        </div>
+
+        <div class="buttons" >
+          <div style="position: float; bottom: 20px; right: 0px;  display: flex;gap: 10px;">
+
+          <!--need onclick button.....-->
+          <a href="/confirmation">
+            <button type="button" 
+            style="background-color: green; border-radius: 50px; color: white; border: none;
+            padding: 5px 10px; font-size: 16px;">Place Order</button>
+          </a>
+
+            <button type="button" style="background-color: lightgrey; border-radius: 50px; color: black;  border: none;
+            padding: 5px 10px; font-size: 16px;">Cancel</button>
+
+        </div>
+     
+      </div>
+      
+      <table style="position: fixed; top: 100px; right: 5px; border-collapse: collapse; margin: 0; background: none;">
+        <tr>
+            
+            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
+            <td><input type="text" value="Your Order" style="width: 150px; border: none; font-size: 15px; font-weight: bold; text-align: center;"></td>
+            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="Item Name" style="width: 150px; border: none; font-size: 15px; text-decoration: underline; text-align: center;"></td>
+            <td><input type="text" value="Qty" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="sub total" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="Smart Watch AA" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="Shipping" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="Free" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+      
+        <tr>
+          <td><input type="text" value="Total (GST included)" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+        </tr>
+
+        
+    </table>
+    <hr style="position: fixed; top: 220px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
+    <hr style="position: fixed; top: 250px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
+
+    </div>
+  </div>
+  
+
+      
+      
+          
+
+      </div> 
+    </div>
+  </div>
+</main>
+
+{% endblock %}
