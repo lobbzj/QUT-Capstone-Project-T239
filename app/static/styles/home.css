@@ -287,7 +287,12 @@
     }
 }
 
+.carousel-item {
+    height: 70vh; 
+}
+
 .carousel-item img {
-    max-height: 500px; 
-    object-fit: cover; /* This ensures the image covers the area while maintaining aspect ratio */
+    width: 100%; 
+    height: 100%;
+    object-fit: fill; 
   }
