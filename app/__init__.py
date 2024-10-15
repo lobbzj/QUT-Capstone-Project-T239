@@ -13,6 +13,6 @@ def create_app():
     app.register_blueprint(login.loginbp)
     from . import checkout
     app.register_blueprint(checkout.checkoutbp)
-    from . import confirm
-    app.register_blueprint(confirm.confirmbp)
+    from . import confirmation
+    app.register_blueprint(confirmation.confirmationbp)
     return app
