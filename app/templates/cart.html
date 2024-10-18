@@ -11,19 +11,41 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col" style="width: 120px;"></th> <!-- Fixed width for image -->
                     <th scope="col">Product</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="cart-items">
+                <!-- the for loop is using the Jinja2 template found within flask. Originally did the for loop in cart.py but found this for flask so implemented this way.-->
                 {% for item in items %}
-                <tr>
+                <tr data-item-id="{{ item.id }}">
+                    <!-- Product Image input-->
+                    <td>
+                        <img src="../static/img/exampleProduct.png" alt="{{item.name}}" class="img-fluid"
+                            style="width: 100px; height: auto;">
+                    </td>
+
+                    <!-- Product Detials -->
                     <td>{{item.name}}</td>
                     <td>${{item.price}}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>${{ item.price * item.quantity }}</td>
+                    <!-- drop down function for quantity-->
+                    <td>
+                        <select class="form-select" onchange="updatePrice(this)">
+                            {% for i in range(1, 11) %}
+                            <option value="{{ i }}" {% if i==item.quantity %}selected{% endif %}>{{ i }}</option>
+                            <!-- opriginally there was a syntax error for '==' had to download Jinja2 extension for it to go away-->
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td class="item-total">${{ item.price * item.quantity }}</td>
+                    <td>
+                        <form action="{{ url_for('cart.remove_item', item_id=item.id) }}" method="POST">
+                            <button type="submit" class="btn btn-secondary btn-sm">Remove</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -31,7 +53,7 @@
 
         <div class="row justify-content-end">
             <div class="col-md-4">
-                <h3>Total: ${{total}}</h3>
+                <h3>Total: $<span id="cart-total">{{ total }}</span></h3>
                 <a href="#" class="btn btn-success btn-block mt-3 checkout-btn">Proceed to Checkout</a>
             </div>
         </div>
@@ -44,5 +66,31 @@
         </div>
     </div>
 </main>
+
+<!-- JS to update total amount-->
+<script>
+    function updatePrice(selectElement) {
+        var row = selectElement.closest('tr');
+        var price = parseFloat(row.querySelector('td:nth-child(3)').innerText.replace('$', ''));
+        var quantity = parseInt(selectElement.value);
+        var total = price * quantity;
+
+        row.querySelector('.item-total').innerText = `$${total.toFixed(2)}`;
+
+        updateCartTotal();
+    }
+
+    function updateCartTotal() {
+        var cartRows = document.querySelectorAll('#cart-items tr');
+        var cartTotal = 0;
+
+        cartRows.forEach(function (row) {
+            var itemTotal = parseFloat(row.querySelector('.item-total').innerText.replace('$', ''));
+            cartTotal += itemTotal;
+        })
+
+        document.getElementById('cart-total').innerText = cartTotal.toFixed(2);
+    }
+</script>
 
 {% endblock %}
