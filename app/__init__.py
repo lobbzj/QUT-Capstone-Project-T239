@@ -30,4 +30,8 @@ def create_app():
     app.register_blueprint(confirmation.confirmationbp)
     from . import checkout
     app.register_blueprint(checkout.checkoutbp)
+    from . import products
+    app.register_blueprint(products.productsbp)
+    from . import cart
+    app.register_blueprint(cart.cartbp)
     return app
