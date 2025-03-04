@@ -1,4 +1,4 @@
-from flask import Flask 
+from flask import Flask
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -6,10 +6,11 @@ from flask_login import LoginManager
 
 db = SQLAlchemy()
 
+
 def create_app():
-    
+
     print(__name__)
-    app = Flask(__name__)  
+    app = Flask(__name__)
     app.debug = True
     app.secret_key = 'asecret'
 
