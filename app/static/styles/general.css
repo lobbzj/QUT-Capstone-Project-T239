@@ -1,39 +1,49 @@
-ul li a
-{
+ul li a {
     color: white;
-    text-decoration: none; /* Remove underline for footer links*/
+    text-decoration: none;
+    /* Remove underline for footer links*/
 }
 
 ul {
-    list-style-type: none; /* Remove default bullet points */
-    padding-left: 0; /* Remove default padding */
+    list-style-type: none;
+    /* Remove default bullet points */
+    padding-left: 0;
+    /* Remove default padding */
 }
 
 footer a:hover {
-    text-decoration: underline; /* Add underline on hover */
-    border-bottom: 1px solid #000; /* Add a bottom line on hover */
-    padding-bottom: 2px; /* Add some space between text and bottom line */
-    color: inherit; /* Inherit text color */
+    text-decoration: underline;
+    /* Add underline on hover */
+    border-bottom: 1px solid #000;
+    /* Add a bottom line on hover */
+    padding-bottom: 2px;
+    /* Add some space between text and bottom line */
+    color: inherit;
+    /* Inherit text color */
 }
 
 footer .footer-logo {
     display: block;
-    margin-left: 0;  /* Ensures it stays on the left */
+    margin-left: 0;
+    /* Ensures it stays on the left */
 }
 
-.mt-custom
-{
+.mt-custom {
     margin-top: 100px;
 }
 
-footer{
+footer {
     font-family: cordia new;
 }
 
-.icon-link, .icon-link:hover {
-    text-decoration: none; /* Ensure no underline on hover */
-    border-bottom: none; /* Remove any bottom border */
-    padding-bottom: 0; /* Reset padding */
+.icon-link,
+.icon-link:hover {
+    text-decoration: none;
+    /* Ensure no underline on hover */
+    border-bottom: none;
+    /* Remove any bottom border */
+    padding-bottom: 0;
+    /* Reset padding */
 }
 
 .btn-tertiary {
