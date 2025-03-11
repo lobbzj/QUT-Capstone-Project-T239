@@ -11,6 +11,38 @@ ul {
     /* Remove default padding */
 }
 
+.btn-primary {
+    background-color: #4F9E3D;
+}
+
+.btn-primary:hover {
+    background-color: #50AE3A;
+}
+
+.btn-secondary {
+    background-color: #4F78C9;
+}
+
+.btn-tertiary {
+    background-color: #EAEDFF;
+    color: #4F78C9;
+}
+
+.btn-quaternary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 50px;
+}
+
+.btn-quaternary:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
 footer a:hover {
     text-decoration: underline;
     /* Add underline on hover */
