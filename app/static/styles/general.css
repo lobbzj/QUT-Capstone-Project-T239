@@ -11,16 +11,23 @@ ul {
     /* Remove default padding */
 }
 
+
 .btn-primary {
     background-color: #4F9E3D;
+    border: 1px solid #4F9E3D;
 }
 
 .btn-primary:hover {
-    background-color: #50AE3A;
+    background-color: #23930a;
+    border: 1px solid #4F9E3D;
 }
 
 .btn-secondary {
     background-color: #4F78C9;
+}
+
+.btn-secondary:hover {
+    background-color: #1458ec;
 }
 
 .btn-tertiary {
@@ -161,4 +168,14 @@ main {
     /* Gradients from pure white to a very light grey */
     padding-top: 60px;
     /* Ensure content doesn't get hidden behind the header */
+}
+
+/* Divider (Horizontal Rule) Styles */
+hr {
+    border: 1px solid #313030;
+    margin-top: 20px;
+}
+
+footer {
+    font-family: sans-serif;
 }
