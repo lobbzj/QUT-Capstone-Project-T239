@@ -3,7 +3,7 @@
 {% block content %}
 
 <main>
-  <div class = "container">
+  <div class="container">
     <div class="row">
       <div class="col-10 order-first">
         <div style="font-size: 30px; font-weight: bold">
@@ -16,44 +16,46 @@
           <p>Customer Information</p>
 
           <div style="font-size: 15px; font-weight: bold">
-          <p><input class="input" type="text" placeholder="First Name" name="FirstName" required> <input class="input" type="text" placeholder="Middle Name (Optional)" name="MiddleName"> </p>
-          <p><input class="input" type="text" placeholder="Surname" name="SurName" required></p>
-          <p><input class="input" type="text" placeholder="Phone Number" name="PhoneNumber" required></p>
-          <p><input class="input" type="text" placeholder="Email" name="Email" required></p>
+          <p><input class="input" type="text" placeholder="First Name" name="FirstName" required aria-label="First Name" /> 
+          <input class="input" type="text" placeholder="Middle Name (Optional)" name="MiddleName" aria-label="Middle Name (Optional)" /></p>
+          <p><input class="input" type="text" placeholder="Surname" name="SurName" required aria-label="Surname" /></p>
+          <p><input class="input" type="text" placeholder="Phone Number" name="PhoneNumber" required aria-label="Phone Number" /></p>
+          <p><input class="input" type="text" placeholder="Email" name="Email" required aria-label="Email" /></p>
         </div>
 
-        <div class ="row">
+        <div class="row">
           <div style="font-size: 20px; font-weight: bold">
           <div class="col-10">
-            <label for="shipping">Shipping Method</label> </p>
+            <label for="shipping" aria-label="Shipping Method">Shipping Method</label> </p>
             <div style="font-size: 15px; font-weight: bold">
-            <select id="ship" name="ship">
+            <select id="ship" name="ship" aria-label="Select Shipping Method">
                 <option value="Standard">Standard: Arrives 14-21 days (12 Sep 2025 - 19 Sep 2025)</option>
                 <option value="Express">Express: Arrives 3-5 days (1 Sep 2025 - 3 Sep 2025) +$50</option>
             </select></p>
           </div>
 
-        <div class ="row">
+        <div class="row">
           <div style="font-size: 20px; font-weight: bold">
           <div class="col-10">
             <p>Shipping Address</p>
             <div style="font-size: 15px; font-weight: bold">
-              <p><input class="input" type="text" placeholder="Address line 1" name="Addressline1" required></p>
-              <p><input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2"></p>
-              <p><input class="input" type="text" placeholder="Suburb" name="Suburb" required> <input class="input" type="text" placeholder="Postal code" name="PostalCode"> </p>
-              <p><input class="input" type="text" placeholder="City" name="City" required></p>
-              <p><input class="input" type="text" placeholder="State" name="State" required></p>
+              <p><input class="input" type="text" placeholder="Address line 1" name="Addressline1" required aria-label="Address Line 1" /></p>
+              <p><input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2" aria-label="Address Line 2 (Optional)" /></p>
+              <p><input class="input" type="text" placeholder="Suburb" name="Suburb" required aria-label="Suburb" /> 
+              <input class="input" type="text" placeholder="Postal code" name="PostalCode" aria-label="Postal Code" /></p>
+              <p><input class="input" type="text" placeholder="City" name="City" required aria-label="City" /></p>
+              <p><input class="input" type="text" placeholder="State" name="State" required aria-label="State" /></p>
           </div>
 
-        <div class ="row">
+        <div class="row">
           <div style="font-size: 20px; font-weight: bold">
           <div class="col-10">
             <p>Payment Method</p>
-            <button class="image-button">
+            <button class="image-button" aria-label="Visa Payment Option">
               <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
             </button>
 
-            <button class="image-button">
+            <button class="image-button" aria-label="Mastercard Payment Option">
               <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
             </button>
             </div>
@@ -61,57 +63,56 @@
           </div>
         </div>
 
-        <div class="buttons" >
-          <div style="position: float; bottom: 20px; right: 0px;  display: flex;gap: 10px;">
+        <div class="buttons">
+          <div style="position: float; bottom: 20px; right: 0px; display: flex; gap: 10px;">
+            <!-- Need onclick button -->
+            <a href="/confirmation" aria-label="Place Order Confirmation">
+              <button type="button" 
+              style="background-color: green; border-radius: 50px; color: white; border: none;
+              padding: 5px 10px; font-size: 16px;" aria-label="Place Order">
+                Place Order
+              </button>
+            </a>
 
-          <!--need onclick button.....-->
-          <a href="/confirmation">
-            <button type="button" 
-            style="background-color: green; border-radius: 50px; color: white; border: none;
-            padding: 5px 10px; font-size: 16px;">Place Order</button>
-          </a>
+            <button type="button" style="background-color: lightgrey; border-radius: 50px; color: black; border: none;
+            padding: 5px 10px; font-size: 16px;" aria-label="Cancel Order">
+              Cancel
+            </button>
 
-            <button type="button" style="background-color: lightgrey; border-radius: 50px; color: black;  border: none;
-            padding: 5px 10px; font-size: 16px;">Cancel</button>
-
-        </div>
+          </div>
      
       </div>
       
-      <table style="position: fixed; top: 100px; right: 5px; border-collapse: collapse; margin: 0; background: none;">
+      <table style="position: fixed; top: 100px; right: 5px; border-collapse: collapse; margin: 0; background: none;" aria-label="Order Summary">
         <tr>
-            
-            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
-            <td><input type="text" value="Your Order" style="width: 150px; border: none; font-size: 15px; font-weight: bold; text-align: center;"></td>
-            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
+            <td><input type="text" style="width: 150px; border: none; text-align: center;" aria-label="Order ID" /></td>
+            <td><input type="text" value="Your Order" style="width: 150px; border: none; font-size: 15px; font-weight: bold; text-align: center;" aria-label="Order Title" /></td>
+            <td><input type="text" style="width: 150px; border: none; text-align: center;" aria-label="Order Status" /></td>
         </tr>
         <tr>
-            <td><input type="text" value="Item Name" style="width: 150px; border: none; font-size: 15px; text-decoration: underline; text-align: center;"></td>
-            <td><input type="text" value="Qty" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-            <td><input type="text" value="sub total" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="Item Name" style="width: 150px; border: none; font-size: 15px; text-decoration: underline; text-align: center;" aria-label="Item Name Header" /></td>
+            <td><input type="text" value="Qty" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Quantity Header" /></td>
+            <td><input type="text" value="Sub total" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Sub Total Header" /></td>
         </tr>
         <tr>
-            <td><input type="text" value="Smart Watch AA" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-            <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-            <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+            <td><input type="text" value="Smart Watch AA" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Smart Watch AA Item" /></td>
+            <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Smart Watch Quantity" /></td>
+            <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Smart Watch Price" /></td>
         </tr>
         <tr>
-          <td><input type="text" value="Shipping" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="Free" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="Shipping" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Shipping Fee" /></td>
+          <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Shipping Quantity" /></td>
+          <td><input type="text" value="Free" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Shipping Price" /></td>
         </tr>
       
         <tr>
-          <td><input type="text" value="Total (GST included)" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
+          <td><input type="text" value="Total (GST included)" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Total Price (GST included)" /></td>
+          <td><input type="text" value="" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Empty Field" /></td>
+          <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;" aria-label="Total Price" /></td>
         </tr>
-
-        
     </table>
     <hr style="position: fixed; top: 220px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
     <hr style="position: fixed; top: 250px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
-
     </div>
   </div>
   

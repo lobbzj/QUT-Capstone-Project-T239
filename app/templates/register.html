@@ -14,27 +14,27 @@
             <form method="POST" class="row g-3">
               <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" required />
+                <input type="email" class="form-control" id="inputEmail4" aria-label="Email" required />
               </div>
               <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" required />
+                <input type="password" class="form-control" id="inputPassword4" aria-label="Password" required />
               </div>
               <div class="col-12">
                 <label for="inputAddress" class="form-label">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required />
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" aria-label="Address" required />
               </div>
               <div class="col-12">
                 <label for="inputAddress2" class="form-label">Address 2(Optional)</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" aria-label="Address 2" />
               </div>
               <div class="col-md-4">
                 <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity" required />
+                <input type="text" class="form-control" id="inputCity" aria-label="City" required />
               </div>
               <div class="col-md-4">
                 <label for="inputState" class="form-label">State</label>
-                <select id="inputState" class="form-select" required>
+                <select id="inputState" class="form-select" aria-label="State" required>
                   <option selected>Choose...</option>
                   <option>QLD</option>
                   <option>NSW</option>
@@ -48,28 +48,28 @@
               </div>
               <div class="col-md-4">
                 <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip" required />
+                <input type="text" class="form-control" id="inputZip" aria-label="Zip" required />
               </div>
               <div class="col-md-12">
                 <label for="memberType" class="form-label">Member Type</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="memberType" id="guest" value="guest" />
+                  <input class="form-check-input" type="radio" name="memberType" id="guest" value="guest" aria-label="Guest" />
                   <label class="form-check-label" for="guest">Guest</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="memberType" id="businessPartner" value="businessPartner" />
+                  <input class="form-check-input" type="radio" name="memberType" id="businessPartner" value="businessPartner" aria-label="Business Partner" />
                   <label class="form-check-label" for="businessPartner">Business Partner</label>
                 </div>
               </div>
 
               <div class="col-md-12" id="validateCodeContainer">
                 <label for="validateCode" class="form-label">* Validation Code</label>
-                <input type="text" id="validateCode" class="form-control" placeholder="Enter validation code provided to business partner" disabled />
+                <input type="text" id="validateCode" class="form-control" placeholder="Enter validation code provided to business partner" aria-label="Validation Code" disabled />
               </div>
 
               <div class="d-grid gap-4 col-12 mx-auto mt-5">
-                <button class="btn btn-danger" type="button">Register</button>
-                <button class="btn btn-light border border-2 border-dark" type="button">
+                <button class="btn btn-danger" type="button" aria-label="Register">Register</button>
+                <button class="btn btn-light border border-2 border-dark" type="button" aria-label="Sign in with Google">
                   <img src="../static/img/google.png" alt="Google" style="width: 20px;" />
                   <strong>Sign in with Google</strong>
                 </button>

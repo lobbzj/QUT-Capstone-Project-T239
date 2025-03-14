@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" aria-label="Product carousel" role="region" aria-live="polite">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -10,21 +10,21 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="static/img/hero1.png" class="d-block w-100 carousel-img" alt="Boyzlife picture" />
+        <img src="static/img/hero1.png" class="d-block w-100 carousel-img" alt="Boyzlife group performing live on stage" aria-label="Boyzlife group photo" />
       </div>
       <div class="carousel-item">
-        <img src="static/img/hero2.png" class="d-block w-100 carousel-img" alt="Abbie Chatfield picture" />
+        <img src="static/img/hero2.png" class="d-block w-100 carousel-img" alt="Abbie Chatfield posing for a photo" aria-label="Abbie Chatfield" />
       </div>
       <div class="carousel-item">
-        <img src="static/img/hero3.png" class="d-block w-100 carousel-img" alt="Bjorn Again picture" />
+        <img src="static/img/hero3.png" class="d-block w-100 carousel-img" alt="Bjorn Again performing on stage" aria-label="Bjorn Again performance" />
       </div>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" aria-label="Previous slide" role="button">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" aria-label="Next slide" role="button">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -34,126 +34,104 @@
 {% block content %}
   <!-- Recent Sports Techs -->
   <main>
-    <section class="Recent">
-      <h1>Recently Added Products</h1>
+    <section class="Recent" aria-labelledby="recent-products-section">
+      <h1 id="recent-products-section">Recently Added Products</h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
       <div id="row1" class="row">
-        <div class="Recent-col">
-          <a href="/products">
-            <img src="../static/img/Soccer.jpg" />
+        <div class="Recent-col" aria-labelledby="soccer-product">
+          <a href="/products" aria-label="View Soccer product details">
+            <img src="../static/img/Soccer.jpg" alt="Various soccer products such as balls and jerseys" />
             <div class="layer">
               <h3>Soccer</h3>
               <p>
-                <b>Avaliable</b>
+                <b>Available</b>
               </p>
-              <i>
-                Anything<br />
-                Ranges From A$10.00
-              </i>
+              <i>Anything<br />Ranges From A$10.00</i>
             </div>
           </a>
         </div>
-        <div class="Recent-col">
-          <a href="#">
-            <img src="../static/img/Rugby.jpg" />
+        <div class="Recent-col" aria-labelledby="rugby-product">
+          <a href="#" aria-label="View Rugby product details">
+            <img src="../static/img/Rugby.jpg" alt="Various rugby products such as balls and kits" />
             <div class="layer">
               <h3>Rugby</h3>
               <p>
-                <b>Avaliable</b>
+                <b>Available</b>
               </p>
-              <i>
-                Anything
-                <br />Ranges From A$27.50
-              </i>
+              <i>Anything<br />Ranges From A$27.50</i>
             </div>
           </a>
         </div>
-        <div class="Recent-col">
-          <a href="#">
-            <img src="../static/img/Cricket.jpg" />
+        <div class="Recent-col" aria-labelledby="cricket-product">
+          <a href="#" aria-label="View Cricket product details">
+            <img src="../static/img/Cricket.jpg" alt="Various cricket products such as bats and pads" />
             <div class="layer">
               <h3>Cricket</h3>
               <p>
-                <b>Avaliable</b>
+                <b>Available</b>
               </p>
-              <i>
-                Anything
-                <br />Ranges From A$79.68
-              </i>
+              <i>Anything<br />Ranges From A$79.68</i>
             </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- -Browse Products -->
-    <section class="Browse">
-      <h1>Browse More Products</h1>
+    <section class="Browse" aria-labelledby="browse-products-section">
+      <h1 id="browse-products-section">Browse More Products</h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
       <div id="row2" class="row">
-        <div class="Browse-col">
-          <a href="#">
-            <img src="../static/img/Running.jpg" />
+        <div class="Browse-col" aria-labelledby="running-product">
+          <a href="#" aria-label="View Running product details">
+            <img src="../static/img/Running.jpg" alt="Various running products such as shoes and apparel" />
             <div class="layer">
               <h3>Running</h3>
               <p>
-                <b>Avaliable</b>
+                <b>Available</b>
               </p>
-              <i>
-                Anything
-                <br />Ranges from A$79.68+
-              </i>
+              <i>Anything<br />Ranges from A$79.68+</i>
             </div>
           </a>
         </div>
-        <div class="Browse-col">
-          <a href="#">
-            <img src="../static/img/Tennis.jpg" />
+        <div class="Browse-col" aria-labelledby="tennis-product">
+          <a href="#" aria-label="View Tennis product details">
+            <img src="../static/img/Tennis.jpg" alt="Various tennis products such as rackets and balls" />
             <div class="layer">
               <h3>Tennis</h3>
               <p>
-                <b>Avaliable</b>
+                <b>Available</b>
               </p>
-              <i>
-                Anything
-                <br />Ranges from A$43.50
-              </i>
+              <i>Anything<br />Ranges from A$43.50</i>
             </div>
           </a>
         </div>
-        <div class="Browse-col">
-          <a href="#">
-            <img src="../static/img/Volleyball.jpg" />
+        <div class="Browse-col out-of-stock" aria-labelledby="volleyball-product">
+          <a href="#" aria-label="View Volleyball product details">
+            <img src="../static/img/Volleyball.jpg" alt="Various volleyball products such as nets and balls" />
             <div class="layer">
               <h3>Volleyball</h3>
               <p>
-                <b>Soldout:</b>
+                <b>Sold out:</b>
               </p>
-              <i>
-                Anything
-                <br />Ranges from A$38.37
-              </i>
+              <i>Anything<br />Ranges from A$38.37</i>
             </div>
           </a>
         </div>
-        <div class="Browse-col">
-          <a href="#">
-            <img src="../static/img/Basketball.jpg" />
+        <div class="Browse-col out-of-stock" aria-labelledby="basketball-product">
+          <a href="#" aria-label="View Basketball product details">
+            <img src="../static/img/Basketball.jpg" alt="Various basketball products such as hoops and balls" />
             <div class="layer">
-              <h3 style="color:red">Basketball</h3>
-              <p style="color:red">
-                <b>Soldout:</b>
+              <h3>Basketball</h3>
+              <p>
+                <b>Sold out:</b>
               </p>
-              <i style="color:red">
-                Anything
-                <br style="color:red" />No Price
-              </i>
+              <i>Anything<br />No Price</i>
             </div>
           </a>
         </div>
       </div>
     </section>
   </main>
-  <!-- Control forward slash '/' -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" aria-label="Bootstrap JS"></script>
 {% endblock %}

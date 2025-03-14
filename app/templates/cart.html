@@ -4,26 +4,25 @@
 
 <main>
     <div class="container">
-        <h1 class="text-center">Your Shopping Cart</h1>
+        <h1 class="text-center" aria-label="Your Shopping Cart">Your Shopping Cart</h1>
 
         {% if items %}
 
-        <table class="cart_table">
+        <table class="cart_table" aria-label="Shopping Cart Items">
             <thead>
                 <tr>
-                    <th scope="col" style="width: 120px;"></th> <!-- Fixed width for image -->
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" style="width: 120px;" aria-label="Product Image"></th> <!-- Fixed width for image -->
+                    <th scope="col" aria-label="Product Name">Product</th>
+                    <th scope="col" aria-label="Product Price">Price</th>
+                    <th scope="col" aria-label="Product Quantity">Quantity</th>
+                    <th scope="col" aria-label="Product Total">Total</th>
                 </tr>
             </thead>
-            <tbody id="cart-items">
-                <!-- the for loop is using the Jinja2 template found within flask. Originally did the for loop in cart.py but found this for flask so implemented this way.-->
+            <tbody id="cart-items" aria-label="List of Cart Items">
                 {% for item in items %}
-                <tr data-item-id="{{ item.id }}">
+                <tr data-item-id="{{ item.id }}" aria-label="{{ item.name }} details">
                     <!-- Product Image input-->
-                    <td>
+                    <td aria-label="{{ item.name }} Image">
                         <img src="../static/img/exampleProduct.png" alt="{{item.name}}" class="img-fluid"
                             style="width: 100px; height: auto;">
                     </td>
@@ -33,16 +32,16 @@
                     <td>${{item.price}}</td>
                     <!-- drop down function for quantity-->
                     <td>
-                        <select class="form-select" onchange="updatePrice(this)">
+                        <label for="quantity-{{item.id}}" class="visually-hidden">Quantity for {{item.name}}</label>
+                        <select class="form-select" id="quantity-{{item.id}}" onchange="updatePrice(this)" aria-label="Select quantity for {{item.name}}">
                             {% for i in range(1, 11) %}
                             <option value="{{ i }}" {% if i==item.quantity %}selected{% endif %}>{{ i }}</option>
-                            <!-- opriginally there was a syntax error for '==' had to download Jinja2 extension for it to go away-->
                             {% endfor %}
                         </select>
                     </td>
-                    <td class="item-total">${{ item.price * item.quantity }}</td>
+                    <td class="item-total" aria-label="Total price for {{item.name}}">${{ item.price * item.quantity }}</td>
                     <td>
-                        <form action="{{ url_for('cart.remove_item', item_id=item.id) }}" method="POST">
+                        <form action="{{ url_for('cart.remove_item', item_id=item.id) }}" method="POST" aria-label="Remove {{ item.name }} from cart">
                             <button type="submit" class="btn btn-secondary btn-sm">Remove</button>
                         </form>
                     </td>
@@ -53,18 +52,19 @@
 
         <div class="row justify-content-end">
             <div class="col-md-4">
-                <h3>Total: $<span id="cart-total">{{ total }}</span></h3>
-                <a href="/checkout" class="btn btn-success btn-block mt-3 checkout-btn">Proceed to Checkout</a>
+                <h3>Total: $<span id="cart-total" aria-label="Cart Total">{{ total }}</span></h3>
+                <a href="/checkout" class="btn btn-primary mt-3 checkout-btn" aria-label="Proceed to Checkout">Proceed to Checkout</a>
             </div>
         </div>
         {% else %}
-        <p class="text-center">Your cart is empty</p>
+        <p class="text-center" aria-label="Empty Cart Message">Your cart is empty</p>
         {% endif %}
 
         <div class="text-center mt-4">
-            <a href="/" class="btn btn-primary">Continue Shopping</a>
+            <a href="/" >Continue Shopping</a>
         </div>
     </div>
+    <br />
 </main>
 
 <!-- JS to update total amount-->

@@ -13,21 +13,21 @@ ul {
 
 
 .btn-primary {
-    background-color: #4F9E3D;
+    background-color: #2b8317;
     border: 1px solid #4F9E3D;
 }
 
 .btn-primary:hover {
-    background-color: #23930a;
+    background-color: #25a408;
     border: 1px solid #4F9E3D;
 }
 
 .btn-secondary {
-    background-color: #4F78C9;
+    background-color: #1458ec;
 }
 
 .btn-secondary:hover {
-    background-color: #1458ec;
+    background-color: #4F78C9;
 }
 
 .btn-tertiary {
@@ -168,6 +168,7 @@ main {
     /* Gradients from pure white to a very light grey */
     padding-top: 60px;
     /* Ensure content doesn't get hidden behind the header */
+    font-family: sans-serif;
 }
 
 /* Divider (Horizontal Rule) Styles */
@@ -178,4 +179,10 @@ hr {
 
 footer {
     font-family: sans-serif;
+}
+
+.out-of-stock .layer h3,
+.out-of-stock .layer p,
+.out-of-stock .layer i {
+    color: red;
 }

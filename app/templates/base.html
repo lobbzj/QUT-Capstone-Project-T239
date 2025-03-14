@@ -15,42 +15,42 @@
     <!-- Header -->
     <header class="bg-light border-bottom">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg bg-light border-bottom border-body" data-bs-theme="light">
+      <nav class="navbar navbar-expand-lg bg-light border-bottom border-body" data-bs-theme="light" aria-label="Main navigation">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="../static/img/logo.png" width="250" height="80" class="d-inline-block align-top" alt="SportsTech Logo" /></a>
+            <a class="navbar-brand" href="/" aria-label="Go to home page"><img src="../static/img/logo.png" width="250" height="80" class="d-inline-block align-top" alt="SportsTech Logo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px;" />
-                <button class="btn  btn-primary" type="submit">Search</button>
+            <form class="d-flex" role="search" aria-label="Search products">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px" />
+                <button class="btn btn-primary" type="submit" aria-label="Submit search">Search</button>
             </form>
     
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                <a class="nav-link no-underline nav-link:hover" href="/">HOME</a> <!-- Added Home Tab -->
+                    <a class="nav-link no-underline nav-link:hover" href="/" aria-label="Home">HOME</a> <!-- Added Home Tab -->
                 </li>
                 <li class="nav-item">
                   <div style="width: 10px;"></div>
               </li>
                 <li class="nav-item">
-                    <a class="nav-link no-underline nav-link:hover" href="/login">LOGIN</a>
+                    <a class="nav-link no-underline nav-link:hover" href="/login" aria-label="Login to your account">LOGIN</a>
                 </li>
                 <li class="nav-item">
                     <div style="width: 10px;"></div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link no-underline nav-link:hover" href="/register">REGISTER</a>
+                    <a class="nav-link no-underline nav-link:hover" href="/register" aria-label="Create a new account">REGISTER</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link no-underline nav-link:hover" href="/create">Add Product</a>
+                  <a class="nav-link no-underline nav-link:hover" href="/create" aria-label="Add a new product">Add Product</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link no-underline nav-link:hover" href="/cart">
+                  <a class="nav-link no-underline nav-link:hover" href="/cart" aria-label="Go to shopping cart">
                     <img src="../static/img/cart.png" width="25" height="25" class="d-inline-block align-top" alt="Cart" />
                   </a>
               </li>
             </ul>
-        </div>
+         </div>
     </nav>
     
 
@@ -62,14 +62,12 @@
     {% block content %}
 
     {% endblock %}
-    
 
-    <footer class="bg-dark text-white text-center py-4">
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4" aria-label="Footer">
       <div class="container-fluid">
         <div class="container-fluid">
-
-            <img src="../static/img/logo2.png" alt="Logo" class="footer-logo" width="250" height="80">
-          
+            <img src="../static/img/logo2.png" alt="SportsTech Logo" class="footer-logo" width="250" height="80">
         </div>
 
         <div class="container mt-3">
@@ -77,36 +75,36 @@
               <div class="col-md-3 ps-5">
                 <h5 class="mb-3">Orders & Returns</h5>
                 <ul class="no-underline">
-                  <li><a href="#" class="mb-2">Order Status</a></li>
-                  <li><a href="#" class="mb-2">Shipping Information</a></li>
-                  <li><a href="#" class="mb-2">Returns & Exchanges</a></li>
-                  <li><a href="#" class="mb-2">Gift Cards</a></li>
+                  <li><a href="#" class="mb-2" aria-label="View order status">Order Status</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Shipping information">Shipping Information</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Returns and exchanges information">Returns & Exchanges</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Gift card details">Gift Cards</a></li>
                 </ul>
               </div>
               <div class="col-md-3 ps-5">
                 <h5 class="mb-3">Customer Service</h5>
                 <ul class="no-underline">
-                  <li><a href="#" class="mb-2">Contact Us</a></li>
-                  <li><a href="#" class="mb-2">FAQ</a></li>
-                  <li><a href="#" class="mb-2">Store Locator</a></li>
-                  <li><a href="#" class="mb-2">Size Guide</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Contact us for assistance">Contact Us</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Frequently Asked Questions">FAQ</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Find store locations">Store Locator</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Size guide">Size Guide</a></li>
                 </ul>
               </div>
               <div class="col-md-3 ps-5">
                 <h5 class="mb-3">About Us</h5>
                 <ul>
-                  <li><a href="#" class="mb-2">Our Story</a></li>
-                  <li><a href="#" class="mb-2">Cookie Policy</a></li>
-                  <li><a href="#" class="mb-2">Privacy Policy</a></li>
-                  <li><a href="#" class="mb-2">Terms & Conditions</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Learn more about our story">Our Story</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Cookie policy information">Cookie Policy</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Privacy policy details">Privacy Policy</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Terms and conditions">Terms & Conditions</a></li>
                 </ul>
               </div>
               <div class="col-md-3 ps-5">
                 <h5 class="mb-3">Join Us</h5>
                 <ul>
-                  <li><a href="#" class="mb-2">Careers</a></li>
-                  <li><a href="#" class="mb-2">Business oppertunity</a></li>
-                  <li><a href="#" class="mb-2">Cooperate Partners</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Explore career opportunities">Careers</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Business opportunities with us">Business Opportunity</a></li>
+                  <li><a href="#" class="mb-2" aria-label="Become a corporate partner">Cooperate Partners</a></li>
                 </ul>
               </div>
             </div>
@@ -115,10 +113,8 @@
          <div class="container">
             <div class="row">
               <div class="col-md-4">
-              
-               
-              
-            </div>
+               <!-- Empty column (if needed, you can add content here) -->
+              </div>
          </div>
          <div class="container">
               <div class="row">
@@ -127,10 +123,10 @@
                 </div>
                 <div class="col-md-4 d-flex">
                   <p class="mb-0 me-3">Follow Us On</p>
-                  <a href="#" class="icon-link"><img src="../static/img/facebook.png" width="30" height="30" class="d-inline-block align-top me-3" alt="Facebook" /></a>
-                  <a href="#" class="icon-link"><img src="../static/img/twitter.png" width="30" height="30" class="d-inline-block align-top me-3" alt="Twitter" /></a>
-                  <a href="#" class="icon-link"><img src="../static/img/instagram.png" width="30" height="30" class="d-inline-block align-top me-3" alt="Instagram" /></a>
-                  <a href="#" class="icon-link"><img src="../static/img/youtube.png" width="30" height="30" class="d-inline-block align-top" alt="Youtube" /></a>
+                  <a href="#" class="icon-link" aria-label="Follow on Facebook"><img src="../static/img/facebook.png" width="30" height="30" class="d-inline-block align-top me-3" alt="Facebook" /></a>
+                  <a href="#" class="icon-link" aria-label="Follow on Twitter"><img src="../static/img/twitter.png" width="30" height="30" class="d-inline-block align-top me-3" alt="Twitter" /></a>
+                  <a href="#" class="icon-link" aria-label="Follow on Instagram"><img src="../static/img/instagram.png" width="30" height="30" class="d-inline-block align-top me-3" alt="Instagram" /></a>
+                  <a href="#" class="icon-link" aria-label="Follow on YouTube"><img src="../static/img/youtube.png" width="30" height="30" class="d-inline-block align-top" alt="Youtube" /></a>
                 </div>
               </div>
           </div>

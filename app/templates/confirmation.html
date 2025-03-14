@@ -3,20 +3,20 @@
 {% block content %}
 
 <main>
-  <div class = "container">
+  <div class="container" role="main" aria-labelledby="order-summary">
     <div class="row">
-      <div class="col-5 order-first">
-        <div style="float:left; font-size: 25px; font-weight: bold; ">
+      <div class="col-5 order-first" role="region" aria-labelledby="order-info">
+        <div style="float:left; font-size: 25px; font-weight: bold;" id="order-summary">
           <p>Order Placed! Thank you for purchasing! <br>
-          <div style="font-size: 15px; color: grey; font-weight: normal; ">
+          <div style="font-size: 15px; color: grey; font-weight: normal;" id="email-notification">
           An invoice has been sent to your email</p>
         </div>
 
         <div class="row">
-          <div style="font-size: 15px; color: black; font-weight: normal; ">
+          <div style="font-size: 15px; color: black; font-weight: normal;" id="order-details">
           <div class="col-10">
           <p>Order ID: STS<span>{{ID_date}}</span>XXXXXX <br> <!--The XXXXXX should be generated when the Order is placed, databased function required-->
-          Date of order placed: <span >{{ order_date }}</span></p>
+          Date of order placed: <span>{{ order_date }}</span></p>
         </div>
       </div>
     </div>
