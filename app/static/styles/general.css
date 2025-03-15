@@ -170,6 +170,8 @@ main {
     /* Ensure content doesn't get hidden behind the header */
     font-family: sans-serif;
 
+    margin-top: 10px;
+
     /* Adjust this based on the navbar height */
 }
 
