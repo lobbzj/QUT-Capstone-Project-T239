@@ -190,3 +190,9 @@ footer {
 .out-of-stock .layer i {
     color: red;
 }
+
+.other-products-section .card {
+    margin-top: 20px;
+    width: 90%;
+    height: auto;
+}
