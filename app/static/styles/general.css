@@ -169,6 +169,8 @@ main {
     padding-top: 60px;
     /* Ensure content doesn't get hidden behind the header */
     font-family: sans-serif;
+
+    /* Adjust this based on the navbar height */
 }
 
 /* Divider (Horizontal Rule) Styles */

@@ -113,6 +113,13 @@
     border-radius: 10px;
 }
 
+.image-wrapper {
+    position: relative;
+    /* Important for positioning the overlay */
+    display: inline-block;
+    /* Allows for inline positioning */
+}
+
 .Recent p {
     color: #575757cc;
     font-size: 20px;
@@ -127,8 +134,7 @@
     top: 0;
     left: 0;
     transition: background 0.5s ease;
-    vertical-align: middle;
-
+    text-align: center;
     border-radius: 10px;
     /* Smooth transition */
 }
@@ -187,7 +193,7 @@
 .layer:hover h3,
 .layer:hover p,
 .layer:hover i {
-    transform: translate(-50%, -70%);
+    transform: translate(-50%, -30%);
 }
 
 
