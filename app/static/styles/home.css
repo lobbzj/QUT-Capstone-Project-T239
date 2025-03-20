@@ -7,14 +7,59 @@
     background-position: center;
 }
 
-.offcanvas-body ul li {
+/* here */
+
+.dropdown{
+    display: inline-block;
+}
+.dropdown button{
+    background-color: hsl(hue, saturation, lightness);
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.dropdown .content{
+    display: none;
+    position: absolute;
+    background-color: #a1a1a1cc;
+    min-width: 100px;
+    box-shadow: 2px 2px 5px #575757cc;
+}
+
+.dropdown:hover .content{
+    display: block;
+}
+
+.dropdown:hover button{
+    background-color: #fff;
+}
+
+.dropdown a:hover{
+    background-color: #ffffff;
+}
+
+
+
+
+/* here */
+
+/* .offcanvas-body ul li {
     list-style: none;
     display: inline-block;
     padding: 5px 12px;
     position: relative;
-}
+} */
 
-.offcanvas-body ul li a {
+/* .offcanvas-body ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 22px;
@@ -80,7 +125,7 @@
 .hero-btn:active {
     color: #a3943d;
     transition: 0s;
-}
+} */
 
 /* ------    Recent Events   ------ */
 @media(max-width: 700px) {
@@ -147,7 +192,6 @@
     transform: translate(-50%, 0%);
     transition: transform 0.5s ease;
     opacity: 1;
-    /* Always visible */
 }
 
 /* Initial positions */
@@ -167,11 +211,11 @@
 }
 
 /* Hover effects - drastic upward movement */
-.layer:hover h3,
+/* .layer:hover h3,
 .layer:hover p,
 .layer:hover i {
     transform: translate(-50%, -70%);
-}
+} */
 
 
 @media(max-width: 900px) {
@@ -185,7 +229,7 @@
 
     .layer:hover p {
         bottom: 20%;
-        /* opacity: 1; */
+
     }
 
     .Recent-col i {
@@ -199,32 +243,32 @@
 
 /* Browse events functionality plus it uses recent's layers functionality */
 
-.Browse {
+/* .Browse {
     width: 80%;
     margin: auto;
     text-align: center;
     padding-top: 100px;
-}
+} */
 
 /* Browse Events pop shape and edges */
-.Browse-col {
+/* .Browse-col {
     flex-basis: 25%;
     border-radius: 20px;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
-}
+} */
 
 /* Browse Events pop size */
-.Browse-col img {
+/* .Browse-col img {
     width: 100%;
     height: 100%;
     display: block;
     border-radius: 10px;
-}
+} */
 
 /* ---- Reviews----- */
-
+/* 
 .Reviews {
     width: 70%;
     margin: auto;
@@ -261,14 +305,14 @@
 .Reviews-col h3 {
     margin-top: 15px;
     text-align: left;
-}
+} */
 
-@media(max-width: 700px) {
+/* @media(max-width: 700px) {
     .Reviews-col img {
         margin-left: 0px;
         margin-right: 15px;
     }
-}
+} */
 
 .carousel-item {
     height: 100vh;
