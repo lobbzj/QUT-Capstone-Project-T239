@@ -6,12 +6,15 @@ class User(db.Model):
     __tablename__ = 'users' 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
-    emailid = db.Column(db.String(100), index=True, nullable=False)
+    email = db.Column(db.String(100), index=True, nullable=False)
     mobile = db.Column(db.String(100), index=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
+    isBusinessPartner = db.Column(db.Boolean, default=False)
+    address = db.Column(db.String(100), nullable=True)
     # add the foreign key
     comments = db.relationship('Comment', backref='user')
     orders = db.relationship('Order', backref='user')
+    
 
     # string print method
     def __repr__(self):
@@ -23,9 +26,9 @@ class Product(db.Model):
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
-    date_time = db.Column(db.DateTime)
-    venue = db.Column(db.String(80))
-    num_tickets = db.Column(db.Integer)
+    price = db.Column(db.Float)
+    stock = db.Column(db.Integer)
+    category = db.Column(db.String(80))
     # add the foreign key
     comments = db.relationship('Comment', backref='product')
     orders = db.relationship('Order', backref='product')
@@ -45,7 +48,7 @@ class Comment(db.Model):
 
     # string print method
     def __repr__(self):
-        return f"Comment: {self.text}"
+        return f"Comment: {self.text}" 
 
 class Order(db.Model):
     __tablename__ = 'orders'
@@ -74,4 +77,4 @@ class Payment(db.Model):
     
     # string print method
     def __repr__(self):
-        return f"Payment: {self.id}"
+        return f"Payment: {self.id}" 
