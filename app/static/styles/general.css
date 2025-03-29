@@ -219,3 +219,8 @@ footer {
 #backToTopBtn:hover {
     background-color: #0056b3;
 }
+
+.product-page-image {
+    width: 100%;
+    height: auto;
+}
