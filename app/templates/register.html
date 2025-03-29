@@ -4,86 +4,86 @@
   <main role="main" aria-label="Register Page">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-md-7 flex-column justify-content-center px-9">
+        <div class="col-6 col-md-7 flex-column justify-content-center px-9">
           <div class="mx-auto" style="max-width: 400px;">
-            <h1 class="text-center mt-custom">New Here?</h1>
+            <h1 class="text-center mt-custom" aria-label="New Here?">New Here?</h1>
             <br />
-            <p class="text-center text-secondary">Don't Worry! Become a Member by entering your details.</p>
+            <p class="text-center text-secondary" aria-label="Don't Worry! Become a Member by entering your details.">Don't Worry! Become a Member by entering your details.</p>
             <br />
             <br />
-            <form method="POST" class="row g-3">
+            <form method="POST" class="row g-3" aria-label="Registration Form">
               <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" aria-label="Email" required />
+                <label for="inputEmail4" class="form-label" aria-label="Email Label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" aria-label="Email Input" required />
               </div>
               <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" aria-label="Password" required />
+                <label for="inputPassword4" class="form-label" aria-label="Password Label">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" aria-label="Password Input" required />
               </div>
               <div class="col-12">
-                <label for="inputAddress" class="form-label">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" aria-label="Address" required />
+                <label for="inputAddress" class="form-label" aria-label="Address Label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" aria-label="Address Input" required />
               </div>
               <div class="col-12">
-                <label for="inputAddress2" class="form-label">Address 2(Optional)</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" aria-label="Address 2" />
+                <label for="inputAddress2" class="form-label" aria-label="Address 2 Label">Address 2(Optional)</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" aria-label="Address 2 Input" />
               </div>
               <div class="col-md-4">
-                <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity" aria-label="City" required />
+                <label for="inputCity" class="form-label" aria-label="City Label">City</label>
+                <input type="text" class="form-control" id="inputCity" aria-label="City Input" required />
               </div>
               <div class="col-md-4">
-                <label for="inputState" class="form-label">State</label>
-                <select id="inputState" class="form-select" aria-label="State" required>
-                  <option selected>Choose...</option>
-                  <option>QLD</option>
-                  <option>NSW</option>
-                  <option>VIC</option>
-                  <option>SA</option>
-                  <option>WA</option>
-                  <option>TAS</option>
-                  <option>NT</option>
-                  <option>ACT</option>
+                <label for="inputState" class="form-label" aria-label="State Label">State</label>
+                <select id="inputState" class="form-select" aria-label="State Select" required>
+                  <option selected aria-label="Choose State">Choose...</option>
+                  <option aria-label="QLD">QLD</option>
+                  <option aria-label="NSW">NSW</option>
+                  <option aria-label="VIC">VIC</option>
+                  <option aria-label="SA">SA</option>
+                  <option aria-label="WA">WA</option>
+                  <option aria-label="TAS">TAS</option>
+                  <option aria-label="NT">NT</option>
+                  <option aria-label="ACT">ACT</option>
                 </select>
               </div>
               <div class="col-md-4">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip" aria-label="Zip" required />
+                <label for="inputZip" class="form-label" aria-label="Zip Label">Zip</label>
+                <input type="text" class="form-control" id="inputZip" aria-label="Zip Input" required />
               </div>
               <div class="col-md-12">
-                <label for="memberType" class="form-label">Member Type</label>
+                <label for="memberType" class="form-label" aria-label="Member Type Label">Member Type</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="memberType" id="guest" value="guest" aria-label="Guest" />
-                  <label class="form-check-label" for="guest">Guest</label>
+                  <input class="form-check-input" type="radio" name="memberType" id="guest" value="guest" aria-label="Guest Radio Button" />
+                  <label class="form-check-label" for="guest" aria-label="Guest Label">Guest</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="memberType" id="businessPartner" value="businessPartner" aria-label="Business Partner" />
-                  <label class="form-check-label" for="businessPartner">Business Partner</label>
+                  <input class="form-check-input" type="radio" name="memberType" id="businessPartner" value="businessPartner" aria-label="Business Partner Radio Button" />
+                  <label class="form-check-label" for="businessPartner" aria-label="Business Partner Label">Business Partner</label>
                 </div>
               </div>
 
               <div class="col-md-12" id="validateCodeContainer">
-                <label for="validateCode" class="form-label">* Validation Code</label>
-                <input type="text" id="validateCode" class="form-control" placeholder="Enter validation code provided to business partner" aria-label="Validation Code" disabled />
+                <label for="validateCode" class="form-label" aria-label="Validation Code Label">* Validation Code</label>
+                <input type="text" id="validateCode" class="form-control" placeholder="Enter validation code provided to business partner" aria-label="Validation Code Input" disabled />
               </div>
 
               <div class="d-grid gap-4 col-12 mx-auto mt-5">
-                <button class="btn btn-danger" type="button" aria-label="Register">Register</button>
-                <button class="btn btn-light border border-2 border-dark" type="button" aria-label="Sign in with Google">
-                  <img src="../static/img/google.png" alt="Google" style="width: 20px;" />
-                  <strong>Sign in with Google</strong>
+                <button class="btn btn-danger" type="button" aria-label="Register Button">Register</button>
+                <button class="btn btn-light border border-2 border-dark" type="button" aria-label="Sign in with Google Button">
+                  <img src="../static/img/google.png" alt="Google" style="width: 20px;" aria-label="Google Logo" />
+                  <strong aria-label="Sign in with Google Text">Sign in with Google</strong>
                 </button>
               </div>
               <div class="text-center mt-3">
-                <p class="text-secondary">
-                  Already a member? <a href="/login" class="text-danger"><strong>Login</strong></a>
+                <p class="text-secondary" aria-label="Already a member? Login Link">
+                  Already a member? <a href="/login" class="text-danger" aria-label="Login Link"><strong>Login</strong></a>
                 </p>
               </div>
             </form>
           </div>
         </div>
-        <div class="col-md-5 p-0">
-          <img src="../static/img/register.jpg" class="img-fluid" alt="Register" style="object-fit: cover;" />
+        <div class="col-6 col-md-5 p-0">
+          <img src="../static/img/register.jpg" class="img-fluid" alt="Register" style="object-fit: cover;" aria-label="Register Image" />
         </div>
       </div>
     </div>
