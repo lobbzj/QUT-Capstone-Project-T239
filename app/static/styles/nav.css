@@ -27,3 +27,14 @@
     display: inline-block !important;
     background-color: transparent;
 }
+
+
+.search-btn {
+    background-color: #0437B7;
+    color: white;
+}
+
+.search-btn:hover {
+    background-color: #3e73fa;
+    color: white;
+}

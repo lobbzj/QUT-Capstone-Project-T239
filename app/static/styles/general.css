@@ -196,3 +196,26 @@ footer {
     width: 90%;
     height: auto;
 }
+
+/* Back to Top Button */
+#backToTopBtn {
+    display: none;
+    /* Initially hidden */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#backToTopBtn:hover {
+    background-color: #0056b3;
+}
