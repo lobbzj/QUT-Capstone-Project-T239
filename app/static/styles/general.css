@@ -31,8 +31,17 @@ ul {
 }
 
 .btn-tertiary {
-    background-color: #EAEDFF;
-    color: #4F78C9;
+    background-color: #004b87;
+    /* Darker blue for higher contrast */
+    color: rgb(255, 255, 255);
+    /* White text */
+}
+
+.btn-tertiary:hover {
+    background-color: #003366;
+    /* Even darker shade for hover */
+    color: rgb(255, 255, 255);
+    /* Maintain white text */
 }
 
 .btn-quaternary {
@@ -85,25 +94,7 @@ footer {
     /* Reset padding */
 }
 
-.btn-tertiary {
-    background-color: #EAEDFF;
-    color: #4F78C9;
-}
 
-.btn-quaternary {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #ffffff;
-    color: #000000;
-    border: 2px solid #000000;
-    border-radius: 50px;
-}
-
-.btn-quaternary:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
 
 /* Image Styles */
 #productImage {

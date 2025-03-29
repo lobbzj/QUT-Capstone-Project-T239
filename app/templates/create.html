@@ -10,12 +10,12 @@
             <form action="create_product.php" method="post" aria-labelledby="product-info-heading">
               <div class="mb-3">
                 <label for="product_name" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="product-name-help" />
+                <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="product-name-help" aria-label="Enter product name" />
                 <small id="product-name-help" class="form-text text-muted">Enter the product name here.</small>
               </div>
               <div class="mb-3">
                 <label for="category" class="form-label">Product Category</label>
-                <select class="form-select" id="category" name="category" aria-label="Product Category">
+                <select class="form-select" id="category" name="category" aria-label="Select product category">
                   <option value="camera">Camera</option>
                   <option value="drone">Drone</option>
                   <option value="uniform">Uniform</option>
@@ -23,7 +23,7 @@
               </div>
               <div class="mb-3">
                 <label for="publish_date" class="form-label">Publish Date</label>
-                <input type="date" class="form-control" id="publish_date" name="publish_date" aria-describedby="publish-date-help" />
+                <input type="date" class="form-control" id="publish_date" name="publish_date" aria-describedby="publish-date-help" aria-label="Select publish date" />
                 <small id="publish-date-help" class="form-text text-muted">Select the date the product will be published.</small>
               </div>
 
@@ -31,19 +31,19 @@
                 <label for="size" class="form-label me-3 mt-3">Sizes (optional)</label>
                 <div class="btn-group" role="group" aria-label="Size selection">
                   <input type="radio" class="btn-check" name="btnradio_size" id="xs" autocomplete="off" aria-labelledby="xs-label" />
-                  <label class="btn btn-outline-dark me-2" for="xs" id="xs-label">XS</label>
+                  <label class="btn btn-outline-dark me-2" for="xs" id="xs-label" aria-label="Extra Small">XS</label>
 
                   <input type="radio" class="btn-check" name="btnradio_size" id="s" autocomplete="off" aria-labelledby="s-label" />
-                  <label class="btn btn-outline-dark me-2" for="s" id="s-label">S</label>
+                  <label class="btn btn-outline-dark me-2" for="s" id="s-label" aria-label="Small">S</label>
 
                   <input type="radio" class="btn-check" name="btnradio_size" id="m" autocomplete="off" aria-labelledby="m-label" />
-                  <label class="btn btn-outline-dark me-2" for="m" id="m-label">M</label>
+                  <label class="btn btn-outline-dark me-2" for="m" id="m-label" aria-label="Medium">M</label>
 
                   <input type="radio" class="btn-check" name="btnradio_size" id="l" autocomplete="off" aria-labelledby="l-label" />
-                  <label class="btn btn-outline-dark me-2" for="l" id="l-label">L</label>
+                  <label class="btn btn-outline-dark me-2" for="l" id="l-label" aria-label="Large">L</label>
 
                   <input type="radio" class="btn-check" name="btnradio_size" id="xl" autocomplete="off" aria-labelledby="xl-label" />
-                  <label class="btn btn-outline-dark" for="xl" id="xl-label">XL</label>
+                  <label class="btn btn-outline-dark" for="xl" id="xl-label" aria-label="Extra Large">XL</label>
                 </div>
               </div>
 
@@ -51,27 +51,27 @@
                 <label for="color" class="form-label me-3 mt-3">Colors (optional)</label>
                 <div class="btn-group" role="group" aria-label="Color selection">
                   <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio1" autocomplete="off" aria-labelledby="color-black" />
-                  <label class="btn btn-dark rounded-circle btn-circle me-3" for="btnradio1" id="color-black"></label>
+                  <label class="btn btn-dark rounded-circle btn-circle me-3" for="btnradio1" id="color-black" aria-label="Black"></label>
 
                   <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio2" autocomplete="off" aria-labelledby="color-red" />
-                  <label class="btn btn-danger rounded-circle btn-circle me-3" for="btnradio2" id="color-red"></label>
+                  <label class="btn btn-danger rounded-circle btn-circle me-3" for="btnradio2" id="color-red" aria-label="Red"></label>
 
                   <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio3" autocomplete="off" aria-labelledby="color-blue" />
-                  <label class="btn btn-primary rounded-circle btn-circle me-3" for="btnradio3" id="color-blue"></label>
+                  <label class="btn btn-primary rounded-circle btn-circle me-3" for="btnradio3" id="color-blue" aria-label="Blue"></label>
 
                   <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio4" autocomplete="off" aria-labelledby="color-green" />
-                  <label class="btn btn-success rounded-circle btn-circle me-3" for="btnradio4" id="color-green"></label>
+                  <label class="btn btn-success rounded-circle btn-circle me-3" for="btnradio4" id="color-green" aria-label="Green"></label>
 
                   <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio5" autocomplete="off" aria-labelledby="color-gray" />
-                  <label class="btn btn-secondary rounded-circle btn-circle me-3" for="btnradio5" id="color-gray"></label>
+                  <label class="btn btn-secondary rounded-circle btn-circle me-3" for="btnradio5" id="color-gray" aria-label="Gray"></label>
 
                   <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio6" autocomplete="off" aria-labelledby="color-yellow" />
-                  <label class="btn btn-warning rounded-circle btn-circle" for="btnradio6" id="color-yellow"></label>
+                  <label class="btn btn-warning rounded-circle btn-circle" for="btnradio6" id="color-yellow" aria-label="Yellow"></label>
                 </div>
               </div>
               <div class="mb-3">
                 <label for="description" class="form-label">Product Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" aria-describedby="product-description-help"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" aria-describedby="product-description-help" aria-label="Enter product description"></textarea>
                 <small id="product-description-help" class="form-text text-muted">Provide a brief description of the product.</small>
               </div>
             </form>
@@ -80,10 +80,10 @@
             <h5 id="upload-image-heading">Upload Product Image</h5>
             <div class="mb-3">
               <label for="formFile" class="form-label">Select an image...</label>
-              <input class="form-control" type="file" id="formFile" aria-describedby="file-help" />
+              <input class="form-control" type="file" id="formFile" aria-describedby="file-help" aria-label="Upload product image" />
               <small id="file-help" class="form-text text-muted">Upload a product image for display.</small>
             </div>
-            <img src="static/img/empty.jpg" class="img-thumbnail" alt="Product image preview" width="500" height="500" />
+            <img src="static/img/empty.jpg" class="img-thumbnail" alt="Product image preview" width="500" height="500" aria-label="Product image preview" />
           </div>
         </div>
       </div>
