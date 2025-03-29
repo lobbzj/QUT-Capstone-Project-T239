@@ -4,67 +4,72 @@
 
 <main role="main" aria-label="Shopping Cart Page"> 
     <div class="container">
-        <h1 class="text-center" aria-label="Your Shopping Cart">Your Shopping Cart</h1>
+        <h1 class="text-center my-4" aria-label="Your Shopping Cart">Your Shopping Cart</h1>
 
         {% if items %}
+        
+        <!-- Responsive Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered cart_table" aria-label="Shopping Cart Items">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" style="width: 120px;" aria-label="Product Image"></th>
+                        <th scope="col" aria-label="Product Name">Product</th>
+                        <th scope="col" aria-label="Product Price">Price</th>
+                        <th scope="col" aria-label="Product Quantity">Quantity</th>
+                        <th scope="col" aria-label="Product Total">Total</th>
+                        <th scope="col" aria-label="Actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items" aria-label="List of Cart Items">
+                    {% for item in items %}
+                    <tr data-item-id="{{ item.id }}" aria-label="{{ item.name }} details">
+                        <td aria-label="{{ item.name }} Image">
+                            <img src="../static/img/exampleProduct.png" alt="{{item.name}}" class="img-fluid rounded"
+                                style="width: 100px; height: auto;">
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td>${{ item.price }}</td>
+                        <td>
+                            <label for="quantity-{{ item.id }}" class="visually-hidden">Quantity for {{ item.name }}</label>
+                            <select class="form-select" id="quantity-{{ item.id }}" onchange="updatePrice(this)"
+                                aria-label="Select quantity for {{ item.name }}">
+                                {% for i in range(1, 11) %}
+                                <option value="{{ i }}" {% if i==item.quantity %}selected{% endif %}>{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td class="item-total" aria-label="Total price for {{ item.name }}">${{ item.price * item.quantity }}</td>
+                        <td>
+                            <form action="{{ url_for('cart.remove_item', item_id=item.id) }}" method="POST"
+                                aria-label="Remove {{ item.name }} from cart">
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-        <table class="cart_table" aria-label="Shopping Cart Items">
-            <thead>
-                <tr>
-                    <th scope="col" style="width: 120px;" aria-label="Product Image"></th> <!-- Fixed width for image -->
-                    <th scope="col" aria-label="Product Name">Product</th>
-                    <th scope="col" aria-label="Product Price">Price</th>
-                    <th scope="col" aria-label="Product Quantity">Quantity</th>
-                    <th scope="col" aria-label="Product Total">Total</th>
-                </tr>
-            </thead>
-            <tbody id="cart-items" aria-label="List of Cart Items">
-                {% for item in items %}
-                <tr data-item-id="{{ item.id }}" aria-label="{{ item.name }} details">
-                    <!-- Product Image input-->
-                    <td aria-label="{{ item.name }} Image">
-                        <img src="../static/img/exampleProduct.png" alt="{{item.name}}" class="img-fluid"
-                            style="width: 100px; height: auto;">
-                    </td>
-
-                    <!-- Product Detials -->
-                    <td>{{item.name}}</td>
-                    <td>${{item.price}}</td>
-                    <!-- drop down function for quantity-->
-                    <td>
-                        <label for="quantity-{{item.id}}" class="visually-hidden">Quantity for {{item.name}}</label>
-                        <select class="form-select" id="quantity-{{item.id}}" onchange="updatePrice(this)" aria-label="Select quantity for {{item.name}}">
-                            {% for i in range(1, 11) %}
-                            <option value="{{ i }}" {% if i==item.quantity %}selected{% endif %}>{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                    <td class="item-total" aria-label="Total price for {{item.name}}">${{ item.price * item.quantity }}</td>
-                    <td>
-                        <form action="{{ url_for('cart.remove_item', item_id=item.id) }}" method="POST" aria-label="Remove {{ item.name }} from cart">
-                            <button type="submit" class="btn btn-secondary btn-sm">Remove</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <div class="row justify-content-end">
-            <div class="col-md-4">
+        <!-- Total & Checkout Section -->
+        <div class="row justify-content-center justify-content-md-end mt-4">
+            <div class="col-12 col-md-6 col-lg-4 text-center text-md-end">
                 <h3>Total: $<span id="cart-total" aria-label="Cart Total">{{ total }}</span></h3>
-                <a href="/checkout" class="btn btn-primary mt-3 checkout-btn" aria-label="Proceed to Checkout">Proceed to Checkout</a>
+                <a href="/checkout" class="btn btn-primary w-100 w-md-auto checkout-btn" aria-label="Proceed to Checkout">Proceed to Checkout</a>
             </div>
         </div>
+
         {% else %}
-        <p class="text-center" aria-label="Empty Cart Message">Your cart is empty</p>
+        <p class="text-center text-muted my-4" aria-label="Empty Cart Message">Your cart is empty.</p>
         {% endif %}
 
+        <!-- Continue Shopping Button -->
         <div class="text-center mt-4">
-            <a href="/" >Continue Shopping</a>
+            <a href="/" class="btn btn-outline-secondary">Continue Shopping</a>
         </div>
     </div>
-    <br />
+    <br/>
 </main>
 
 <!-- JS to update total amount-->
@@ -87,7 +92,7 @@
         cartRows.forEach(function (row) {
             var itemTotal = parseFloat(row.querySelector('.item-total').innerText.replace('$', ''));
             cartTotal += itemTotal;
-        })
+        });
 
         document.getElementById('cart-total').innerText = cartTotal.toFixed(2);
     }
