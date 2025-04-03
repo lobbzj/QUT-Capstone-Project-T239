@@ -1,4 +1,4 @@
-.row{
+.row {
     flex-wrap: nowrap;
     width: auto;
 }
@@ -13,17 +13,23 @@
 }
 
 .tabs-container {
-    overflow-x: auto; /* Enables horizontal scrolling */
-    white-space: nowrap; /* Prevents items from wrapping */
+    overflow-x: auto;
+    /* Enables horizontal scrolling */
+    white-space: nowrap;
+    /* Prevents items from wrapping */
     display: flex;
     justify-content: flex-start;
-    gap: 15px; /* Space between tabs */
-    padding: 10px 0; /* Padding for space around the row */
+    gap: 15px;
+    /* Space between tabs */
+    padding: 10px 0;
+    /* Padding for space around the row */
 }
 
 .Browse-col {
-    display: inline-block; /* Keeps tabs aligned horizontally */
-    width: 200px; /* Fixed width per tab */
+    display: inline-block;
+    /* Keeps tabs aligned horizontally */
+    width: 200px;
+    /* Fixed width per tab */
     background-color: #c0bebe;
     padding: 15px;
     cursor: pointer;
@@ -39,7 +45,8 @@
 }
 
 /* Scroll buttons */
-.scroll-left, .scroll-right {
+.scroll-left,
+.scroll-right {
     background-color: transparent;
     border: none;
     font-size: 24px;
@@ -77,8 +84,10 @@
 /* Adjustments for Mobile */
 @media(max-width: 700px) {
     .Browse-col {
-        width: 100%; /* Full width for small screens */
-        margin: 10px; /* Adjust margin */
+        width: 100%;
+        /* Full width for small screens */
+        margin: 10px;
+        /* Adjust margin */
     }
 }
 
@@ -93,25 +102,26 @@
 
 /* here */
 
-.dropdown{
+.dropdown {
     display: inline-block;
 }
-.dropdown button{
-    background-color: hsl(hue, saturation, lightness);
+
+.dropdown button {
+    background-color: #f8f9fa;
     color: rgb(0, 0, 0);
     padding: 10px 15px;
     border: none;
     cursor: pointer;
 }
 
-.dropdown a{
+.dropdown a {
     display: block;
     color: black;
     text-decoration: none;
     padding: 10px 15px;
 }
 
-.dropdown .content{
+.dropdown .content {
     display: none;
     position: absolute;
     background-color: #a1a1a1cc;
@@ -119,15 +129,15 @@
     box-shadow: 2px 2px 5px #575757cc;
 }
 
-.dropdown:hover .content{
+.dropdown:hover .content {
     display: block;
 }
 
-.dropdown:hover button{
+.dropdown:hover button {
     background-color: #fff;
 }
 
-.dropdown a:hover{
+.dropdown a:hover {
     background-color: #ffffff;
 }
 

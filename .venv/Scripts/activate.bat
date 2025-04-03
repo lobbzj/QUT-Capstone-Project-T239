@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=c:\Users\damin\OneDrive - Queensland University of Technology\Documents\IFB399 Project GIT Clone\QUT-Capstone-Project-T239\.venv
+set VIRTUAL_ENV=C:\Users\Minh\QUT-Capstone-Project-T239\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
