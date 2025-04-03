@@ -28,3 +28,11 @@ class RegisterForm(FlaskForm):
     member_type = RadioField('Member Type', choices=[('guest', 'Guest'), ('business_partner', 'Business Partner')], validators=[DataRequired()])
     validation_code = StringField('Validation Code')  # needed for business partner
     submit = SubmitField('Register')
+
+
+    # User comment
+class CommentForm(FlaskForm):
+    text = TextAreaField('Comment', [InputRequired()], render_kw={
+                         "placeholder": "Leave a comment:  "})
+    submit = SubmitField('Create')
+
