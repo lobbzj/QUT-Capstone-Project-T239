@@ -27,6 +27,8 @@ class Product(db.Model):
     venue = db.Column(db.String(80))
     num_tickets = db.Column(db.Integer)
     # add the foreign key
+    # ... Create the Comments db.relationship
+    # relation to call event.comments and comment.event
     comments = db.relationship('Comment', backref='product')
     orders = db.relationship('Order', backref='product')
     
