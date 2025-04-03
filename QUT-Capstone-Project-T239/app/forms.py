@@ -5,6 +5,26 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 
+# Create new destination
+
+# product Form
+class ProductForm(FlaskForm):
+    title = StringField('Product Title', validators=[InputRequired(), Length(
+        min=3, max=30)], render_kw={"placeholder": "Enter Product Title"})
+    image = FileField('Product Image',
+                      validators=[FileRequired(message='Image cannot be empty'),
+                                  FileAllowed(
+                                      ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')
+                                  ])
+    description = TextAreaField('Description',
+                                validators=[InputRequired(), Length(min=3)], render_kw={"placeholder": "Enter Description:  "})
+    price = IntegerField('Price', validators=[InputRequired()], render_kw={
+                         "placeholder": "Enter Price"})
+    contactDetails = TextAreaField('Contact Details',
+                                   validators=[InputRequired(), Length(min=3, max=100)], render_kw={"placeholder": "Enter Contact Details:  "})
+    submit = SubmitField("Create")
+
+
 class LoginForm(FlaskForm):
     user_name = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])

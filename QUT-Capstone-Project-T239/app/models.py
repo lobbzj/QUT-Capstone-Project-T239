@@ -30,12 +30,15 @@ class Product(db.Model):
     stock = db.Column(db.Integer)
     category = db.Column(db.String(80))
     # add the foreign key
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='product')
     orders = db.relationship('Order', backref='product')
     
     # string print method
-    def __repr__(self):
-        return f"Name: {self.name}"
+    # def __repr__(self):
+    #     return f"Name: {self.name}"
+    def __repr__(self):  # string print method
+        return "<Name: {}>".format(self.name)
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -46,9 +49,14 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
 
-    # string print method
+    # # string print method
+    # def __repr__(self):
+    #     return f"Comment: {self.text}" 
+    def getNiceTime(self):
+        return self.created_at.strftime("%d/%m/%y/%I:%M %p")
+
     def __repr__(self):
-        return f"Comment: {self.text}" 
+        return "<Comment: {}>".format(self.text)
 
 class Order(db.Model):
     __tablename__ = 'orders'
