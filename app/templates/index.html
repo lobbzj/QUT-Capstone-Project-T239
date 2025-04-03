@@ -78,56 +78,37 @@
     <section class="Browse" aria-labelledby="browse-products-section">
       <h1 id="browse-products-section">Browse More Products</h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-      <div id="row2" class="row">
-        <div class="Browse-col col-12 col-md-3" aria-labelledby="running-product">
-          <a href="#" aria-label="View Running product details">
-            <img src="../static/img/Running.jpg" alt="Various running products such as shoes and apparel" class="img-fluid" />
-            <div class="layer">
-              <h3>Running</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges from A$79.68+</i>
+    
+      <!-- Scroll buttons -->
+      <button class="scroll-left" onclick="scrollTabs('left')">←</button>
+      
+      <div class="tabs-container">
+        <div id="row2" class="row">
+            <div class="Browse-col" aria-labelledby="running-product">
+                <a href="#" class="browse-tab" aria-label="View Running product details">
+                    <span class="category-name">Running</span>
+                </a>
             </div>
-          </a>
-        </div>
-        <div class="Browse-col col-12 col-md-3" aria-labelledby="tennis-product">
-          <a href="#" aria-label="View Tennis product details">
-            <img src="../static/img/Tennis.jpg" alt="Various tennis products such as rackets and balls" class="img-fluid" />
-            <div class="layer">
-              <h3>Tennis</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges from A$43.50</i>
+            <div class="Browse-col" aria-labelledby="tennis-product">
+                <a href="#" class="browse-tab" aria-label="View Tennis product details">
+                    <span class="category-name">Tennis</span>
+                </a>
             </div>
-          </a>
-        </div>
-        <div class="Browse-col out-of-stock col-12 col-md-3" aria-labelledby="volleyball-product">
-          <a href="#" aria-label="View Volleyball product details">
-            <img src="../static/img/Volleyball.jpg" alt="Various volleyball products such as nets and balls" class="img-fluid" />
-            <div class="layer">
-              <h3>Volleyball</h3>
-              <p>
-                <b>Sold out:</b>
-              </p>
-              <i>Anything<br />Ranges from A$38.37</i>
+            <div class="Browse-col out-of-stock" aria-labelledby="volleyball-product">
+                <a href="#" class="browse-tab out-of-stock" aria-label="View Volleyball product details">
+                    <span class="category-name">Volleyball</span>
+                </a>
             </div>
-          </a>
-        </div>
-        <div class="Browse-col out-of-stock col-12 col-md-3" aria-labelledby="basketball-product">
-          <a href="#" aria-label="View Basketball product details">
-            <img src="../static/img/Basketball.jpg" alt="Various basketball products such as hoops and balls" class="img-fluid" />
-            <div class="layer">
-              <h3>Basketball</h3>
-              <p>
-                <b>Sold out:</b>
-              </p>
-              <i>Anything<br />No Price</i>
+            <div class="Browse-col out-of-stock" aria-labelledby="basketball-product">
+                <a href="#" class="browse-tab out-of-stock" aria-label="View Basketball product details">
+                    <span class="category-name">Basketball</span>
+                </a>
             </div>
-          </a>
         </div>
-      </div>
-    </section>
+    </div>
+  
+      <!-- Scroll buttons -->
+      <button class="scroll-right" onclick="scrollTabs('right')">→</button>
+  </section>  
   </main>
 {% endblock %}

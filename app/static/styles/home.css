@@ -1,3 +1,87 @@
+.row{
+    flex-wrap: nowrap;
+    width: auto;
+}
+
+/* need to work on combining it with existing css because they're clashing */
+.Browse {
+    width: 80%;
+    margin: 0;
+    text-align: center;
+    padding-top: 100px;
+    position: relative;
+}
+
+.tabs-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Prevents items from wrapping */
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px; /* Space between tabs */
+    padding: 10px 0; /* Padding for space around the row */
+}
+
+.Browse-col {
+    display: inline-block; /* Keeps tabs aligned horizontally */
+    width: 200px; /* Fixed width per tab */
+    background-color: #c0bebe;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.Browse-col .category-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Scroll buttons */
+.scroll-left, .scroll-right {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-left {
+    left: 0;
+}
+
+.scroll-right {
+    right: 0;
+}
+
+/* Optional: Styling for scrollbar */
+.tabs-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tabs-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.tabs-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+/* Adjustments for Mobile */
+@media(max-width: 700px) {
+    .Browse-col {
+        width: 100%; /* Full width for small screens */
+        margin: 10px; /* Adjust margin */
+    }
+}
+
 .header {
     width: 100%;
     min-height: 100vh;
@@ -86,6 +170,7 @@
 @media(max-width: 700px) {
     .row {
         flex-direction: column;
+        flex-wrap: nowrap;
     }
 }
 
@@ -233,7 +318,7 @@
 .Browse-col {
     flex-basis: 25%;
     border-radius: 20px;
-    margin-bottom: 30px;
+    margin: 5px;
     position: relative;
     overflow: hidden;
 }
