@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main role="main" aria-label="Create Product Page">
+    <div class="container-fluid">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 id="product-info-heading">Product Information</h2>
+            <form action="create_product.php" method="post" aria-labelledby="product-info-heading">
+              <div class="mb-3">
+                <label for="product_name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="product-name-help" />
+                <small id="product-name-help" class="form-text text-muted">Enter the product name here.</small>
+              </div>
+              <div class="mb-3">
+                <label for="category" class="form-label">Product Category</label>
+                <select class="form-select" id="category" name="category" aria-label="Product Category">
+                  <option value="camera">Camera</option>
+                  <option value="drone">Drone</option>
+                  <option value="uniform">Uniform</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="publish_date" class="form-label">Publish Date</label>
+                <input type="date" class="form-control" id="publish_date" name="publish_date" aria-describedby="publish-date-help" />
+                <small id="publish-date-help" class="form-text text-muted">Select the date the product will be published.</small>
+              </div>
+
+              <div class="mb-3">
+                <label for="size" class="form-label me-3 mt-3">Sizes (optional)</label>
+                <div class="btn-group" role="group" aria-label="Size selection">
+                  <input type="radio" class="btn-check" name="btnradio_size" id="xs" autocomplete="off" aria-labelledby="xs-label" />
+                  <label class="btn btn-outline-dark me-2" for="xs" id="xs-label">XS</label>
+
+                  <input type="radio" class="btn-check" name="btnradio_size" id="s" autocomplete="off" aria-labelledby="s-label" />
+                  <label class="btn btn-outline-dark me-2" for="s" id="s-label">S</label>
+
+                  <input type="radio" class="btn-check" name="btnradio_size" id="m" autocomplete="off" aria-labelledby="m-label" />
+                  <label class="btn btn-outline-dark me-2" for="m" id="m-label">M</label>
+
+                  <input type="radio" class="btn-check" name="btnradio_size" id="l" autocomplete="off" aria-labelledby="l-label" />
+                  <label class="btn btn-outline-dark me-2" for="l" id="l-label">L</label>
+
+                  <input type="radio" class="btn-check" name="btnradio_size" id="xl" autocomplete="off" aria-labelledby="xl-label" />
+                  <label class="btn btn-outline-dark" for="xl" id="xl-label">XL</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="color" class="form-label me-3 mt-3">Colors (optional)</label>
+                <div class="btn-group" role="group" aria-label="Color selection">
+                  <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio1" autocomplete="off" aria-labelledby="color-black" />
+                  <label class="btn btn-dark rounded-circle btn-circle me-3" for="btnradio1" id="color-black"></label>
+
+                  <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio2" autocomplete="off" aria-labelledby="color-red" />
+                  <label class="btn btn-danger rounded-circle btn-circle me-3" for="btnradio2" id="color-red"></label>
+
+                  <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio3" autocomplete="off" aria-labelledby="color-blue" />
+                  <label class="btn btn-primary rounded-circle btn-circle me-3" for="btnradio3" id="color-blue"></label>
+
+                  <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio4" autocomplete="off" aria-labelledby="color-green" />
+                  <label class="btn btn-success rounded-circle btn-circle me-3" for="btnradio4" id="color-green"></label>
+
+                  <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio5" autocomplete="off" aria-labelledby="color-gray" />
+                  <label class="btn btn-secondary rounded-circle btn-circle me-3" for="btnradio5" id="color-gray"></label>
+
+                  <input type="radio" class="btn-check check-after" name="btnradio_color" id="btnradio6" autocomplete="off" aria-labelledby="color-yellow" />
+                  <label class="btn btn-warning rounded-circle btn-circle" for="btnradio6" id="color-yellow"></label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Product Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" aria-describedby="product-description-help"></textarea>
+                <small id="product-description-help" class="form-text text-muted">Provide a brief description of the product.</small>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-6">
+            <h5 id="upload-image-heading">Upload Product Image</h5>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Select an image...</label>
+              <input class="form-control" type="file" id="formFile" aria-describedby="file-help" />
+              <small id="file-help" class="form-text text-muted">Upload a product image for display.</small>
+            </div>
+            <img src="static/img/empty.jpg" class="img-thumbnail" alt="Product image preview" width="500" height="500" />
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <button type="button" class="btn btn-dark" id="toastbtn" aria-label="Add product button">Add Product</button>
+        <div class="toast position-fixed bottom-0 end-0 p-3" style="z-index: 11" aria-live="polite" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Notice</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close toast"></button>
+          </div>
+          <div class="toast-body">
+            <p>Product is added successfully!</p>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.getElementById('toastbtn').onclick = function () {
+          var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+          var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl)
+          })
+          toastList.forEach((toast) => toast.show())
+        }
+      </script>
+    </div>
+    <br />
+  </main>
+{% endblock %}

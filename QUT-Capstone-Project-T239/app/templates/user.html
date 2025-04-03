@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+<link href="../static/styles/general.css" rel="stylesheet" />
+
+{% block content %}
+<main role="main" aria-label="{{ heading }} Page">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-7 flex-column justify-content-center px-9">
+        <div class="mx-auto" style="max-width: 400px;">
+          <h1 class="text-center mt-custom">{{ heading }}</h1>
+          <br />
+          {% if heading == 'Login' %}
+            <p class="text-center text-secondary">Welcome back! Please enter your details.</p>
+          {% elif heading == 'Register' %}
+            <p class="text-center text-secondary">Don't Worry! Become a Member by entering your details.</p>
+          {% endif %}
+          <br />
+          <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <!-- User Name -->
+            <div class="mb-3">
+              {{ form.user_name.label(class="form-label") }}
+              {{ form.user_name(class="form-control", placeholder="Enter your username") }}
+              {% if form.user_name.errors %}
+                <div class="text-danger">
+                  {% for error in form.user_name.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Email(Only visible when register) -->
+            {% if heading == 'Register' %}
+              <div class="mb-3">
+                {{ form.email_id.label(class="form-label") }}
+                {{ form.email_id(class="form-control", placeholder="Enter your email") }}
+                {% if form.email_id.errors %}
+                  <div class="text-danger">
+                    {% for error in form.email_id.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Mobile (Only visible to register) -->
+            {% if heading == 'Register' %}
+            <div class="mb-3">
+              {{ form.mobile.label(class="form-label") }}
+              {{ form.mobile(class="form-control", placeholder="Enter your mobile number") }}
+              {% if form.mobile.errors %}
+                <div class="text-danger">
+                  {% for error in form.mobile.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- Password -->
+            <div class="mb-3">
+              {{ form.password.label(class="form-label") }}
+              {{ form.password(class="form-control", placeholder="********") }}
+              {% if form.password.errors %}
+                <div class="text-danger">
+                  {% for error in form.password.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Confirm Password (Only visible to register) -->
+            {% if heading == 'Register' %}
+              <div class="mb-3">
+                {{ form.confirm_password.label(class="form-label") }}
+                {{ form.confirm_password(class="form-control", placeholder="********") }}
+                {% if form.confirm_password.errors %}
+                  <div class="text-danger">
+                    {% for error in form.confirm_password.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Address（Only visible to register） -->
+            {% if heading == 'Register' %}
+              <div class="mb-3">
+                {{ form.address.label(class="form-label") }}
+                {{ form.address(class="form-control", placeholder="Enter your address") }}
+                {% if form.address.errors %}
+                  <div class="text-danger">
+                    {% for error in form.address.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- City（Only visible to register） -->
+            {% if heading == 'Register' %}
+              <div class="mb-3">
+                {{ form.city.label(class="form-label") }}
+                {{ form.city(class="form-control", placeholder="Enter your city") }}
+                {% if form.city.errors %}
+                  <div class="text-danger">
+                    {% for error in form.city.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- State（Only visible to register） -->
+            {% if heading == 'Register' %}
+              <div class="mb-3">
+                {{ form.state.label(class="form-label") }}
+                {{ form.state(class="form-select") }}
+                {% if form.state.errors %}
+                  <div class="text-danger">
+                    {% for error in form.state.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Zip（Only visible to register） -->
+            {% if heading == 'Register' %}
+              <div class="mb-3">
+                {{ form.zip_code.label(class="form-label") }}
+                {{ form.zip_code(class="form-control", placeholder="Enter your zip code") }}
+                {% if form.zip_code.errors %}
+                  <div class="text-danger">
+                    {% for error in form.zip_code.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Membership type -->
+            <div class="mb-3">
+              {{ form.member_type.label(class="form-label") }}
+              {% for subfield in form.member_type %}
+                <div class="form-check">
+                  <label class="form-check-label" for="{{ subfield.id }}">
+                    {{ subfield() }} {{ subfield.label.text }}
+                  </label>
+                </div>
+              {% endfor %}
+              {% if form.member_type.errors %}
+                <div class="text-danger">
+                  {% for error in form.member_type.errors %}
+                    <small>{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <!-- Validation Code（Only visible to Business Partner） -->
+            {% if form.member_type.data == 'business_partner' %}
+              <div class="mb-3">
+                {{ form.validation_code.label(class="form-label") }}
+                {{ form.validation_code(class="form-control", placeholder="Enter validation code") }}
+                {% if form.validation_code.errors %}
+                  <div class="text-danger">
+                    {% for error in form.validation_code.errors %}
+                      <small>{{ error }}</small>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Submisstion Button -->
+            <div class="d-grid gap-4 col-12 mx-auto">
+              <button class="btn btn-danger" type="submit">{{ heading }}</button>
+            </div>
+
+            <div class="text-center mt-3">
+              {% if heading == 'Login' %}
+                <p class="text-secondary">
+                  Not a member yet? <a href="{{ url_for('auth.register') }}" class="text-danger"><strong>Register here</strong></a>
+                </p>
+              {% else %}
+                <p class="text-secondary">
+                  Already a member? <a href="{{ url_for('auth.login') }}" class="text-danger"><strong>Login here</strong></a>
+                </p>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5 p-0">
+        <img src="../static/img/register.jpg" class="img-fluid" alt="Register" style="object-fit: cover;" />
+      </div>
+    </div>
+  </div>
+  <br />
+</main>
+{% endblock %}
+
+
+
+

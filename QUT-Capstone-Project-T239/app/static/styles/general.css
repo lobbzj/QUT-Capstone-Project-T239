@@ -1,0 +1,198 @@
+ul li a {
+    color: white;
+    text-decoration: none;
+    /* Remove underline for footer links*/
+}
+
+ul {
+    list-style-type: none;
+    /* Remove default bullet points */
+    padding-left: 0;
+    /* Remove default padding */
+}
+
+
+.btn-primary {
+    background-color: #2b8317;
+    border: 1px solid #4F9E3D;
+}
+
+.btn-primary:hover {
+    background-color: #25a408;
+    border: 1px solid #4F9E3D;
+}
+
+.btn-secondary {
+    background-color: #1458ec;
+}
+
+.btn-secondary:hover {
+    background-color: #4F78C9;
+}
+
+.btn-tertiary {
+    background-color: #EAEDFF;
+    color: #4F78C9;
+}
+
+.btn-quaternary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 50px;
+}
+
+.btn-quaternary:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    /* Add underline on hover */
+    border-bottom: 1px solid #000;
+    /* Add a bottom line on hover */
+    padding-bottom: 2px;
+    /* Add some space between text and bottom line */
+    color: inherit;
+    /* Inherit text color */
+}
+
+footer .footer-logo {
+    display: block;
+    margin-left: 0;
+    /* Ensures it stays on the left */
+}
+
+.mt-custom {
+    margin-top: 100px;
+}
+
+footer {
+    font-family: cordia new;
+}
+
+.icon-link,
+.icon-link:hover {
+    text-decoration: none;
+    /* Ensure no underline on hover */
+    border-bottom: none;
+    /* Remove any bottom border */
+    padding-bottom: 0;
+    /* Reset padding */
+}
+
+.btn-tertiary {
+    background-color: #EAEDFF;
+    color: #4F78C9;
+}
+
+.btn-quaternary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 50px;
+}
+
+.btn-quaternary:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Image Styles */
+#productImage {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+}
+
+/* Form and Card Styles */
+.form-container,
+.card {
+    border: 1px solid #5f5e5e;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    max-width: 600px;
+}
+
+.card {
+    width: 18rem;
+    margin-top: 30px;
+}
+
+td,
+th {
+    padding: 15px;
+    text-align: center;
+}
+
+.btn-block {
+    width: 100%
+}
+
+.checkout-btn {
+    width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    /*centers the button*/
+}
+
+@media (min-width: 768px) {
+
+    /* to adjust to larger screens */
+    .checkout-btn {
+        width: 250px;
+    }
+}
+
+.cart_table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+main {
+    background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+    /* Gradients from pure white to a very light grey */
+    padding-top: 60px;
+    /* Ensure content doesn't get hidden behind the header */
+    font-family: sans-serif;
+
+    margin-top: 10px;
+
+    /* Adjust this based on the navbar height */
+}
+
+/* Divider (Horizontal Rule) Styles */
+hr {
+    border: 1px solid #313030;
+    margin-top: 20px;
+}
+
+footer {
+    font-family: sans-serif;
+}
+
+.out-of-stock .layer h3,
+.out-of-stock .layer p,
+.out-of-stock .layer i {
+    color: red;
+}
+
+.other-products-section .card {
+    margin-top: 20px;
+    width: 90%;
+    height: auto;
+}
