@@ -1,123 +1,221 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <!-- Recent Sports Techs -->
+<!-- Recent Sports Techs -->
 
-  <main role="main" aria-label="Home Page">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" aria-label="Product carousel" role="region" aria-live="polite">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="static/img/hero1.png" class="d-block w-100 carousel-img" alt="Boyzlife group performing live on stage" aria-label="Boyzlife group photo" />
-        </div>
-        <div class="carousel-item">
-          <img src="static/img/hero2.png" class="d-block w-100 carousel-img" alt="Abbie Chatfield posing for a photo" aria-label="Abbie Chatfield" />
-        </div>
-        <div class="carousel-item">
-          <img src="static/img/hero3.png" class="d-block w-100 carousel-img" alt="Bjorn Again performing on stage" aria-label="Bjorn Again performance" />
-        </div>
-      </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" aria-label="Previous slide" role="button">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" aria-label="Next slide" role="button">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+<main role="main" aria-label="Home Page">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" aria-label="Product carousel"
+    role="region" aria-live="polite">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
-    <section class="Recent" aria-labelledby="recent-products-section">
-      <h1 id="recent-products-section">Recently Added Products</h1>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-      <div id="row1" class="row">
-        <div class="Recent-col col-12 col-md-4" aria-labelledby="soccer-product">
-          <a href="/products" aria-label="View Soccer product details">
-            <img src="../static/img/Cameras.jpg" alt="Various soccer products such as balls and jerseys" class="img-fluid" />
-            <div class="layer">
-              <h3>Cameras</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>
-                Anything<br />
-                Ranges From A$100.00
-              </i>
-            </div>
-          </a>
-        </div>
-        <div class="Recent-col col-12 col-md-4" aria-labelledby="rugby-product">
-          <a href="#" aria-label="View Rugby product details">
-            <img src="../static/img/watches.jpg" alt="Various rugby products such as balls and kits" class="img-fluid" />
-            <div class="layer">
-              <h3>Wearables</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>
-                Anything
-                <br />Ranges From A$150.50
-              </i>
-            </div>
-          </a>
-        </div>
-        <div class="Recent-col col-12 col-md-4" aria-labelledby="cricket-product">
-          <a href="#" aria-label="View Cricket product details">
-            <img src="../static/img/Treadmill.jpg" alt="Various cricket products such as bats and pads" class="img-fluid" />
-            <div class="layer Recent-col col-12 col-md-4">
-              <h3>Smart Training Equipment</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>
-                Anything
-                <br />Ranges From A$1000.00
-              </i>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
 
-    <section class="Browse" aria-labelledby="browse-products-section">
-      <h1 id="browse-products-section">Browse More Products</h1>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    
-      <!-- Scroll buttons -->
-      <button class="scroll-left" onclick="scrollTabs('left')">←</button>
-      
-      <div class="tabs-container">
-        <div id="row2" class="row">
-            <div class="Browse-col" aria-labelledby="running-product">
-                <a href="#" class="browse-tab" aria-label="View Running product details">
-                    <span class="category-name">Running</span>
-                </a>
-            </div>
-            <div class="Browse-col" aria-labelledby="tennis-product">
-                <a href="#" class="browse-tab" aria-label="View Tennis product details">
-                    <span class="category-name">Tennis</span>
-                </a>
-            </div>
-            <div class="Browse-col out-of-stock" aria-labelledby="volleyball-product">
-                <a href="#" class="browse-tab out-of-stock" aria-label="View Volleyball product details">
-                    <span class="category-name">Volleyball</span>
-                </a>
-            </div>
-            <div class="Browse-col out-of-stock" aria-labelledby="basketball-product">
-                <a href="#" class="browse-tab out-of-stock" aria-label="View Basketball product details">
-                    <span class="category-name">Basketball</span>
-                </a>
-            </div>
-        </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static/img/hero1.png" class="d-block w-100 carousel-img" alt="Boyzlife group performing live on stage"
+          aria-label="Boyzlife group photo" />
+      </div>
+      <div class="carousel-item">
+        <img src="static/img/hero2.png" class="d-block w-100 carousel-img" alt="Abbie Chatfield posing for a photo"
+          aria-label="Abbie Chatfield" />
+      </div>
+      <div class="carousel-item">
+        <img src="static/img/hero3.png" class="d-block w-100 carousel-img" alt="Bjorn Again performing on stage"
+          aria-label="Bjorn Again performance" />
+      </div>
     </div>
-  
-      <!-- Scroll buttons -->
-      <button class="scroll-right" onclick="scrollTabs('right')">→</button>
-  </section>  
-  </main>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"
+      aria-label="Previous slide" role="button">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"
+      aria-label="Next slide" role="button">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <section class="Recent" aria-labelledby="recent-products-section">
+    <h1 id="recent-products-section">Recently Added Products</h1>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    <div id="row1" class="row">
+      <div class="Recent-col col-12 col-md-4" aria-labelledby="soccer-product">
+        <a href="/products" aria-label="View Soccer product details">
+          <img src="../static/img/Cameras.jpg" alt="Various soccer products such as balls and jerseys"
+            class="img-fluid" />
+          <div class="layer">
+            <h3>Cameras</h3>
+            <p>
+              <b>Available</b>
+            </p>
+            <i>
+              Anything<br />
+              Ranges From A$100.00
+            </i>
+          </div>
+        </a>
+      </div>
+      <div class="Recent-col col-12 col-md-4" aria-labelledby="rugby-product">
+        <a href="#" aria-label="View Rugby product details">
+          <img src="../static/img/watches.jpg" alt="Various rugby products such as balls and kits" class="img-fluid" />
+          <div class="layer">
+            <h3>Wearables</h3>
+            <p>
+              <b>Available</b>
+            </p>
+            <i>
+              Anything
+              <br />Ranges From A$150.50
+            </i>
+          </div>
+        </a>
+      </div>
+      <div class="Recent-col col-12 col-md-4" aria-labelledby="cricket-product">
+        <a href="#" aria-label="View Cricket product details">
+          <img src="../static/img/Treadmill.jpg" alt="Various cricket products such as bats and pads"
+            class="img-fluid" />
+          <div class="layer Recent-col col-12 col-md-4">
+            <h3>Smart Training Equipment</h3>
+            <p>
+              <b>Available</b>
+            </p>
+            <i>
+              Anything
+              <br />Ranges From A$1000.00
+            </i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="Display-All" aria-label="display-all-products-section">
+    <h1 id="display-all-products-section">All Products</h1>
+    <p>Browse through all available products. Use the filter to narrow your search.</p>
+    <!-- Filter Icon -->
+    <button class="filter-toggle" aria-label="Toggle filter menu" onclick="toggleFilterMenu()">
+      <span class="filter-icon">☰ Filter</span>
+    </button>
+
+    <!-- Filter Menu -->
+    <div class="filter-menu" id="filterMenu">
+      <h2>Filter Options</h2>
+      <div class="filter-group">
+        <h3>Brand</h3>
+        <select aria-label="Filter by brand">
+          <option value="all">All Brands</option>
+          <option value="brand1">Brand 1</option>
+          <option value="brand2">Brand 2</option>
+          <option value="brand3">Brand 3</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h3>Price Range</h3>
+        <select aria-label="Filter by price range">
+          <option value="all">All Prices</option>
+          <option value="low">Under $100</option>
+          <option value="mid">$100 - $500</option>
+          <option value="high">Above $500</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <h3>Sports</h3>
+        <select aria-label="Filter by sports">
+          <option value="all">All Sports</option>
+          <option value="soccer">Soccer</option>
+          <option value="rugby">Rugby</option>
+          <option value="tennis">Tennis</option>
+          <option value="basketball">Basketball</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+      <!-- Example Product 1 -->
+      <a href="https://myvenue.com" class="product-link" aria-label="View MyVenue app details">
+        <div class="product-card">
+          <img src="../static/img/myvenue.PNG" alt="MyVenue App" class="product-image" />
+          <h3 class="product-title">MyVenue app</h3>
+          <p class="product-description">fast and intuitive point-of-sale</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://hyperice.com.au/products/hypervolt-2-pro-heat-pack" class="product-link"
+        aria-label="View Massage Gun details">
+        <div class="product-card">
+          <img src="../static/img/hypervolt2pro.PNG" alt="HyperVolt 2 Pro image" class="product-image" />
+          <h3 class="product-title">HyperVolt 2 Pro</h3>
+          <p class="product-description">High-teach massage gun</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://www.veo.co" class="product-link" aria-label="View Veo Cam 3 details">
+        <div class="product-card">
+          <img src="../static/img/veocam3.PNG" alt="Veo Cam 3 photo" class="product-image" />
+          <h3 class="product-title">Veo Cam 3</h3>
+          <p class="product-description">Creates a broadcast-like experience.</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://www.catapult.com/solutions/vector-pro" class="product-link" aria-label="Vector S7 details">
+        <div class="product-card">
+          <img src="../static/img/vector.PNG" alt="Vector S7 image" class="product-image" />
+          <h3 class="product-title">Vector S7</h3>
+          <p class="product-description">Wearable technology for analysis.</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://ouraring.com/?srsltid=AfmBOopKrkQiGuperwsivKUkOhlYRXjYMRu9Ko6ZPKnN4ogk20PgLDOH"
+        class="product-link" aria-label="Oura Ring details">
+        <div class="product-card">
+          <img src="../static/img/ouraring.PNG" alt="Oura Ring image" class="product-image" />
+          <h3 class="product-title">Oura Ring</h3>
+          <p class="product-description">Smart ring for health and fitness tracking.</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://ouraring.com/?srsltid=AfmBOopKrkQiGuperwsivKUkOhlYRXjYMRu9Ko6ZPKnN4ogk20PgLDOH"
+        class="product-link" aria-label="Oura Ring details">
+        <div class="product-card">
+          <img src="../static/img/ouraring.PNG" alt="Oura Ring image" class="product-image" />
+          <h3 class="product-title">Oura Ring</h3>
+          <p class="product-description">Smart ring for health and fitness tracking.</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://www.catapult.com/solutions/vector-pro" class="product-link" aria-label="Vector S7 details">
+        <div class="product-card">
+          <img src="../static/img/vector.PNG" alt="Vector S7 image" class="product-image" />
+          <h3 class="product-title">Vector S7</h3>
+          <p class="product-description">Wearable technology for analysis.</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+      <a href="https://www.veo.co" class="product-link" aria-label="View Veo Cam 3 details">
+        <div class="product-card">
+          <img src="../static/img/veocam3.PNG" alt="Veo Cam 3 photo" class="product-image" />
+          <h3 class="product-title">Veo Cam 3</h3>
+          <p class="product-description">Creates a broadcast-like experience.</p>
+          <p class="product-price">Price: $600</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+</main>
 {% endblock %}
