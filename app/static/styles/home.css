@@ -265,3 +265,60 @@
     }
   }
   
+  /*  */
+  /* 
+Contact Section
+===============
+*/
+.contact-section {
+    padding: 80px 0;
+}
+
+.contact-section-container {
+    margin: 0 auto;
+    padding: 0 10%;
+}
+
+form {
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 30px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+}
+
+label {
+    display: block;
+    /*padding-bottom: 20px;*/
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--bs-gray-600) !important;
+    color: var(--bs-light) !important;
+    border-color: #1961e6 !important;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder {
+    color: var(--bs-gray-400);
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+}
