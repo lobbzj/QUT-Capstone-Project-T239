@@ -41,8 +41,6 @@ def create_app():
     app.register_blueprint(views.mainbp)
     from . import auth
     app.register_blueprint(auth.authbp)
-    from . import create
-    app.register_blueprint(create.createbp)
     from . import confirmation
     app.register_blueprint(confirmation.confirmationbp)
     from . import checkout

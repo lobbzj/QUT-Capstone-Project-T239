@@ -14,7 +14,6 @@ class User(db.Model, UserMixin):
     # add the foreign key
     comments = db.relationship('Comment', backref='user')
     orders = db.relationship('Order', backref='user')
-    
 
     # string print method
     def __repr__(self):
@@ -29,6 +28,7 @@ class Product(db.Model):
     price = db.Column(db.Float)
     stock = db.Column(db.Integer)
     category = db.Column(db.String(80))
+    sub_category = db.Column(db.String(80))
     # add the foreign key
     comments = db.relationship('Comment', backref='product')
     orders = db.relationship('Order', backref='product')
