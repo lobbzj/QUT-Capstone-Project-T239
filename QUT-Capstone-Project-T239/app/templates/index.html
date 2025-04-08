@@ -3,35 +3,24 @@
 {% block content %}
   <!-- Recent Sports Techs -->
 
-  <main role="main" aria-label="Home Page">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" aria-label="Product carousel" role="region" aria-live="polite">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
+  <!-- <main role="main" aria-label="Home Page"> -->
 
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="static/img/hero1.png" class="d-block w-100 carousel-img" alt="Boyzlife group performing live on stage" aria-label="Boyzlife group photo" />
-        </div>
-        <div class="carousel-item">
-          <img src="static/img/hero2.png" class="d-block w-100 carousel-img" alt="Abbie Chatfield posing for a photo" aria-label="Abbie Chatfield" />
-        </div>
-        <div class="carousel-item">
-          <img src="static/img/hero3.png" class="d-block w-100 carousel-img" alt="Bjorn Again performing on stage" aria-label="Bjorn Again performance" />
-        </div>
+    <div class="video-header">
+      <video autoplay muted loop id="bg-video">
+        <source src="../static/img/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay">
+        <h1>The Sports tech</h1>
+        <h3>Exploring The Sports Tech products</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+        <a href="#row1" class="cta-button">Find out more</a>
       </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" aria-label="Previous slide" role="button">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" aria-label="Next slide" role="button">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
+
     <section class="Recent" aria-labelledby="recent-products-section">
       <h1 id="recent-products-section">Recently Added Products</h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -74,60 +63,6 @@
         </div>
       </div>
     </section>
-
-    <section class="Browse" aria-labelledby="browse-products-section">
-      <h1 id="browse-products-section">Browse More Products</h1>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-      <div id="row2" class="row">
-        <div class="Browse-col col-12 col-md-3" aria-labelledby="running-product">
-          <a href="#" aria-label="View Running product details">
-            <img src="../static/img/Running.jpg" alt="Various running products such as shoes and apparel" class="img-fluid" />
-            <div class="layer">
-              <h3>Running</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges from A$79.68+</i>
-            </div>
-          </a>
-        </div>
-        <div class="Browse-col col-12 col-md-3" aria-labelledby="tennis-product">
-          <a href="#" aria-label="View Tennis product details">
-            <img src="../static/img/Tennis.jpg" alt="Various tennis products such as rackets and balls" class="img-fluid" />
-            <div class="layer">
-              <h3>Tennis</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges from A$43.50</i>
-            </div>
-          </a>
-        </div>
-        <div class="Browse-col out-of-stock col-12 col-md-3" aria-labelledby="volleyball-product">
-          <a href="#" aria-label="View Volleyball product details">
-            <img src="../static/img/Volleyball.jpg" alt="Various volleyball products such as nets and balls" class="img-fluid" />
-            <div class="layer">
-              <h3>Volleyball</h3>
-              <p>
-                <b>Sold out:</b>
-              </p>
-              <i>Anything<br />Ranges from A$38.37</i>
-            </div>
-          </a>
-        </div>
-        <div class="Browse-col out-of-stock col-12 col-md-3" aria-labelledby="basketball-product">
-          <a href="#" aria-label="View Basketball product details">
-            <img src="../static/img/Basketball.jpg" alt="Various basketball products such as hoops and balls" class="img-fluid" />
-            <div class="layer">
-              <h3>Basketball</h3>
-              <p>
-                <b>Sold out:</b>
-              </p>
-              <i>Anything<br />No Price</i>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+    <!-- deleted the browse here -->
   </main>
 {% endblock %}
