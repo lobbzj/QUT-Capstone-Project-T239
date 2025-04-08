@@ -64,5 +64,17 @@
       </div>
     </section>
     <!-- deleted the browse here -->
+    <section class="contact-section" id="contact">
+      <h2>Contact Us</h2>
+      <p>Do you have any lingering question if so dont hestitate to contact us, 
+        we will get back to us as soon as possible <3</p>
+      <form action="/contact" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
   </main>
+  
 {% endblock %}

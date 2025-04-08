@@ -49,6 +49,9 @@ def create_app():
     app.register_blueprint(products.productsbp)
     from . import cart
     app.register_blueprint(cart.cartbp)
+    from . import contact  
+    app.register_blueprint(contact.contactbp)
+
     
 
     @app.errorhandler(404) 
