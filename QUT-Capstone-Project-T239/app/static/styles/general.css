@@ -196,3 +196,20 @@ footer {
     width: 90%;
     height: auto;
 }
+
+.other-product-img {
+    height: 250px;
+    object-fit: contain;
+}
+
+.other-product-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title,
+.card-text {
+    min-height: 3rem;
+}

@@ -95,8 +95,8 @@
         </div>
         {% for item in related_products %}
           <div class="col-12 col-md-4 mb-3">
-            <div class="card" role="region" aria-labelledby="product{{ loop.index }}">
-              <img src="{{ item.image }}" class="card-img-top" alt="Image of {{ item.name }}" />
+            <div class="card other-product-card" role="region" aria-labelledby="product{{ loop.index }}">
+              <img src="{{ item.image }}" class="card-img-top other-product-img" alt="Image of {{ item.name }}" />
               <div class="card-body">
                 <h5 class="card-title text-center">{{ item.name }}</h5>
                 <p class="card-text text-center">{{ item.category }}</p>
