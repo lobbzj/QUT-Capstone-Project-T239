@@ -1,0 +1,2 @@
+Path and query needed to be rename in the my_collection.json file.
+
