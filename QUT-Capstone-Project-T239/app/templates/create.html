@@ -1,52 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <div class="w-100" style="max-width: 700px;">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="w-100" style="max-width: 700px;">
       <h2 class="mb-4 mt-5 text-center">Create New Product</h2>
 
       <form method="POST" enctype="multipart/form-data">
-          {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }}
 
-          <div class="mb-3">
-              {{ form.name.label(class="form-label") }}
-              {{ form.name(class="form-control") }}
-          </div>
+        <div class="mb-3">{{ form.name.label(class='form-label') }}
+          {{ form.name(class='form-control') }}</div>
 
-          <div class="mb-3">
-              {{ form.description.label(class="form-label") }}
-              {{ form.description(class="form-control", rows="3") }}
-          </div>
+        <div class="mb-3">{{ form.description.label(class='form-label') }}
+          {{ form.description(class='form-control', rows='3') }}</div>
 
-          <div class="mb-3">
-              {{ form.image.label(class="form-label") }}
-              {{ form.image(class="form-control") }}
-          </div>
+        <div class="mb-3">{{ form.image.label(class='form-label') }}
+          {{ form.image(class='form-control') }}</div>
 
-          <div class="mb-3">
-              {{ form.price.label(class="form-label") }}
-              {{ form.price(class="form-control") }}
-          </div>
+        <div class="mb-3">{{ form.price.label(class='form-label') }}
+          {{ form.price(class='form-control') }}</div>
 
-          <div class="mb-3">
-              {{ form.stock.label(class="form-label") }}
-              {{ form.stock(class="form-control") }}
-          </div>
+        <div class="mb-3">{{ form.stock.label(class='form-label') }}
+          {{ form.stock(class='form-control') }}</div>
 
-          <div class="mb-3">
-              {{ form.product_category.label(class="form-label") }}
-              {{ form.product_category(class="form-select", id="product_category") }}
-          </div>
+        <div class="mb-3">{{ form.product_category.label(class='form-label') }}
+          {{ form.product_category(class='form-select', id='product_category') }}</div>
 
-          <div class="mb-3">
-              {{ form.sub_category.label(class="form-label") }}
-              {{ form.sub_category(class="form-select", id="sub_category") }}
-          </div>
+        <div class="mb-3">{{ form.sub_category.label(class='form-label') }}
+          {{ form.sub_category(class='form-select', id='sub_category') }}</div>
 
-          <div class="d-grid mb-5">
-              {{ form.submit(class="btn btn-primary btn-lg") }}
-          </div>
+        <div class="d-grid mb-5">{{ form.submit(class='btn btn-primary btn-lg') }}</div>
       </form>
+    </div>
   </div>
-</div>
 {% endblock %}

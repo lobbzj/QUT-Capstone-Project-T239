@@ -11,7 +11,22 @@ from flask_login import login_required, current_user
 productsbp = Blueprint('product', __name__, url_prefix='/products')
 
 
-@productsbp.route('/create-product', methods=['GET', 'POST'])
+@productsbp.route("/<id>", methods=['GET'])
+def show(id):
+    try:
+        product = Product.query.filter_by(id=id).first()
+
+        if id == None:
+            id = "products/create"
+
+        return render_template('productPurchase.html', product=product)
+
+    except:
+        message = "Product was not found"
+        return render_template("404.html")
+
+
+@productsbp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create_product():
     form = CreateProductForm()
