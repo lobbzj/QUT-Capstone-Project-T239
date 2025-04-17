@@ -15,11 +15,13 @@ productsbp = Blueprint('product', __name__, url_prefix='/products')
 def show(id):
     try:
         product = Product.query.filter_by(id=id).first()
+        related_products = Product.query.filter_by(category=product.category).filter(
+            Product.id != product.id).limit(3).all()
 
         if id == None:
             id = "products/create"
 
-        return render_template('productPurchase.html', product=product)
+        return render_template('productPurchase.html', product=product, related_products=related_products)
 
     except:
         message = "Product was not found"

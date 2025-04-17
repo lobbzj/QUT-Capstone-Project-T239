@@ -3,134 +3,111 @@
 {% block content %}
   <main role="main" aria-label="Product Purchase Page">
     <div class="container">
+      <!-- Product Image -->
       <div class="row">
         <div class="col-12">
-          <img id="productImage" src="{{product.image}}" class="rounded img-fluid" alt="Main product image of Standard Kit with Pro Handles" aria-label="Main product image of Standard Kit with Pro Handles" />
+          <img id="productImage" src="{{ product.image }}" class="rounded img-fluid" alt="Main product image of {{ product.name }}" />
         </div>
       </div>
+
       <br />
+
+      <!-- Product Info Section -->
       <div class="row" id="product-info">
         <div class="col-12 col-md-8">
-          <label for="productListDate" id="productListDateLabel">DD/MM/YYYY</label>
-          <h1>{{product.name}}</h1>
-          <p>{{product.description}}</p>
+          <p class="text-muted">{{ product.list_date or 'DD/MM/YYYY' }}</p>
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.description }}</p>
+
           <div class="row">
             <div class="col-12 col-md-6 d-flex align-items-center">
-              <img class="profile-pic" src="../static/img/default_profile.jpg" alt="Seller profile image" height="50px" aria-label="Seller profile image" />
-              <a href="#" class="ml-2 mb-0" style="margin-left: 10px;" aria-label="Visit seller's profile" role="link">Seller Name</a>
+              <img class="profile-pic" src="../static/img/default_profile.jpg" alt="Seller profile image" height="50" />
+              <a href="#" class="ml-2" aria-label="Visit seller's profile">Seller Name</a>
             </div>
-            <div class="col-12 col-md-6 mt-2 mt-md-1">
-              <button class="btn btn-tertiary w-25" aria-label="Visit Shop" role="button">Visit Shop</button>
+            <div class="col-12 col-md-6 mt-2 mt-md-1 text-md-end">
+              <button class="btn btn-tertiary" aria-label="Visit Shop">Visit Shop</button>
             </div>
           </div>
         </div>
+
+        <!-- Purchase Box -->
         <div class="col-12 col-md-4 mt-3 mt-md-0">
           <div class="container">
-            <form action="" method="" class="p-0" aria-labelledby="purchaseForm" id="purchaseForm">
+            <form action="#" method="POST" id="purchaseForm" aria-labelledby="purchaseForm">
               <div class="form-group form-container">
-                <div class="row">
-                  <label for="productName" class="mb-3">{{product.name}}</label>
-                </div>
-                <label for="productPrice" id="productPriceLabel">${{product.price}}</label>
+                <p class="mb-3 fw-bold">{{ product.name }}</p>
+                <p id="productPriceLabel" class="fw-semibold">${{ product.price }}</p>
+
                 <div class="quantity-control d-flex justify-content-between align-items-center">
-                  <button class="qty-count qty-count--minus btn" data-action="minus" type="button" aria-label="Decrease quantity" role="button">-</button>
-                  <input class="product-qty" type="number" name="product-qty" min="0" max="{{product.stock}}" value="1" aria-label="Product quantity" />
-                  <button class="qty-count qty-count--add btn" data-action="add" type="button" aria-label="Increase quantity" role="button">+</button>
+                  <button class="qty-count qty-count--minus btn" type="button" data-action="minus" aria-label="Decrease quantity">-</button>
+                  <input class="product-qty form-control text-center mx-2" type="number" name="product_qty" min="1" max="{{ product.stock }}" value="1" aria-label="Product quantity" />
+                  <button class="qty-count qty-count--add btn" type="button" data-action="add" aria-label="Increase quantity">+</button>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary w-100 mb-3 mt-3" aria-label="Submit purchase" role="button">Purchase</button>
+
+              <button type="submit" class="btn btn-primary w-100 mt-3 mb-3" aria-label="Submit purchase">Purchase</button>
             </form>
-            <button type="submit" class="btn btn-secondary w-100 mb-3" aria-label="Go to tech details" role="button">Tech Details</button>
-            <p>To read more about this technology, visit the Tech Details page by clicking on the above button</p>
+
+            <button type="button" class="btn btn-secondary w-100 mb-3" aria-label="Go to tech details">Tech Details</button>
+            <p class="small">To read more about this technology, visit the Tech Details page by clicking the above button.</p>
           </div>
         </div>
+
         <div class="col-12">
           <hr />
         </div>
       </div>
-      <!--      from here       -->
-      <!-- bootstrap grid usage -->
+
+      <!-- Comments Section -->
       <div class="row">
         <div class="col-md-12">
           <h3 class="mb-4 fs-3 fw-semibold">Comments</h3>
-          <form action="" method="" class="p-0">
+          <form action="#" method="POST">
             <div class="form-group">
-              <div>
-                <img
-                  src="../static/img/anoncat.jpeg"
-                  class="mr-3 mb-2 rounded-circle"
-                  alt="Your User Image"
-                  title="Your User Image"
-                  height="64"
-                  width="64"/>
-                <h5 class="mt-0 fs-5 fw-medium mb-4">
-                  Logged in User
-                  <small class="small-text">(Log in to comment as yourself!)</small>
-                </h5>
+              <div class="d-flex align-items-center mb-2">
+                <img src="../static/img/anoncat.jpeg" class="rounded-circle me-3" alt="Your user image" height="64" width="64" />
+                <h5 class="mb-0">Logged in User <small class="text-muted">(Log in to comment as yourself!)</small></h5>
               </div>
-              <label for="comment" class="fw-normal">Leave a Comment:</label>
-              <textarea
-                class="form-control bg-gray-600"
-                id="comment"
-                rows="3"></textarea>
+              <label for="comment">Leave a Comment:</label>
+              <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Comment</button>
+            <button type="submit" class="btn btn-primary mt-2">Comment</button>
           </form>
           <hr />
-          <div class="media bg-dark-subtle p-4 rounded">
-            <img
-              src="../static/img/anonpanda.jpeg"
-              class="mr-3 mb-2 rounded-circle"
-              alt="User Image"
-              title="User Image"
-              height="64"
-              width="64"/>
+
+          <!-- Example Comment -->
+          <div class="media bg-light p-4 rounded mb-3">
+            <img src="../static/img/anonpanda.jpeg" class="rounded-circle me-3" alt="User image" height="64" width="64" />
             <div class="media-body">
-              <h5 class="mt-0 fs-5 fw-medium mb-4">Anonymous Panda</h5>
-              <p class="mb-4">
-                Ngl this product is legit Give it a try forsho forsho. 
-              </p>
-              <small class="date-text">Date Posted: 3/04/2025 7:38pm</small>
+              <h5 class="mb-2">Anonymous Panda</h5>
+              <p>Ngl this product is legit. Give it a try forsho forsho.</p>
+              <small class="text-muted">Date Posted: 3/04/2025 7:38pm</small>
             </div>
           </div>
           <hr />
-          <!--      to here      -->
-      <div class="row other-products-section" id="otherProducts-section" aria-labelledby="other-products-section">
-        <div class="col-12">
-          <h2 id="other-products-section">Other Products you may like</h2>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-          <div class="card" aria-labelledby="product1" role="region">
-            <img src="../static/img/default-product-image.webp" class="card-img-top" alt="Product image" aria-label="Product 1 image" />
-            <div class="card-body">
-              <h5 class="card-title text-center">Product Name</h5>
-              <p class="card-text text-center">Brand Name</p>
-              <a href="#" class="btn btn-quaternary w-100" aria-label="Visit product details" role="link">Visit</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-          <div class="card" aria-labelledby="product2" role="region">
-            <img src="../static/img/default-product-image.webp" class="card-img-top" alt="Product image" aria-label="Product 2 image" />
-            <div class="card-body">
-              <h5 class="card-title text-center">Product Name</h5>
-              <p class="card-text text-center">Brand Name</p>
-              <a href="#" class="btn btn-quaternary w-100" aria-label="Visit product details" role="link">Visit</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-          <div class="card" aria-labelledby="product3" role="region">
-            <img src="../static/img/default-product-image.webp" class="card-img-top" alt="Product image" aria-label="Product 3 image" />
-            <div class="card-body">
-              <h5 class="card-title text-center">Product Name</h5>
-              <p class="card-text text-center">Brand Name</p>
-              <a href="#" class="btn btn-quaternary w-100" aria-label="Visit product details" role="link">Visit</a>
-            </div>
-          </div>
         </div>
       </div>
+
+      <!-- Related Products -->
+      <div class="row other-products-section" aria-labelledby="other-products-section">
+        <div class="col-12">
+          <h2 id="other-products-section">Other Products You May Like</h2>
+        </div>
+        {% for item in related_products %}
+          <div class="col-12 col-md-4 mb-3">
+            <div class="card" role="region" aria-labelledby="product{{ loop.index }}">
+              <img src="{{ item.image }}" class="card-img-top" alt="Image of {{ item.name }}" />
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ item.name }}</h5>
+                <p class="card-text text-center">{{ item.category }}</p>
+                <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-quaternary w-100" aria-label="Visit {{ item.name }} details">Visit</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <br />
     </div>
-    <br />
   </main>
 {% endblock %}
