@@ -49,6 +49,14 @@
               <li class="nav-item">
                 <div style="width: 10px;"></div>
               </li>
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+              <a class="nav-item nav-link disabled text-muted" href="#">Welcome {{current_user.name}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+              </li>
+              {% else %}
               <li class="nav-item">
                 <a class="nav-link no-underline nav-link:hover" href="/login" aria-label="Login to your account">LOGIN</a>
               </li>
@@ -58,8 +66,9 @@
               <li class="nav-item">
                 <a class="nav-link no-underline nav-link:hover" href="/register" aria-label="Create a new account">REGISTER</a>
               </li>
+              {% endif %}
               <li class="nav-item">
-                <a class="nav-link no-underline nav-link:hover" href="/products/create-product" aria-label="Add a new product">Add Product</a>
+                <a class="nav-link no-underline nav-link:hover" href="/products/create" aria-label="Add a new product">Add Product</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link no-underline nav-link:hover" href="/cart" aria-label="Go to shopping cart"><img src="../static/img/cart.png" width="25" height="25" class="d-inline-block align-top" alt="Cart" /></a>
