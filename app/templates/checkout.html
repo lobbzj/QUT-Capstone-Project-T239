@@ -107,7 +107,7 @@
      
       </div>
       
-      <div style="position: fixed; top: 100px; right: 5px; width: 450px;">
+      <div style="position: fixed; top: 110px; right: 5px; width: 450px;">
         <!-- Toggle Button -->
         <button id="toggleTableButton" style="position: absolute; left: -20px; background-color: transparent; border: none; cursor: pointer; font-size: 16px;">
             ▶
@@ -123,28 +123,68 @@
                         <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Sub-total</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr style="text-align: center;">
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Smart Watch AA</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$199</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Free</td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Total (GST included)</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$199</td>
-                    </tr>
+                <tbody id="cartTableBody">
+                    <!-- Rows will be dynamically added here -->
                 </tbody>
+                <tfoot>
+                    <tr style="text-align: center; font-weight: bold;">
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">Total (GST included)</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;"></td>
+                        <td id="cartTotal" style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">$0.00</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
     
     <script>
+        // Example cart data (empty by default)
+        const cart = []; // Replace this with your actual cart data
+    
+        // Function to populate the cart table
+        function populateCartTable() {
+            const cartTableBody = document.getElementById('cartTableBody');
+            const cartTotalElement = document.getElementById('cartTotal');
+            let cartTotal = 0;
+    
+            // Clear the table body
+            cartTableBody.innerHTML = '';
+    
+            // Check if the cart is empty
+            if (cart.length === 0) {
+                const emptyRow = `
+                    <tr style="text-align: center;">
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">0</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$0.00</td>
+                    </tr>
+                `;
+                cartTableBody.innerHTML = emptyRow;
+            } else {
+                // Loop through the cart items and add rows
+                cart.forEach(item => {
+                    const subtotal = item.qty * item.price;
+                    cartTotal += subtotal;
+    
+                    const row = `
+                        <tr style="text-align: center;">
+                            <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.name}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.qty}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$${subtotal.toFixed(2)}</td>
+                        </tr>
+                    `;
+                    cartTableBody.innerHTML += row;
+                });
+            }
+    
+            // Update the total
+            cartTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
+        }
+    
+        // Call the function to populate the table
+        populateCartTable();
+    
+        // Toggle table visibility
         const toggleButton = document.getElementById('toggleTableButton');
         const tableContainer = document.getElementById('tableContainer');
     
