@@ -107,32 +107,59 @@
      
       </div>
       
-      <table style="position: fixed; top: 100px; right: 5px; border-collapse: collapse; margin: 0; background-color: white; width: 450px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd;">
-        <thead>
-            <tr style="background-color: #f8f8f8; text-align: center;">
-                <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Item Name</th>
-                <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Qty</th>
-                <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Sub-total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr style="text-align: center;">
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Smart Watch AA</td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$199</td>
-            </tr>
-            <tr style="text-align: center;">
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Free</td>
-            </tr>
-            <tr style="text-align: center;">
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Total (GST included)</td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$199</td>
-            </tr>
-        </tbody>
-    </table>
+      <div style="position: fixed; top: 100px; right: 5px; width: 450px;">
+        <!-- Toggle Button -->
+        <button id="toggleTableButton" style="position: absolute; left: -20px; background-color: transparent; border: none; cursor: pointer; font-size: 16px;">
+            ▶
+        </button>
+    
+        <!-- Table Container -->
+        <div id="tableContainer" style="background-color: white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd;">
+            <table style="border-collapse: collapse; margin: 0; width: 100%;">
+                <thead>
+                    <tr style="background-color: #f8f8f8; text-align: center;">
+                        <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Item Name</th>
+                        <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Qty</th>
+                        <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Sub-total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="text-align: center;">
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Smart Watch AA</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$199</td>
+                    </tr>
+                    <tr style="text-align: center;">
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Free</td>
+                    </tr>
+                    <tr style="text-align: center;">
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Total (GST included)</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
+                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$199</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        const toggleButton = document.getElementById('toggleTableButton');
+        const tableContainer = document.getElementById('tableContainer');
+    
+        toggleButton.addEventListener('click', () => {
+            if (tableContainer.style.display === 'none') {
+                tableContainer.style.display = 'block';
+                toggleButton.style.left = '-20px'; // Move button to the left
+                toggleButton.textContent = '▶'; // Right arrow
+            } else {
+                tableContainer.style.display = 'none';
+                toggleButton.style.left = '430px'; // Move button to the right edge
+                toggleButton.textContent = '◀'; // Left arrow
+            }
+        });
+    </script>
 
 
     </div>
