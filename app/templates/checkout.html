@@ -27,11 +27,40 @@
           <div class="col-10">
             <label for="shipping">Shipping Method</label> </p>
             <div style="font-size: 15px; font-weight: bold">
-            <select id="ship" name="ship">
-                <option value="Standard">Standard: Arrives 14-21 days (12 Sep 2025 - 19 Sep 2025)</option>
-                <option value="Express">Express: Arrives 3-5 days (1 Sep 2025 - 3 Sep 2025) +$50</option>
-            </select></p>
+              <select id="ship" name="ship">
+                <!-- Options will be dynamically updated -->
+              </select></p>
+            </div>
           </div>
+        </div>
+        <script>
+          // Get the current date
+          const currentDate = new Date();
+        
+          // Function to calculate the arrival date
+          function calculateArrivalDate(daysToAdd) {
+            const resultDate = new Date(currentDate);
+            resultDate.setDate(resultDate.getDate() + daysToAdd);
+            return resultDate.toLocaleDateString('en-UK', { year: 'numeric', month: 'short', day: 'numeric' });
+          }
+        
+          // Shipping options with their respective delivery times
+          const shippingOptions = [
+            { value: "Standard", text: "Standard: Arrives in 14-21 days", minDays: 14, maxDays: 21 },
+            { value: "Express", text: "Express: Arrives in 3-5 days", minDays: 3, maxDays: 5, extraCost: "+$50" }
+          ];
+        
+          // Populate the shipping method dropdown
+          const shipSelect = document.getElementById('ship');
+          shippingOptions.forEach(option => {
+            const minDate = calculateArrivalDate(option.minDays);
+            const maxDate = calculateArrivalDate(option.maxDays);
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = `${option.text} (${minDate} - ${maxDate}) ${option.extraCost || ''}`;
+            shipSelect.appendChild(optionElement);
+          });
+        </script>
 
         <div class ="row">
           <div style="font-size: 20px; font-weight: bold">
