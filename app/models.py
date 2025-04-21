@@ -1,14 +1,17 @@
-from . import db
+from app import db
 from datetime import datetime
+from flask_login import UserMixin
 # from flask_login import UserMixin
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users' 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
-    emailid = db.Column(db.String(100), index=True, nullable=False)
+    email = db.Column(db.String(100), index=True, nullable=False) #changed from emailid ---> email
     mobile = db.Column(db.String(100), index=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
+    address = db.Column(db.String(255), nullable=True)
+    member_type = db.Column(db.String(50), nullable=False)
     # add the foreign key
     comments = db.relationship('Comment', backref='user')
     orders = db.relationship('Order', backref='user')
@@ -23,9 +26,10 @@ class Product(db.Model):
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
-    date_time = db.Column(db.DateTime)
-    venue = db.Column(db.String(80))
-    num_tickets = db.Column(db.Integer)
+    price = db.Column(db.Float)
+    stock = db.Column(db.Integer)
+    category = db.Column(db.String(80))
+    sub_category = db.Column(db.String(80))
     # add the foreign key
     comments = db.relationship('Comment', backref='product')
     orders = db.relationship('Order', backref='product')
@@ -75,3 +79,17 @@ class Payment(db.Model):
     # string print method
     def __repr__(self):
         return f"Payment: {self.id}"
+
+# added by Minh
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Correct table name is 'users'
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)  # Correct table name is 'products'
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+
+    # Relationships
+    product = db.relationship('Product', backref='cart_items')
+    user = db.relationship('User', backref='cart_items')
+
+    def __repr__(self):
+        return f"<Cart User {self.user_id} Product {self.product_id} Quantity {self.quantity}>"

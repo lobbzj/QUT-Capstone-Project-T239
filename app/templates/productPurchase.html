@@ -1,79 +1,130 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <main>
-    <div class="container">
-      <div class="row">
-        <img id="productImage" src="https://vitruvianform.com/cdn/shop/files/Shop_Standardkit_prohandles_f390aff3-d7c2-4ed6-981e-2385847b60b8_800x.jpg?v=1713416875" class="rounded" alt="Product Image" />
-      </div>
-      <div class="row" id="product-info">
-        <label for="productListDate">DD/MM/YYYY</label>
-        <div class="col-8">
-          <h1>Dummy Text</h1>
-          <p>This is a summary</p>
-          <div class="row">
-            <div class="col-6 d-flex align-items-center">
-              <img class="profile-pic" src="../static/img/default_profile.jpg" alt="Seller Image" height="50px" />
-              <a href="#" class="ml-2 mb-0" style="margin-left: 10px;">Seller Name</a>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-tertiary">Visit Shop</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="container">
-            <form action="" method="" class="p-0">
-              <div class="form-group form-container">
-                <div class="row">
-                  <label for="productName" class="mb-3">Name of Product</label>
-                </div>
-                <label for="productPrice">Price of product</label>
-                <!-- Buttons not programmed yet -->
-                <button class="qty-count qty-count--minus btn" data-action="minus" type="button">-</button>
-                <input class="product-qty" type="number" name="product-qty" min="0" max="10" value="1" />
-                <button class="qty-count qty-count--add btn" data-action="add" type="button">+</button>
-              </div>
-              <a href="/cart"
-              <button type="submit" class="btn btn-primary w-100">Add To Cart</button>
-              </a>
-            </form>
-            <button type="submit" class="btn btn-secondary w-100">Tech Details</button>
-            <p>To read more about this technology, visit the Tech Details page by clicking on the above button</p>
-          </div>
-        </div>
-        <!-- Add horizontal line here -->
-        <div class="col-12">
-          <hr />
-        </div>
-      </div>
-      <div class="row" id="otherProducts-section">
-        <h2>Other Products you may like</h2>
-        <div class="card">
-          <img src="../static/img/default-product-image.webp" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title text-center">Product Name</h5>
-            <p class="card-text text-center">Brand Name</p>
-            <a href="#" class="btn btn-quaternary">Visit</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../static/img/default-product-image.webp" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title text-center">Product Name</h5>
-            <p class="card-text text-center">Brand Name</p>
-            <a href="#" class="btn btn-quaternary">Visit</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../static/img/default-product-image.webp" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title text-center">Product Name</h5>
-            <p class="card-text text-center">Brand Name</p>
-            <a href="#" class="btn btn-quaternary">Visit</a>
-          </div>
-        </div>
+<main role="main" aria-label="Product Purchase Page">
+  <div class="container">
+    <!-- Product Image -->
+    <div class="row">
+      <div class="col-12">
+        <img id="productImage" src="{{ product.image }}" class="rounded img-fluid"
+          alt="Main product image of {{ product.name }}" />
       </div>
     </div>
-  </main>
+
+    <br />
+
+    <!-- Product Info Section -->
+    <div class="row" id="product-info">
+      <div class="col-12 col-md-8">
+        <p class="text-muted">{{ product.list_date or 'DD/MM/YYYY' }}</p>
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+
+        <div class="row">
+          <div class="col-12 col-md-6 d-flex align-items-center">
+            <img class="profile-pic" src="../static/img/default_profile.jpg" alt="Seller profile image" height="50" />
+            <a href="#" class="ml-2" aria-label="Visit seller's profile">Seller Name</a>
+          </div>
+          <div class="col-12 col-md-6 mt-2 mt-md-1 text-md-end">
+            <button class="btn btn-tertiary" aria-label="Visit Shop">Visit Shop</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Purchase Box -->
+      <div class="col-12 col-md-4 mt-3 mt-md-0">
+        <div class="container">
+          <form action="#" method="POST" id="purchaseForm" aria-labelledby="purchaseForm">
+            <div class="form-group form-container">
+              <p class="mb-3 fw-bold">{{ product.name }}</p>
+              <p id="productPriceLabel" class="fw-semibold">${{ product.price }}</p>
+
+              <div class="quantity-control d-flex justify-content-between align-items-center">
+                <button class="qty-count qty-count--minus btn" type="button" data-action="minus"
+                  aria-label="Decrease quantity">-</button>
+                <input class="product-qty form-control text-center mx-2" type="number" name="product_qty" min="1"
+                  max="{{ product.stock }}" value="1" aria-label="Product quantity" />
+                <button class="qty-count qty-count--add btn" type="button" data-action="add"
+                  aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3 mb-3" aria-label="Submit purchase">Purchase</button>
+          </form>
+
+          <!-- Add to Cart Button -->
+          <form action="{{ url_for('cart.add_to_cart', product_id=product.id) }}" method="POST">
+            <input type="hidden" name="product_qty" value="1" />
+            <button type="submit" class="btn btn-success w-100 mb-3" aria-label="Add to Cart">Add to Cart</button>
+          </form>
+
+          <button type="button" class="btn btn-secondary w-100 mb-3" aria-label="Go to tech details">Tech
+            Details</button>
+          <p class="small">To read more about this technology, visit the Tech Details page by clicking the above button.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <hr />
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="mb-4 fs-3 fw-semibold">Comments</h3>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <div class="d-flex align-items-center mb-2">
+              <img src="../static/img/anoncat.jpeg" class="rounded-circle me-3" alt="Your user image" height="64"
+                width="64" />
+              <h5 class="mb-0">Logged in User <small class="text-muted">(Log in to comment as yourself!)</small></h5>
+            </div>
+            <label for="comment">Leave a Comment:</label>
+            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Comment</button>
+        </form>
+        <hr />
+
+        <!-- Example Comment -->
+        <div class="media bg-light p-4 rounded mb-3">
+          <img src="../static/img/anonpanda.jpeg" class="rounded-circle me-3" alt="User image" height="64" width="64" />
+          <div class="media-body">
+            <h5 class="mb-2">Anonymous Panda</h5>
+            <p>Ngl this product is legit. Give it a try forsho forsho.</p>
+            <small class="text-muted">Date Posted: 3/04/2025 7:38pm</small>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="row other-products-section" aria-labelledby="other-products-section">
+      <div class="col-12">
+        <h2 id="other-products-section">Other Products You May Like</h2>
+      </div>
+      {% for item in related_products %}
+      <div class="col-12 col-md-4 mb-3">
+        <div class="card other-product-card" role="region" aria-labelledby="product{{ loop.index }}">
+          <a href="{{ url_for('product.show', id=item.id) }}" aria-label="Visit {{ item.name }} details"><img
+              src="{{ item.image }}" class="card-img-top other-product-img" alt="Image of {{ item.name }}" /></a>
+          <div class="card-body">
+            <a href="{{ url_for('product.show', id=item.id) }}" class="text-decoration-none">
+              <h5 class="card-title text-center">{{ item.name }}</h5>
+            </a>
+            <p class="card-text text-center">{{ item.category }}</p>
+            <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-quaternary w-100"
+              aria-label="Visit {{ item.name }} details">Visit</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <br />
+  </div>
+</main>
 {% endblock %}
