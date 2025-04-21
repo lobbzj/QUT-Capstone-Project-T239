@@ -1,8 +1,10 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
+from flask_login import login_required, current_user
 from datetime import datetime
 confirmationbp = Blueprint('confirmation', __name__, url_prefix='/confirmation')
 
 @confirmationbp.route('/')
+@login_required
 def show():
     current_date = datetime.now().strftime('%d/%m/%Y')
     id_date = datetime.now().strftime('%Y%m%d')
