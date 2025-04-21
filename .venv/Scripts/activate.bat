@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\damin\Documents\IFB399 Project Local\QUT-Capstone-Project-T239\.venv
+set VIRTUAL_ENV=C:\Users\yipch\Desktop\QUT-Capstone-Project-T239\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
