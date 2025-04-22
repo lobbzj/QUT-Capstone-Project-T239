@@ -45,6 +45,11 @@ def add_to_cart(product_id):
 
     session['cart'] = cart  # Save the updated cart back to the session
     flash('Product added to cart!', 'success')
+
+    # for testing the quantity:
+    quantity = int(request.form.get('product_qty', 1))
+    print(f"Quantity received from form: {quantity}")
+
     return redirect(url_for('product.show', id=product_id))
 
 # removing items from cart
