@@ -108,130 +108,68 @@
       </div>
       
       <div style="position: fixed; top: 110px; right: 5px; width: 450px;">
-        <!-- Toggle Button -->
-        <button id="toggleTableButton" style="position: absolute; left: -20px; background-color: transparent; border: none; cursor: pointer; font-size: 16px;">
-            ▶
-        </button>
-    
-        <!-- Table Container -->
+
         <div id="tableContainer" style="background-color: white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd;">
-            <table style="border-collapse: collapse; margin: 0; width: 100%;">
-                <thead>
-                    <tr style="background-color: #f8f8f8; text-align: center;">
-                        <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Item Name</th>
-                        <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Qty</th>
-                        <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Sub-total</th>
-                    </tr>
-                </thead>
-                <tbody id="cartTableBody">
-                    <!-- Rows will be dynamically added here -->
-                </tbody>
-                <tfoot>
-                    <tr style="text-align: center; font-weight: bold;">
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">Total (GST included)</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;"></td>
-                        <td id="cartTotal" style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">$0.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-    
-    <script>
-      // Example cart data (empty by default)
-      const cart = []; // Replace this with your actual cart data
-  
-      // Function to populate the cart table
-      function populateCartTable() {
-          const cartTableBody = document.getElementById('cartTableBody');
-          const cartTotalElement = document.getElementById('cartTotal');
-          const shippingMethod = document.getElementById('ship'); // Shipping method dropdown
-          let cartTotal = 0;
-  
-          // Clear the table body
-          cartTableBody.innerHTML = '';
-  
-          // Check if the cart is empty
-          if (cart.length === 0) {
-              const emptyRow = `
-                  <tr style="text-align: center;">
-                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
-                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">0</td>
-                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$0.00</td>
+          <table style="border-collapse: collapse; margin: 0; width: 100%;">
+              <thead>
+                  <tr style="background-color: #f8f8f8; text-align: center;">
+                      <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Item Name</th>
+                      <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Qty</th>
+                      <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Sub-total</th>
                   </tr>
-              `;
-              cartTableBody.innerHTML = emptyRow;
-          } else {
-              // Loop through the cart items and add rows
-              cart.forEach(item => {
-                  const subtotal = item.qty * item.price;
-                  cartTotal += subtotal;
-  
-                  const row = `
-                      <tr style="text-align: center;">
-                          <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.name}</td>
-                          <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.qty}</td>
-                          <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$${subtotal.toFixed(2)}</td>
-                      </tr>
-                  `;
-                  cartTableBody.innerHTML += row;
-              });
-          }
-  
-          // Add the shipping row
-          let shippingCost = 0;
-          let shippingText = "Free";
-          if (shippingMethod.value === "Express") {
-              shippingCost = 50;
-              shippingText = "$50";
-          }
-          cartTotal += shippingCost;
-  
-          const shippingRow = `
-              <tr style="text-align: center;">
-                  <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
-                  <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
-                  <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${shippingText}</td>
-              </tr>
-          `;
-          cartTableBody.innerHTML += shippingRow;
-  
-          // Update the total
-          cartTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
-      }
-  
-      // Call the function to populate the table
-      populateCartTable();
-  
-      // Update the table when the shipping method changes
-      const shippingMethodDropdown = document.getElementById('ship');
-      shippingMethodDropdown.addEventListener('change', populateCartTable);
-  
-      // Toggle table visibility
-      const toggleButton = document.getElementById('toggleTableButton');
-      const tableContainer = document.getElementById('tableContainer');
-  
-      toggleButton.addEventListener('click', () => {
-          if (tableContainer.style.display === 'none') {
-              tableContainer.style.display = 'block';
-              toggleButton.style.left = '-20px'; // Move button to the left
-              toggleButton.textContent = '▶'; // Right arrow
-          } else {
-              tableContainer.style.display = 'none';
-              toggleButton.style.left = '430px'; // Move button to the right edge
-              toggleButton.textContent = '◀'; // Left arrow
-          }
-      });
-  </script>
-
-
+              </thead>
+              <tbody>
+                  <!-- Shipping Row -->
+                  <tr style="text-align: center;">
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
+                      <td id="shippingCost" style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Free</td>
+                  </tr>
+      
+                  <!-- Cart Items -->
+                  {% for item in items %}
+                  <tr style="text-align: center;">
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.product.name }}</td>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.quantity }}</td>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${{ item.total_price }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              <tfoot>
+                  <tr style="text-align: center; font-weight: bold;">
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">Total (GST included)</td>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;"></td>
+                      <td id="cartTotal" style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">${{ total }}</td>
+                  </tr>
+              </tfoot>
+          </table>
+      </div>
+      
+      <script>
+        // Update the shipping cost dynamically based on the selected shipping method
+        const shippingDropdown = document.getElementById('ship');
+        const shippingCostElement = document.getElementById('shippingCost');
+        const cartTotalElement = document.getElementById('cartTotal');
+    
+        shippingDropdown.addEventListener('change', () => {
+            let shippingCost = 0;
+            let shippingText = "Free";
+    
+            if (shippingDropdown.value === "Express") {
+                shippingCost = 50;
+                shippingText = "$50";
+            }
+    
+            // Update the shipping cost in the table
+            shippingCostElement.textContent = shippingText;
+    
+            // Update the total cost (assuming `total` is passed from the backend)
+            const cartTotal = parseFloat("{{ total|default(0) }}");
+            const updatedTotal = cartTotal + shippingCost;
+            cartTotalElement.textContent = `$${updatedTotal.toFixed(2)}`;
+        });
+      </script>
     </div>
-  </div>
-  
-
-      
-      
-          
 
       </div> 
     </div>
