@@ -138,68 +138,91 @@
     </div>
     
     <script>
-        // Example cart data (empty by default)
-        const cart = []; // Replace this with your actual cart data
-    
-        // Function to populate the cart table
-        function populateCartTable() {
-            const cartTableBody = document.getElementById('cartTableBody');
-            const cartTotalElement = document.getElementById('cartTotal');
-            let cartTotal = 0;
-    
-            // Clear the table body
-            cartTableBody.innerHTML = '';
-    
-            // Check if the cart is empty
-            if (cart.length === 0) {
-                const emptyRow = `
-                    <tr style="text-align: center;">
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">0</td>
-                        <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$0.00</td>
-                    </tr>
-                `;
-                cartTableBody.innerHTML = emptyRow;
-            } else {
-                // Loop through the cart items and add rows
-                cart.forEach(item => {
-                    const subtotal = item.qty * item.price;
-                    cartTotal += subtotal;
-    
-                    const row = `
-                        <tr style="text-align: center;">
-                            <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.name}</td>
-                            <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.qty}</td>
-                            <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$${subtotal.toFixed(2)}</td>
-                        </tr>
-                    `;
-                    cartTableBody.innerHTML += row;
-                });
-            }
-    
-            // Update the total
-            cartTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
-        }
-    
-        // Call the function to populate the table
-        populateCartTable();
-    
-        // Toggle table visibility
-        const toggleButton = document.getElementById('toggleTableButton');
-        const tableContainer = document.getElementById('tableContainer');
-    
-        toggleButton.addEventListener('click', () => {
-            if (tableContainer.style.display === 'none') {
-                tableContainer.style.display = 'block';
-                toggleButton.style.left = '-20px'; // Move button to the left
-                toggleButton.textContent = '▶'; // Right arrow
-            } else {
-                tableContainer.style.display = 'none';
-                toggleButton.style.left = '430px'; // Move button to the right edge
-                toggleButton.textContent = '◀'; // Left arrow
-            }
-        });
-    </script>
+      // Example cart data (empty by default)
+      const cart = []; // Replace this with your actual cart data
+  
+      // Function to populate the cart table
+      function populateCartTable() {
+          const cartTableBody = document.getElementById('cartTableBody');
+          const cartTotalElement = document.getElementById('cartTotal');
+          const shippingMethod = document.getElementById('ship'); // Shipping method dropdown
+          let cartTotal = 0;
+  
+          // Clear the table body
+          cartTableBody.innerHTML = '';
+  
+          // Check if the cart is empty
+          if (cart.length === 0) {
+              const emptyRow = `
+                  <tr style="text-align: center;">
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;"></td>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">0</td>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$0.00</td>
+                  </tr>
+              `;
+              cartTableBody.innerHTML = emptyRow;
+          } else {
+              // Loop through the cart items and add rows
+              cart.forEach(item => {
+                  const subtotal = item.qty * item.price;
+                  cartTotal += subtotal;
+  
+                  const row = `
+                      <tr style="text-align: center;">
+                          <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.name}</td>
+                          <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${item.qty}</td>
+                          <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">$${subtotal.toFixed(2)}</td>
+                      </tr>
+                  `;
+                  cartTableBody.innerHTML += row;
+              });
+          }
+  
+          // Add the shipping row
+          let shippingCost = 0;
+          let shippingText = "Free";
+          if (shippingMethod.value === "Express") {
+              shippingCost = 50;
+              shippingText = "$50";
+          }
+          cartTotal += shippingCost;
+  
+          const shippingRow = `
+              <tr style="text-align: center;">
+                  <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
+                  <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
+                  <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${shippingText}</td>
+              </tr>
+          `;
+          cartTableBody.innerHTML += shippingRow;
+  
+          // Update the total
+          cartTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
+      }
+  
+      // Call the function to populate the table
+      populateCartTable();
+  
+      // Update the table when the shipping method changes
+      const shippingMethodDropdown = document.getElementById('ship');
+      shippingMethodDropdown.addEventListener('change', populateCartTable);
+  
+      // Toggle table visibility
+      const toggleButton = document.getElementById('toggleTableButton');
+      const tableContainer = document.getElementById('tableContainer');
+  
+      toggleButton.addEventListener('click', () => {
+          if (tableContainer.style.display === 'none') {
+              tableContainer.style.display = 'block';
+              toggleButton.style.left = '-20px'; // Move button to the left
+              toggleButton.textContent = '▶'; // Right arrow
+          } else {
+              tableContainer.style.display = 'none';
+              toggleButton.style.left = '430px'; // Move button to the right edge
+              toggleButton.textContent = '◀'; // Left arrow
+          }
+      });
+  </script>
 
 
     </div>
