@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from flask_login import login_required, current_user
 from .models import Product, db
+from app import db
+from app.models import Order, Product
+from datetime import datetime
 
 checkoutbp = Blueprint('checkout', __name__, url_prefix='/checkout')
 
@@ -25,3 +28,33 @@ def show():
 
     # Pass the cart items and total price to the checkout template
     return render_template('checkout.html', items=cart_items, total=total_price)
+
+@checkoutbp.route('/save', methods=['POST'])
+@login_required
+def save_order():
+    # Get data from the form
+    total_price = float(request.form.get('total_price', 0))
+    shipping_method = request.form.get('shipping_method', 'Standard')
+    user_id = current_user.id
+
+    # Get all products in the user's cart
+    cart = session.get('cart', {})
+    for product_id, quantity in cart.items():
+        # Create a new order for each product
+        new_order = Order(
+            status="Pending",  # Default status
+            total_price=total_price,
+            created_at=datetime.now(),
+            user_id=user_id,
+            product_id=int(product_id)
+        )
+        db.session.add(new_order)
+
+    # Commit the changes to the database
+    db.session.commit()
+
+    # Clear the cart after placing the order
+    session['cart'] = {}
+
+    flash("Order placed successfully!", "success")
+    return redirect(url_for('checkout.show'))

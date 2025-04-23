@@ -63,7 +63,7 @@ class Order(db.Model):
     
     # string print method
     def __repr__(self):
-        return f"Order: {self.id}"
+        return f"Order(id={self.id}, total_price={self.total_price}, user_id={self.user_id})"
 
 
 class Payment(db.Model):

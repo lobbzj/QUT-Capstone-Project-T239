@@ -62,26 +62,36 @@
       </div>
 
       <!-- New Buttons -->
-      <div style="display: flex; gap: 10px; margin-top: 20px;">
+      <div style="margin-top: 20px;">
         <!-- Place Order Button -->
-        <button 
-          style="background-color: green; color: white; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;"
-          onclick="window.location.href='/confirmation';">
-          Place Order
-        </button>
-        <!-- Cancel Button -->
-        <button 
-          style="background-color: lightgrey; color: black; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;"
-          onclick="window.location.href='/';">
-          Cancel
-        </button>
+        <form method="POST" action="/checkout/save" style="display: flex; gap: 10px; align-items: center;">
+          <!-- Hidden input for total price -->
+          <input type="hidden" name="total_price" value="{{ total }}">
+
+          <!-- Hidden input for shipping method -->
+          <input type="hidden" id="selectedShippingMethod" name="shipping_method" value="">
+
+          <button 
+            type="submit"
+            style="background-color: green; color: white; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;">
+            Place Order
+          </button>
+
+          <!-- Cancel Button -->
+          <button 
+            type="button"
+            style="background-color: lightgrey; color: black; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;"
+            onclick="window.location.href='/';">
+            Cancel
+          </button>
+        </form>
       </div>
     </div>
 
     <!-- Right Side: Table -->
     <div class="right-container" style="flex: 1; position: relative;">
       <!-- Toggle Button -->
-        <button id="toggleTableButton" style="position: absolute; left: -25px; top: 30px; background-color: blue; color: white; border: none; padding: 3px 7px; cursor: pointer; font-size: 12px; border-radius: 4px;">
+      <button id="toggleTableButton" style="position: absolute; left: -25px; top: 30px; background-color: blue; color: white; border: none; padding: 3px 7px; cursor: pointer; font-size: 12px; border-radius: 4px;">
         ▲
       </button>
 
