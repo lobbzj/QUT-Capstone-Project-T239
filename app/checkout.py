@@ -56,5 +56,6 @@ def save_order():
     # Clear the cart after placing the order
     session['cart'] = {}
 
-    flash("Order placed successfully!", "success")
-    return redirect(url_for('checkout.show'))
+    # Redirect to the confirmation page with the order date
+    order_date = datetime.now().strftime('%d/%m/%Y %H:%M (GMT+10) AEST')
+    return render_template('confirmation.html', order_date=order_date)
