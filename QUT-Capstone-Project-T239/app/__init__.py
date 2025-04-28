@@ -65,4 +65,7 @@ def create_app():
       year = datetime.datetime.today().year
       return dict(year=year)
     
+    with app.app_context():
+      db.create_all()
+    
     return app
