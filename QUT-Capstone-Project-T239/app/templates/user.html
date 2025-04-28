@@ -168,11 +168,11 @@
               {% endif %}
             </div>
             
-            <!-- Validation Code（Only visible to Business Partner） -->
-            {% if form.member_type.data == 'business_partner' %}
-              <div class="mb-3">
+            <!-- Validation Code -->
+            {% if heading == 'Register' and form.validation_code is defined %}
+              <div class="mb-3" id="validation-code-div" style="display: none;">
                 {{ form.validation_code.label(class="form-label") }}
-                {{ form.validation_code(class="form-control", placeholder="Enter validation code") }}
+                {{ form.validation_code(class="form-control", id="validation_code", placeholder="Enter validation code", disabled=True) }}
                 {% if form.validation_code.errors %}
                   <div class="text-danger">
                     {% for error in form.validation_code.errors %}

@@ -65,6 +65,8 @@ def login():
             flash('Incorrect username', 'danger')
         elif not check_password_hash(user.password_hash, password):
             flash('Incorrect password', 'danger')
+        elif user.member_type != member_type:
+            flash('Incorrect member type', 'danger')
         else:
             login_user(user)
             flash('Login successful!', 'success')
