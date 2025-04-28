@@ -6,6 +6,7 @@ cartbp = Blueprint('cart', __name__, url_prefix='/cart')
 
 # displaying the cart
 @cartbp.route('/')
+@login_required
 def view_cart():
     cart = session.get('cart', {})  # Get the cart from the session
     cart_items = []

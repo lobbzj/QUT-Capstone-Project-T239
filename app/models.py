@@ -1,17 +1,16 @@
-from app import db
+from . import db
 from datetime import datetime
 from flask_login import UserMixin
-# from flask_login import UserMixin
 
-class User(UserMixin, db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users' 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
-    email = db.Column(db.String(100), index=True, nullable=False) #changed from emailid ---> email
-    mobile = db.Column(db.String(100), index=True, nullable=False)
+    email = db.Column(db.String(100), index=True, nullable=False)
+    mobile = db.Column(db.String(100), index=True, nullable=True)
     password_hash = db.Column(db.String(255), nullable=False)
-    address = db.Column(db.String(255), nullable=True)
-    member_type = db.Column(db.String(50), nullable=False)
+    member_type = db.Column(db.String(100), default=False)
+    address = db.Column(db.String(100), nullable=True)
     # add the foreign key
     comments = db.relationship('Comment', backref='user')
     orders = db.relationship('Order', backref='user')
@@ -49,7 +48,7 @@ class Comment(db.Model):
 
     # string print method
     def __repr__(self):
-        return f"Comment: {self.text}"
+        return f"Comment: {self.text}" 
 
 class Order(db.Model):
     __tablename__ = 'orders'
@@ -78,7 +77,8 @@ class Payment(db.Model):
     
     # string print method
     def __repr__(self):
-        return f"Payment: {self.id}"
+        return f"Payment: {self.id}" 
+
 
 # added by Minh
 class Cart(db.Model):

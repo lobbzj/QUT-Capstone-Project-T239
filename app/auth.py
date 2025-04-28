@@ -29,7 +29,6 @@ def register():
         # Check if user already exists
         user = db.session.scalar(db.select(User).where(User.name == uname))
         if user:
-            login_user(user) # minh added this
             flash('Username already exists, please try another.', 'danger')
             return redirect(url_for('auth.register'))
 
@@ -37,7 +36,6 @@ def register():
         pwd_hash = generate_password_hash(pwd)
 
         # Create new user
-        # changed email=email --> emailid=email
         new_user = User(name=uname, password_hash=pwd_hash, mobile=mobile, email=email, address=full_address, member_type=member_type)
         db.session.add(new_user)
         db.session.commit()
@@ -67,6 +65,8 @@ def login():
             flash('Incorrect username', 'danger')
         elif not check_password_hash(user.password_hash, password):
             flash('Incorrect password', 'danger')
+        elif user.member_type != member_type:
+            flash('Incorrect member type', 'danger')
         else:
             login_user(user)
             flash('Login successful!', 'success')

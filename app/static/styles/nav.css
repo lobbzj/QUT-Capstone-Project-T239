@@ -1,20 +1,29 @@
-.navbar 
-    {
-     background-color: rgb(255, 255, 255); /* Set background to black */
-    }
-    
-.nav-link 
-    {
-     color: black !important; /* Make the text white */
-    }
-    
-.no-underline 
-    {
-     text-decoration: none; /* Remove underline */
-    }
-    
-.nav-link:hover 
-    {
-     color: #757171 !important; /* Optional: Change color on hover */
-    }
+.navbar {
+    background-color: rgb(255, 255, 255);
+    /* Set background to black */
 
+}
+
+.nav-link {
+    color: black !important;
+    /* Make the text white */
+}
+
+.no-underline {
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.nav-link:hover {
+    color: #757171 !important;
+    /* Optional: Change color on hover */
+}
+
+.navbar-collapse {
+    transition: height 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon {
+    display: inline-block !important;
+    background-color: transparent;
+}
