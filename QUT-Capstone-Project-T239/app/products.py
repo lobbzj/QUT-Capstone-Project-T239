@@ -19,7 +19,7 @@ def show(id):
     related_products = Product.query.filter_by(category=product.category).filter(
         Product.id != product.id).limit(3).all()
     comments = Comment.query.filter_by(
-        product_id=product.id).order_by(Comment.created_at.desc()).all()
+        product_id=product.id).order_by(Comment.id.asc()).all()
 
     cmtForm = CommentForm()
 
