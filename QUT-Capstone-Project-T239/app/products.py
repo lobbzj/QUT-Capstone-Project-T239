@@ -10,7 +10,6 @@ from flask_login import login_required, current_user
 
 productsbp = Blueprint('product', __name__, url_prefix='/products')
 
-
 @productsbp.route("/<id>", methods=['GET'])
 @productsbp.route("/<id>", methods=['GET', 'POST'])
 def show(id):
