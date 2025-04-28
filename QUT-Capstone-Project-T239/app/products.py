@@ -18,7 +18,9 @@ def show(id):
     product = Product.query.filter_by(id=id).first()
     related_products = Product.query.filter_by(category=product.category).filter(
         Product.id != product.id).limit(3).all()
-    comments = Comment.query.filter_by(product_id=product.id).all()
+    comments = Comment.query.filter_by(
+        product_id=product.id).order_by(Comment.created_at.desc()).all()
+
     cmtForm = CommentForm()
 
     if request.method == 'POST':
