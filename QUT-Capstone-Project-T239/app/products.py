@@ -1,8 +1,8 @@
 
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.utils import secure_filename
-from .forms import CreateProductForm
-from .models import db, Product
+from .forms import CreateProductForm, CommentForm
+from .models import db, Product, Comment
 import os
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
@@ -12,20 +12,38 @@ productsbp = Blueprint('product', __name__, url_prefix='/products')
 
 
 @productsbp.route("/<id>", methods=['GET'])
+@productsbp.route("/<id>", methods=['GET', 'POST'])
 def show(id):
-    try:
-        product = Product.query.filter_by(id=id).first()
-        related_products = Product.query.filter_by(category=product.category).filter(
-            Product.id != product.id).limit(3).all()
+    # try:
+    product = Product.query.filter_by(id=id).first()
+    related_products = Product.query.filter_by(category=product.category).filter(
+        Product.id != product.id).limit(3).all()
+    comments = Comment.query.filter_by(product_id=product.id).all()
+    cmtForm = CommentForm()
 
-        if id == None:
-            id = "products/create"
+    if request.method == 'POST':
+        comment_text = request.form.get('comment')
+        if not comment_text:
+            flash('Comment cannot be empty.', 'danger')
+        else:
+            if current_user.is_authenticated:
+                new_comment = Comment(
+                    content=comment_text, user_id=current_user.id, product_id=product.id)
+                db.session.add(new_comment)
+                db.session.commit()
+                flash('Comment added!', 'success')
+                return redirect(url_for('product.show', id=product.id))
+            else:
+                flash('You need to be logged in to comment.', 'warning')
+                # Assuming you have an auth blueprint
+                return redirect(url_for('auth.login'))
 
-        return render_template('productPurchase.html', product=product, related_products=related_products)
+    return render_template('productPurchase.html', product=product, related_products=related_products, comments=comments,  form=cmtForm)
 
-    except:
-        message = "Product was not found"
-        return render_template("404.html")
+    # except Exception as e:
+    #     print(e)
+    #     message = "Product was not found"
+    #     return render_template("404.html")
 
 
 @productsbp.route('/create', methods=['GET', 'POST'])
@@ -94,3 +112,24 @@ def check_upload_file(form):
     # save the file and return the db upload path
     fp.save(upload_path)
     return db_upload_path
+
+
+@productsbp.route('<id>/comment', methods=['GET', 'POST'])
+@login_required
+def comment(id):
+    product_obj = Product.query.filter_by(id=id).first()
+    # here the form is created form = CommentForm()
+    form = CommentForm()
+    if form.validate_on_submit():
+
+        comment = Comment(text=form.text.data,
+                          product=product_obj, user=current_user)
+        # print(form.text.data)
+        db.session.add(comment)
+        try:
+            db.session.commit()
+            flash("Your comment was successful!")
+        except (RuntimeError, TypeError, NameError):
+            print(Exception)
+            print('ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR!!!!!!')
+    return redirect(url_for('product.show', id=id))
