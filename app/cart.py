@@ -63,3 +63,18 @@ def remove_item(product_id):
 
     session['cart'] = cart  # Save the updated cart back to the session
     return redirect(url_for('cart.view_cart'))
+
+# Updating item quantity in the cart
+@cartbp.route('/update/<int:product_id>', methods=['POST'])
+@login_required
+def update_quantity(product_id):
+    cart = session.get('cart', {}) 
+    new_quantity = int(request.form.get('quantity', 1)) 
+    if str(product_id) in cart:
+        if new_quantity > 0:
+            cart[str(product_id)] = new_quantity
+        else:
+            del cart[str(product_id)] 
+    session['cart'] = cart  
+    flash('Cart updated successfully!', 'success')
+    return redirect(url_for('cart.view_cart'))

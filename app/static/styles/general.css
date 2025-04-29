@@ -213,3 +213,7 @@ footer {
 .card-text {
     min-height: 3rem;
 }
+
+.text-center.mt-4 a {
+    margin-bottom: 20px; /* Adjust the value as needed */
+}

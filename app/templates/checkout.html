@@ -3,122 +3,238 @@
 {% block content %}
 
 <main>
-  <div class = "container">
-    <div class="row">
-      <div class="col-10 order-first">
-        <div style="font-size: 30px; font-weight: bold">
-          <p>Order Details</p>
-        </div>
+  <div class="container" style="display: flex; align-items: flex-start; gap: 20px;">
+    <!-- Left Side: Order Details, Customer Information, Shipping Method, Shipping Address, Payment Method, Buttons -->
+    <div class="left-container" style="flex: 2;">
+      <!-- Order Details -->
+      <div class="order-details" style="font-size: 30px; font-weight: bold; margin-bottom: 20px;">
+        <p>Order Details</p>
+      </div>
 
-        <div class="row">
-          <div style="font-size: 20px; font-weight: bold">
-          <div class="col-10">
-          <p>Customer Information</p>
-
-          <div style="font-size: 15px; font-weight: bold">
-          <p><input class="input" type="text" placeholder="First Name" name="FirstName" required> <input class="input" type="text" placeholder="Middle Name (Optional)" name="MiddleName"> </p>
+      <!-- Customer Information -->
+      <div class="customer-information" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
+        <p>Customer Information</p>
+        <div style="font-size: 15px; font-weight: bold;">
+          <p><input class="input" type="text" placeholder="First Name" name="FirstName" required> <input class="input" type="text" placeholder="Middle Name (Optional)" name="MiddleName"></p>
           <p><input class="input" type="text" placeholder="Surname" name="SurName" required></p>
           <p><input class="input" type="text" placeholder="Phone Number" name="PhoneNumber" required></p>
           <p><input class="input" type="text" placeholder="Email" name="Email" required></p>
         </div>
-
-        <div class ="row">
-          <div style="font-size: 20px; font-weight: bold">
-          <div class="col-10">
-            <label for="shipping">Shipping Method</label> </p>
-            <div style="font-size: 15px; font-weight: bold">
-            <select id="ship" name="ship">
-                <option value="Standard">Standard: Arrives 14-21 days (12 Sep 2025 - 19 Sep 2025)</option>
-                <option value="Express">Express: Arrives 3-5 days (1 Sep 2025 - 3 Sep 2025) +$50</option>
-            </select></p>
-          </div>
-
-        <div class ="row">
-          <div style="font-size: 20px; font-weight: bold">
-          <div class="col-10">
-            <p>Shipping Address</p>
-            <div style="font-size: 15px; font-weight: bold">
-              <p><input class="input" type="text" placeholder="Address line 1" name="Addressline1" required></p>
-              <p><input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2"></p>
-              <p><input class="input" type="text" placeholder="Suburb" name="Suburb" required> <input class="input" type="text" placeholder="Postal code" name="PostalCode"> </p>
-              <p><input class="input" type="text" placeholder="City" name="City" required></p>
-              <p><input class="input" type="text" placeholder="State" name="State" required></p>
-          </div>
-
-        <div class ="row">
-          <div style="font-size: 20px; font-weight: bold">
-          <div class="col-10">
-            <p>Payment Method</p>
-            <button class="image-button">
-              <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
-            </button>
-
-            <button class="image-button">
-              <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
-            </button>
-            </div>
-            <p> </p>
-          </div>
-        </div>
-
-        <div class="buttons" >
-          <div style="position: float; bottom: 20px; right: 0px;  display: flex;gap: 10px;">
-
-          <!--need onclick button.....-->
-          <a href="/confirmation">
-            <button type="button" 
-            style="background-color: green; border-radius: 50px; color: white; border: none;
-            padding: 5px 10px; font-size: 16px;">Place Order</button>
-          </a>
-
-            <button type="button" style="background-color: lightgrey; border-radius: 50px; color: black;  border: none;
-            padding: 5px 10px; font-size: 16px;">Cancel</button>
-
-        </div>
-     
       </div>
-      
-      <table style="position: fixed; top: 100px; right: 5px; border-collapse: collapse; margin: 0; background: none;">
-        <tr>
-            
-            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
-            <td><input type="text" value="Your Order" style="width: 150px; border: none; font-size: 15px; font-weight: bold; text-align: center;"></td>
-            <td><input type="text" style="width: 150px; border: none; text-align: center;"></td>
-        </tr>
-        <tr>
-            <td><input type="text" value="Item Name" style="width: 150px; border: none; font-size: 15px; text-decoration: underline; text-align: center;"></td>
-            <td><input type="text" value="Qty" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-            <td><input type="text" value="sub total" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-        </tr>
-        <tr>
-            <td><input type="text" value="Smart Watch AA" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-            <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-            <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-        </tr>
-        <tr>
-          <td><input type="text" value="Shipping" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="1" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="Free" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-        </tr>
-      
-        <tr>
-          <td><input type="text" value="Total (GST included)" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-          <td><input type="text" value="$199" style="width: 150px; border: none; font-size: 15px; text-align: center;"></td>
-        </tr>
 
+      <!-- Shipping Address -->
+      <div class="shipping-address" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
+        <p>Shipping Address</p>
+        <div style="font-size: 15px; font-weight: bold;">
+          <p><input class="input" type="text" placeholder="Address line 1" name="Addressline1" required></p>
+          <p><input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2"></p>
+          <p>
+            <input class="input" type="text" placeholder="Suburb" name="Suburb" required>
+            <input class="input" type="text" placeholder="Postal code" name="PostalCode">
+          </p>
+          <p><input class="input" type="text" placeholder="City" name="City" required></p>
+          <p><input class="input" type="text" placeholder="State" name="State" required></p>
+        </div>
+      </div>
+
+      <!-- Shipping Method -->
+      <div class="shipping-method" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
+        <p>Shipping Method</p>
+        <div style="font-size: 15px; font-weight: bold;">
+          <label for="shipping">Select Shipping Method:</label><br>
+          <select id="ship" name="ship" style="margin-top: 10px;">
+            <!-- Options will be dynamically updated -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="payment-method" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
+        <p>Payment Method</p>
+        <div>
+          <button class="image-button">
+            <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
+          </button>
+          <button class="image-button">
+            <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
+          </button>
+        </div>
+      </div>
+
+      <!-- New Buttons -->
+      <div style="margin-top: 20px;">
+        <form method="POST" action="/checkout/save" style="display: flex; gap: 10px; align-items: center;">
+          <!-- Hidden input for total price -->
+          <input type="hidden" id="totalPriceInput" name="total_price" value="{{ total }}">
         
-    </table>
-    <hr style="position: fixed; top: 220px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
-    <hr style="position: fixed; top: 250px; right: 10px; width: 450px; border: none; border-top: 2px solid black;">
+          <!-- Hidden input for shipping method -->
+          <input type="hidden" id="selectedShippingMethod" name="shipping_method" value="">
+        
+          <button 
+            type="submit"
+            style="background-color: green; color: white; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;">
+            Place Order
+          </button>
+        
+          <!-- Cancel Button -->
+          <button 
+            type="button"
+            style="background-color: lightgrey; color: black; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;"
+            onclick="window.location.href='/';">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
 
+    <!-- Right Side: Table -->
+    <div class="right-container" style="flex: 1; position: relative;">
+      <!-- Toggle Button -->
+      <button id="toggleTableButton" style="position: absolute; left: -25px; top: 30px; background-color: blue; color: white; border: none; padding: 3px 7px; cursor: pointer; font-size: 12px; border-radius: 4px;">
+        ▲
+      </button>
+
+      <!-- Table -->
+      <div id="tableContainer" style="background-color: white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd;">
+        <table style="border-collapse: collapse; margin: 0; width: 100%;">
+          <thead>
+            <tr style="background-color: #f8f8f8; text-align: center;">
+              <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Item Name</th>
+              <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Qty</th>
+              <th style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Sub-total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Shipping Row -->
+            <tr style="text-align: center;">
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Shipping</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">1</td>
+              <td id="shippingCost" style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Free</td>
+            </tr>
+
+            <!-- Cart Items -->
+            {% for item in items %}
+            <tr style="text-align: center;">
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.product.name }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.quantity }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr style="text-align: center; font-weight: bold;">
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">Total (GST included)</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px;"></td>
+              <td id="cartTotal" style="padding: 10px; border: 1px solid #ddd; font-size: 14px;">${{ total }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
   </div>
-  
+</main>
 
+
+        <script>
+          // Get the current date
+          const currentDate = new Date();
+        
+          // Function to calculate the arrival date
+          function calculateArrivalDate(daysToAdd) {
+            const resultDate = new Date(currentDate);
+            resultDate.setDate(resultDate.getDate() + daysToAdd);
+            return resultDate.toLocaleDateString('en-UK', { year: 'numeric', month: 'short', day: 'numeric' });
+          }
+        
+          // Shipping options with their respective delivery times
+          const shippingOptions = [
+            { value: "Standard", text: "Standard: Arrives in 14-21 days", minDays: 14, maxDays: 21 },
+            { value: "Express", text: "Express: Arrives in 3-5 days", minDays: 3, maxDays: 5, extraCost: "+$50" }
+          ];
+        
+          // Populate the shipping method dropdown
+          const shipSelect = document.getElementById('ship');
+          shippingOptions.forEach(option => {
+            const minDate = calculateArrivalDate(option.minDays);
+            const maxDate = calculateArrivalDate(option.maxDays);
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = `${option.text} (${minDate} - ${maxDate}) ${option.extraCost || ''}`;
+            shipSelect.appendChild(optionElement);
+          });
+        </script>
+    
+      <script>
+          // Toggle table visibility
+          const toggleButton = document.getElementById('toggleTableButton');
+          const tableContainer = document.getElementById('tableContainer');
+
+          toggleButton.addEventListener('click', () => {
+              if (tableContainer.style.display === 'none') {
+                  // Show the table
+                  tableContainer.style.display = 'block';
+                  toggleButton.textContent = '▲'; // Upwards arrow
+                  toggleButton.style.top = '50px'; // Reset to original position
+                  toggleButton.style.backgroundColor = 'blue'; // Blue background
+                  toggleButton.style.color = 'white'; // White arrow
+                } else {
+                  // Hide the table
+                  tableContainer.style.display = 'none';
+                  toggleButton.textContent = '▼'; // Downwards arrow
+                  toggleButton.style.top = '0'; // Move to the top edge
+                  toggleButton.style.backgroundColor = 'blue'; // Blue background
+                  toggleButton.style.color = 'white'; // White arrow
+                }
+            });
+
+          // Set initial state
+          tableContainer.style.display = 'block'; // Ensure the table is visible initially
+          toggleButton.textContent = '▲'; // Upwards arrow initially
+          oggleButton.style.backgroundColor = 'blue'; // Blue background
+          toggleButton.style.color = 'white'; // White arrow
+        </script>
       
-      
-          
+        <script>
+          // Update the hidden input for the selected shipping method and total price
+          const shippingDropdown = document.getElementById('ship');
+          const selectedShippingMethodInput = document.getElementById('selectedShippingMethod');
+          const totalPriceInput = document.getElementById('totalPriceInput');
+          const shippingCostElement = document.getElementById('shippingCost');
+          const cartTotalElement = document.getElementById('cartTotal');
+        
+          shippingDropdown.addEventListener('change', () => {
+            let shippingCost = 0;
+            let shippingText = "Free";
+        
+            if (shippingDropdown.value === "Express") {
+              shippingCost = 50;
+              shippingText = "$50";
+            }
+        
+            // Update the shipping cost in the table
+            shippingCostElement.textContent = shippingText;
+        
+            // Update the total cost (assuming `total` is passed from the backend)
+            const cartTotal = parseFloat("{{ total|default(0) }}");
+            const updatedTotal = cartTotal + shippingCost;
+        
+            // Update the total price in the hidden input
+            totalPriceInput.value = updatedTotal.toFixed(2);
+        
+            // Update the total cost displayed in the table
+            cartTotalElement.textContent = `$${updatedTotal.toFixed(2)}`;
+        
+            // Update the selected shipping method in the hidden input
+            selectedShippingMethodInput.value = shippingDropdown.value;
+          });
+        
+          // Set the initial value for the shipping method and total price
+          selectedShippingMethodInput.value = shippingDropdown.value;
+          totalPriceInput.value = parseFloat("{{ total|default(0) }}").toFixed(2);
+        </script>
+    </div>
+
+    
 
       </div> 
     </div>
