@@ -51,6 +51,12 @@ def create_app():
     app.register_blueprint(cart.cartbp)
     from . import contact  
     app.register_blueprint(contact.contactbp)
+    from .api import productsAPI
+    app.register_blueprint(productsAPI.api_products_bp)
+    from .api import usersAPI
+    app.register_blueprint(usersAPI.api_users_bp)
+    from .api import commentsAPI
+    app.register_blueprint(commentsAPI.api_comments_bp)
 
     
 
