@@ -105,112 +105,6 @@
     overflow: hidden;
 }
 
-/* Recent Events pop size */
-.Recent-col img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 10px;
-}
-
-.image-wrapper {
-    position: relative;
-    /* Important for positioning the overlay */
-    display: inline-block;
-    /* Allows for inline positioning */
-}
-
-.Recent p {
-    color: #575757cc;
-    font-size: 20px;
-}
-
-.Recent-col .layer {
-    background: rgba(0, 0, 0, 0);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: background 0.5s ease;
-    text-align: center;
-    border-radius: 10px;
-}
-
-/* browse layer deleted */
-
-/* Gray background appears on hover */
-.layer:hover {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-
-/* Text always visible */
-.layer h3,
-.layer p,
-.layer i {
-    width: 100%;
-    font-weight: 500;
-    color: #fff;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    transition: transform 0.5s ease;
-    opacity: 1;
-}
-
-/* Initial positions */
-.layer h3 {
-    font-size: 30px;
-    top: 50%;
-}
-
-.layer p {
-    font-size: 20px;
-    top: 60%;
-}
-
-.layer i {
-    font-size: 20px;
-    top: 70%;
-}
-
-/* Hover effects - drastic upward movement */
-.layer:hover h3,
-.layer:hover p,
-.layer:hover i {
-    transform: translate(-50%, -30%);
-}
-
-
-@media(max-width: 900px) {
-    .layer h3 {
-        font-size: 27px;
-    }
-
-    .Recent-col p {
-        font-size: 15px;
-    }
-
-    .layer:hover p {
-        bottom: 20%;
-        
-    }
-
-    .Recent-col i {
-        font-size: 15px;
-    }
-
-    .layer:hover i {
-        bottom: 10%;
-    }
-}
-
-/* deleted browse css here*/
-
-/* deleted reviews css here dont think it belong to anything*/
-
-
 /* background video added */
 .video-header {
     position: relative;
@@ -374,3 +268,95 @@
       font-size: 0.9rem;
     }
   }
+
+/* Products added to home */
+/* Wrapper for alignment */
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Product Grid */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Product Card */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product Image */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Info Section */
+.product-info {
+  padding: 12px 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.product-info h3 {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-info p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsive Layout */
+@media (max-width: 992px) {
+  .product-card {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    max-width: 100%;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+
+  .product-info h3 {
+    font-size: 1rem;
+  }
+
+  .product-info p {
+    font-size: 0.95rem;
+  }
+}
+
+
