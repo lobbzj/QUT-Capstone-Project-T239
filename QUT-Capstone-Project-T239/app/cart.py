@@ -45,13 +45,15 @@ def add_to_cart(product_id):
         cart[str(product_id)] = quantity
 
     session['cart'] = cart  # Save the updated cart back to the session
-    flash('Product added to cart!', 'success')
 
-    # for testing the quantity:
-    quantity = int(request.form.get('product_qty', 1))
-    print(f"Quantity received from form: {quantity}")
-
-    return redirect(url_for('product.show', id=product_id))
+    # Check the action (add_to_cart or purchase)
+    action = request.form.get('action')
+    if action == 'purchase':
+        flash('Product added to cart! Redirecting to checkout...', 'success')
+        return redirect(url_for('checkout.show'))  # Redirect to the checkout page
+    else:
+        flash('Product added to cart!', 'success')
+        return redirect(url_for('product.show', id=product_id))  # Redirect back to the product page
 
 # removing items from cart
 @cartbp.route('/remove/<int:product_id>', methods=['POST'])
