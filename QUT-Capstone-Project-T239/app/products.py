@@ -14,7 +14,6 @@ productsbp = Blueprint('product', __name__, url_prefix='/products')
 @productsbp.route("/<id>", methods=['GET'])
 @productsbp.route("/<id>", methods=['GET', 'POST'])
 def show(id):
-    # try:
     product = Product.query.filter_by(id=id).first()
     related_products = Product.query.filter_by(category=product.category).filter(
         Product.id != product.id).limit(3).all()
@@ -23,24 +22,22 @@ def show(id):
 
     cmtForm = CommentForm()
 
-    if request.method == 'POST':
-        comment_text = request.form.get('comment')
-        if not comment_text:
-            flash('Comment cannot be empty.', 'danger')
+    if request.method == 'POST' and cmtForm.validate_on_submit():
+        comment_text = cmtForm.text.data
+        if current_user.is_authenticated:
+            new_comment = Comment(
+                content=comment_text, user_id=current_user.id, product_id=product.id)
+            db.session.add(new_comment)
+            db.session.commit()
+            flash('Comment added!', 'success')
+            return redirect(url_for('product.show', id=product.id))
         else:
-            if current_user.is_authenticated:
-                new_comment = Comment(
-                    content=comment_text, user_id=current_user.id, product_id=product.id)
-                db.session.add(new_comment)
-                db.session.commit()
-                flash('Comment added!', 'success')
-                return redirect(url_for('product.show', id=product.id))
-            else:
-                flash('You need to be logged in to comment.', 'warning')
-                # Assuming you have an auth blueprint
-                return redirect(url_for('auth.login'))
+            flash('You need to be logged in to comment.', 'warning')
+            return redirect(url_for('auth.login'))
+    elif request.method == 'POST':
+        flash('Comment cannot be empty.', 'danger')
 
-    return render_template('productPurchase.html', product=product, related_products=related_products, comments=comments,  form=cmtForm)
+    return render_template('productPurchase.html', product=product, related_products=related_products, comments=comments, form=cmtForm)
 
     # except Exception as e:
     #     print(e)
