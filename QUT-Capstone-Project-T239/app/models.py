@@ -88,3 +88,17 @@ class Contact(db.Model):
 
     def __repr__(self):
         return f'<Contact {self.name}>'
+    
+# added by Minh
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Correct table name is 'users'
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)  # Correct table name is 'products'
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+
+    # Relationships
+    product = db.relationship('Product', backref='cart_items')
+    user = db.relationship('User', backref='cart_items')
+
+    def __repr__(self):
+        return f"<Cart User {self.user_id} Product {self.product_id} Quantity {self.quantity}>"
