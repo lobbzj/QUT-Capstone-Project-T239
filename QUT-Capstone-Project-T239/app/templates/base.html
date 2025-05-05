@@ -51,11 +51,11 @@
               </li>
               {% if current_user.is_authenticated %}
               <li class="nav-item">
-              <a class="nav-item nav-link disabled text-muted" href="#">Welcome {{current_user.name}}</a>
+                <a class="nav-link text-decoration-underline fw-bold">Welcome, {{ current_user.name }}!</a>
               </li>
               <li class="nav-item">
-                <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
-              </li>
+                <a class="nav-link fw-bold" href="{{ url_for('auth.logout') }}">Log Out</a>
+              </li>            
               {% else %}
               <li class="nav-item">
                 <a class="nav-link no-underline nav-link:hover" href="/login" aria-label="Login to your account">LOGIN</a>
@@ -67,9 +67,11 @@
                 <a class="nav-link no-underline nav-link:hover" href="/register" aria-label="Create a new account">REGISTER</a>
               </li>
               {% endif %}
+              {% if current_user.is_authenticated and current_user.member_type == 'business_partner' %}
               <li class="nav-item">
-                <a class="nav-link no-underline nav-link:hover" href="/products/create" aria-label="Add a new product">Add Product</a>
+                <a class="nav-link fw-bold" href="/products/create" aria-label="Add a new product">Add Product</a>
               </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link no-underline nav-link:hover" href="/cart" aria-label="Go to shopping cart"><img src="../static/img/cart.png" width="25" height="25" class="d-inline-block align-top" alt="Cart" /></a>
               </li>
@@ -235,6 +237,32 @@
 
           categorySelect.addEventListener('change', updateSubCategories);
           updateSubCategories(); // Initialize on load
+      });
+    </script>
+
+    <!-- JavaScript to manipulate validation code functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const radioButtons = document.querySelectorAll('input[name="member_type"]');
+        const validationCodeDiv = document.getElementById("validation-code-div");
+        const validationCodeInput = document.getElementById("validation_code");
+    
+        function toggleValidationCode() {
+          const selected = document.querySelector('input[name="member_type"]:checked');
+          if (selected && selected.value === "business_partner") {
+            validationCodeDiv.style.display = "block";
+            validationCodeInput.disabled = false;
+          } else {
+            validationCodeDiv.style.display = "none";
+            validationCodeInput.disabled = true;
+            validationCodeInput.value = "";  // Clear the input field when hidden
+          }
+        }
+        toggleValidationCode();
+        // Add event listeners to all radio buttons
+        radioButtons.forEach(radio => {
+          radio.addEventListener("change", toggleValidationCode);
+        });
       });
     </script>
 

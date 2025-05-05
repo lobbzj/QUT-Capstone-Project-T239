@@ -21,48 +21,31 @@
       </div>
     </div>
 
+
+    
+    <!-- Created Products Display -->
     <section class="Recent" aria-labelledby="recent-products-section">
       <h1 id="recent-products-section">Recently Added Products</h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-      <div id="row1" class="row">
-        <div class="Recent-col col-12 col-md-4" aria-labelledby="soccer-product">
-          <a href="/products" aria-label="View Soccer product details">
-            <img src="../static/img/Soccer.jpg" alt="Various soccer products such as balls and jerseys" class="img-fluid" />
-            <div class="layer">
-              <h3>Soccer</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges From A$10.00</i>
+      <div class="product-container">
+        <div class="product-grid">
+          {% for product in products %}
+            <div class="product-card">
+              <a href="{{ url_for('product.show', id=product.id) }}">
+                <img src="{{ product.image }}" class="product-image" />
+              </a>
+              <div class="product-info">
+                <h3>{{ product.name }}</h3>
+                <p>${{ "%.2f"|format(product.price) }}</p>
+              </div>
             </div>
-          </a>
-        </div>
-        <div class="Recent-col col-12 col-md-4" aria-labelledby="rugby-product">
-          <a href="#" aria-label="View Rugby product details">
-            <img src="../static/img/Rugby.jpg" alt="Various rugby products such as balls and kits" class="img-fluid" />
-            <div class="layer">
-              <h3>Rugby</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges From A$27.50</i>
-            </div>
-          </a>
-        </div>
-        <div class="Recent-col col-12 col-md-4" aria-labelledby="cricket-product">
-          <a href="#" aria-label="View Cricket product details">
-            <img src="../static/img/Cricket.jpg" alt="Various cricket products such as bats and pads" class="img-fluid" />
-            <div class="layer Recent-col col-12 col-md-4">
-              <h3>Cricket</h3>
-              <p>
-                <b>Available</b>
-              </p>
-              <i>Anything<br />Ranges From A$79.68</i>
-            </div>
-          </a>
+          {% endfor %}
         </div>
       </div>
     </section>
+
+
+    <!-- Contact HTML -->
     <!-- deleted the browse here -->
     <section class="contact-section" id="contact">
       <h2>Contact Us</h2>
