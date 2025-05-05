@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% import 'bootstrap4/form.html' as wtf %}
+
 {% block content %}
   <main role="main" aria-label="Product Purchase Page">
     <div class="container">
@@ -62,28 +64,32 @@
       <div class="row">
         <div class="col-md-12">
           <h3 class="mb-4 fs-3 fw-semibold">Comments</h3>
-          <form action="#" method="POST">
+          <form action="/products/{{ product.id }}/comment" method="POST">
             <div class="form-group">
               <div class="d-flex align-items-center mb-2">
                 <img src="../static/img/anoncat.jpeg" class="rounded-circle me-3" alt="Your user image" height="64" width="64" />
                 <h5 class="mb-0">Logged in User <small class="text-muted">(Log in to comment as yourself!)</small></h5>
               </div>
-              <label for="comment">Leave a Comment:</label>
-              <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+              {{ wtf.render_form(form, '/products/{0}/comment'.format(product.id)) }}
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Comment</button>
           </form>
           <hr />
 
-          <!-- Example Comment -->
-          <div class="media bg-light p-4 rounded mb-3">
-            <img src="../static/img/anonpanda.jpeg" class="rounded-circle me-3" alt="User image" height="64" width="64" />
-            <div class="media-body">
-              <h5 class="mb-2">Anonymous Panda</h5>
-              <p>Ngl this product is legit. Give it a try forsho forsho.</p>
-              <small class="text-muted">Date Posted: 3/04/2025 7:38pm</small>
-            </div>
-          </div>
+          <!-- Comment Section -->
+          {% if product.comments %}
+            {% for comment in product.comments %}
+              <div class="media bg-light p-4 rounded mb-3">
+                <img src="../static/img/default_profile.jpg" class="rounded-circle me-3" alt="User profile image" height="64" width="64" />
+                <div class="media-body">
+                  <h5 class="mb-2">{{ comment.user.name }}</h5>
+                  <p>{{ comment.text }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-muted">No comments yet. Be the first to comment!</p>
+          {% endif %}
+
           <hr />
         </div>
       </div>

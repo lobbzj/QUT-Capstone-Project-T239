@@ -2,8 +2,9 @@ from . import db
 from datetime import datetime
 from flask_login import UserMixin
 
+
 class User(db.Model, UserMixin):
-    __tablename__ = 'users' 
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     email = db.Column(db.String(100), index=True, nullable=False)
@@ -19,6 +20,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"Name: {self.name}"
 
+
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
@@ -32,23 +34,30 @@ class Product(db.Model):
     # add the foreign key
     comments = db.relationship('Comment', backref='product')
     orders = db.relationship('Order', backref='product')
-    
+
     # string print method
     def __repr__(self):
         return f"Name: {self.name}"
 
+
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(400))
-    created_at = db.Column(db.DateTime, default=datetime.now())
-    # add the foreign key
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+    text = db.Column(db.String(500), nullable=False)
+    created_at = db.Column(
+        db.DateTime, default=datetime.now())
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey(
+        'products.id'), nullable=False)
+
+    def getNiceTime(self):
+        return self.created_at.strftime("%d/%m/%y/%I:%M %p")
 
     # string print method
     def __repr__(self):
-        return f"Comment: {self.text}" 
+        return f"Comment: {self.text}"
+
 
 class Order(db.Model):
     __tablename__ = 'orders'
@@ -59,7 +68,7 @@ class Order(db.Model):
     # add the foreign key
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-    
+
     # string print method
     def __repr__(self):
         return f"Order: {self.id}"
@@ -74,7 +83,7 @@ class Payment(db.Model):
     # add the foreign key
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
-    
+
     # string print method
     def __repr__(self):
-        return f"Payment: {self.id}" 
+        return f"Payment: {self.id}"
