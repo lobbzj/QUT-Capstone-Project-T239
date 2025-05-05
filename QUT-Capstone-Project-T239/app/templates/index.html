@@ -28,7 +28,7 @@
       <h1 id="recent-products-section">Recently Added Products</h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
       <div class="product-container">
-        <div class="row">
+        <div class="product-grid">
           {% for product in products %}
             <div class="product-card">
               <a href="{{ url_for('product.show', id=product.id) }}">
