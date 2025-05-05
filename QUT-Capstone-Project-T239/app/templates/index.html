@@ -45,6 +45,47 @@
     </section>
 
 
+    <!-- This is for browsing all available products-->
+    <section class="all-products-section" id="all-products">
+      <h2>All Products</h2>
+      <p>Browse through all available products. Use the filters to narrow down your search.</p>
+  
+      <!-- Filters -->
+      <div class="filters">
+          <!-- Category Filter -->
+          <select id="category-filter" class="form-select" aria-label="Filter by category">
+              <option value="" selected>All Categories</option>
+              {% for category in categories %}
+              <option value="{{ category }}">{{ category }}</option>
+              {% endfor %}
+          </select>
+  
+          <!-- Price Filter -->
+          <select id="price-filter" class="form-select" aria-label="Filter by price range">
+              <option value="" selected>All Prices</option>
+              <option value="0-50">Under $50</option>
+              <option value="50-100">$50 - $100</option>
+              <option value="100-200">$100 - $200</option>
+              <option value="200+">Above $200</option>
+          </select>
+      </div>
+  
+      <!-- Product Grid -->
+      <div class="product-grid">
+          {% for product in products %}
+          <a href="/products/{{ product.id }}" class="product-card-link">
+              <div class="product-card">
+                  <img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid" />
+                  <h3>{{ product.name }}</h3>
+                  <p>Price: ${{ product.price }}</p>
+                  <p>Category: {{ product.category }}</p>
+              </div>
+          </a>
+          {% endfor %}
+      </div>
+  </section>
+  
+
     <!-- Contact HTML -->
     <!-- deleted the browse here -->
     <section class="contact-section" id="contact">
@@ -60,4 +101,56 @@
     </section>
   </main>
   
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const categoryFilter = document.getElementById('category-filter');
+      const priceFilter = document.getElementById('price-filter');
+      const productCards = document.querySelectorAll('.product-card');
+  
+      function filterProducts() {
+        const selectedCategory = categoryFilter.value.toLowerCase().trim();
+        const selectedPrice = priceFilter.value;
+  
+        productCards.forEach(card => {
+          const productCategory = card.querySelector('p:nth-child(4)').textContent.replace('Category: ', '').toLowerCase().trim();
+          const productPrice = parseFloat(card.querySelector('p:nth-child(3)').textContent.replace('Price: $', ''));
+  
+          let isVisible = true;
+  
+          // Filter by category
+          if (selectedCategory && productCategory !== selectedCategory) {
+            isVisible = false;
+          }
+  
+          // Filter by price
+          if (selectedPrice) {
+            const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number);
+            if (max) {
+              // If max exists, filter within the range
+              if (productPrice < min || productPrice > max) {
+                isVisible = false;
+              }
+            } else {
+              // If no max, filter for prices above min
+              if (productPrice < min) {
+                isVisible = false;
+              }
+            }
+          }
+  
+          // Show or hide the product card
+          card.style.display = isVisible ? 'block' : 'none';
+        });
+  
+        // Dynamically update the grid layout
+        const productGrid = document.querySelector('.product-grid');
+        const visibleCards = Array.from(productCards).filter(card => card.style.display === 'block');
+        productGrid.innerHTML = ''; // Clear the grid
+        visibleCards.forEach(card => productGrid.appendChild(card)); // Re-add visible cards
+      }
+  
+      categoryFilter.addEventListener('change', filterProducts);
+      priceFilter.addEventListener('change', filterProducts);
+    });
+  </script>
 {% endblock %}
