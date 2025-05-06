@@ -132,3 +132,18 @@ def comment(id):
             print(Exception)
             print('ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR!!!!!!')
     return redirect(url_for('product.show', id=id))
+
+
+@productsbp.route('/search')
+def search():
+    query = request.args.get('q')
+    if not query:
+        return render_template('searchResults.html', results=[], query=query)
+
+    # Example: search in product name or description (case-insensitive)
+    results = Product.query.filter(
+        Product.name.ilike(
+            f"%{query}%") | Product.description.ilike(f"%{query}%")
+    ).all()
+
+    return render_template('searchResults.html', results=results, query=query)
