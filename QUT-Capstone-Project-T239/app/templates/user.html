@@ -2,13 +2,12 @@
 <link href="../static/styles/general.css" rel="stylesheet" />
 
 {% block content %}
-<main role="main" aria-label="{{ heading }} Page">
+<main role="main" aria-label="{{ heading }} Page" style="padding: 0; margin: 0;">
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-7 flex-column justify-content-center px-9">
         <div class="mx-auto" style="max-width: 400px;">
           <h1 class="text-center mt-custom">{{ heading }}</h1>
-          <br />
           {% if heading == 'Login' %}
             <p class="text-center text-secondary">Welcome back! Please enter your details.</p>
           {% elif heading == 'Register' %}
@@ -64,7 +63,7 @@
             <!-- Password -->
             <div class="mb-3">
               {{ form.password.label(class="form-label") }}
-              {{ form.password(class="form-control", placeholder="********") }}
+              {{ form.password(class="form-control", placeholder="Enter your password") }}
               {% if form.password.errors %}
                 <div class="text-danger">
                   {% for error in form.password.errors %}
@@ -78,7 +77,7 @@
             {% if heading == 'Register' %}
               <div class="mb-3">
                 {{ form.confirm_password.label(class="form-label") }}
-                {{ form.confirm_password(class="form-control", placeholder="********") }}
+                {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}
                 {% if form.confirm_password.errors %}
                   <div class="text-danger">
                     {% for error in form.confirm_password.errors %}
@@ -203,11 +202,14 @@
         </div>
       </div>
       <div class="col-md-5 p-0">
-        <img src="../static/img/register.jpg" class="img-fluid" alt="Register" style="object-fit: cover;" />
+        {% if heading == 'Register' %}
+        <img src="../static/img/register.jpg" class="img-fluid h-100" alt="Register" style="object-fit: cover; height: 100vh" />
+        {% else %}
+        <img src="../static/img/login.jpg" class="img-fluid h-100" alt="Login" style="object-fit: cover; height: 100vh; width: 100%;" />
+        {% endif %}
       </div>
     </div>
   </div>
-  <br />
 </main>
 {% endblock %}
 
