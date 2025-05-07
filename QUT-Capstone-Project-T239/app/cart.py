@@ -6,7 +6,6 @@ cartbp = Blueprint('cart', __name__, url_prefix='/cart')
 
 # displaying the cart
 @cartbp.route('/')
-@login_required
 def view_cart():
     cart = session.get('cart', {})  # Get the cart from the session
     cart_items = []
@@ -28,7 +27,6 @@ def view_cart():
 
 # Adding items to the cart
 @cartbp.route('/add/<int:product_id>', methods=['POST'])
-@login_required
 def add_to_cart(product_id):
     # Initialize the cart in the session if it doesn't exist
     if 'cart' not in session:
@@ -57,7 +55,6 @@ def add_to_cart(product_id):
 
 # removing items from cart
 @cartbp.route('/remove/<int:product_id>', methods=['POST'])
-@login_required
 def remove_item(product_id):
     cart = session.get('cart', {})
     if str(product_id) in cart:
@@ -68,7 +65,6 @@ def remove_item(product_id):
 
 # Updating item quantity in the cart
 @cartbp.route('/update/<int:product_id>', methods=['POST'])
-@login_required
 def update_quantity(product_id):
     cart = session.get('cart', {}) 
     new_quantity = int(request.form.get('quantity', 1)) 

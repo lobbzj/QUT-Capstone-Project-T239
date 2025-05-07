@@ -8,7 +8,6 @@ from datetime import datetime
 checkoutbp = Blueprint('checkout', __name__, url_prefix='/checkout')
 
 @checkoutbp.route('/')
-@login_required
 def show():
     cart = session.get('cart', {})  # Get the cart from the session
     cart_items = []
@@ -30,12 +29,11 @@ def show():
     return render_template('checkout.html', items=cart_items, total=total_price)
 
 @checkoutbp.route('/save', methods=['POST'])
-@login_required
 def save_order():
     # Get data from the form
     total_price = float(request.form.get('total_price', 0))
     shipping_method = request.form.get('shipping_method', 'Standard')
-    user_id = current_user.id
+    user_id = current_user.id if current_user.is_authenticated else None
 
     # Get all products in the user's cart
     cart = session.get('cart', {})
