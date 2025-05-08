@@ -37,6 +37,8 @@ def save_order():
 
     # Get all products in the user's cart
     cart = session.get('cart', {})
+    orders = []
+
     for product_id, quantity in cart.items():
         # Create a new order for each product
         new_order = Order(
@@ -47,6 +49,7 @@ def save_order():
             product_id=int(product_id)
         )
         db.session.add(new_order)
+        orders.append(new_order)
 
     # Commit the changes to the database
     db.session.commit()
@@ -54,6 +57,7 @@ def save_order():
     # Clear the cart after placing the order
     session['cart'] = {}
 
-    # Redirect to the confirmation page with the order date
+    # Pass the first order's ID to the confirmation page
+    order = orders[0]  # Assuming one order is sufficient for display
     order_date = datetime.now().strftime('%d/%m/%Y %H:%M (GMT+10) AEST')
-    return render_template('confirmation.html', order_date=order_date)
+    return render_template('confirmation.html', order=order, order_date=order_date)
