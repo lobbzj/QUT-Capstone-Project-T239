@@ -28,30 +28,28 @@ def view_cart():
 # Adding items to the cart
 @cartbp.route('/add/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):
-    # Initialize the cart in the session if it doesn't exist
     if 'cart' not in session:
         session['cart'] = {}
 
-    # Get the quantity from the form
     quantity = int(request.form.get('product_qty', 1))
 
-    # Add the product to the cart or update its quantity
     cart = session['cart']
     if str(product_id) in cart:
         cart[str(product_id)] += quantity
     else:
         cart[str(product_id)] = quantity
 
-    session['cart'] = cart  # Save the updated cart back to the session
+    session['cart'] = cart  
 
-    # Check the action (add_to_cart or purchase)
+    # Check the action (purchase or add_to_cart)
     action = request.form.get('action')
     if action == 'purchase':
-        flash('Product added to cart! Redirecting to checkout...', 'success')
+        flash('Product added to shopping cart!')
         return redirect(url_for('checkout.show'))  # Redirect to the checkout page
     else:
         flash('Product added to cart!', 'success')
-        return redirect(url_for('product.show', id=product_id))  # Redirect back to the product page
+        return redirect(request.referrer or url_for('cart.view_cart'))  # Redirect back to the referring page
+
 
 # removing items from cart
 @cartbp.route('/remove/<int:product_id>', methods=['POST'])

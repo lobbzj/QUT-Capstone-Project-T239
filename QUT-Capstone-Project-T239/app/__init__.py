@@ -51,6 +51,8 @@ def create_app():
     app.register_blueprint(cart.cartbp)
     from . import contact  
     app.register_blueprint(contact.contactbp)
+    from . import wishlist
+    app.register_blueprint(wishlist.wishlist_bp, url_prefix='/wishlist')
     from .api import productsAPI
     app.register_blueprint(productsAPI.api_products_bp)
     from .api import usersAPI

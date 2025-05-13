@@ -4,6 +4,14 @@
 
 {% block content %}
 <main role="main" aria-label="Product Purchase Page">
+  <div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+      </ol>
+    </nav>
+  </div>
   <div class="container">
     <!-- Product Image -->
     <div class="row">
@@ -59,7 +67,11 @@
             <!-- Add to Cart Button -->
             <button type="submit" name="action" value="add_to_cart" class="btn btn-success w-100 mt-3 mb-3"
               aria-label="Add to Cart">Add to Cart</button>
-
+          </form>
+          <!-- Wishlist Button-->
+          <form action="{{ url_for('wishlist.add_to_wishlist', id=product.id) }}" method="POST">
+            <button type="submit" class="btn btn-warning w-100 mt-3 mb-3" aria-label="Add to Wishlist">Add to
+              Wishlist</button>
           </form>
 
 

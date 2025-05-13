@@ -143,36 +143,14 @@ th {
     width: 100%
 }
 
-.checkout-btn {
-    width: 200px;
-    max-width: 100%;
-    margin: 0 auto;
-    /*centers the button*/
-}
-
-@media (min-width: 768px) {
-
-    /* to adjust to larger screens */
-    .checkout-btn {
-        width: 250px;
-    }
-}
-
-.cart_table {
-    width: 100%;
-    margin-top: 20px;
-}
-
 main {
     background: linear-gradient(to bottom, #ffffff, #f0f0f0);
     /* Gradients from pure white to a very light grey */
-    padding-top: 60px;
     /* Ensure content doesn't get hidden behind the header */
     font-family: sans-serif;
 
-    margin-top: 10px;
-
     /* Adjust this based on the navbar height */
+    flex: 1;
 }
 
 /* Divider (Horizontal Rule) Styles */
@@ -183,6 +161,8 @@ hr {
 
 footer {
     font-family: sans-serif;
+    padding: 10px 0;
+    background-color: #f8f9fa
 }
 
 .out-of-stock .layer h3,
@@ -217,4 +197,49 @@ footer {
 .search-page {
     margin-left: 10%;
     margin-right: 10%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Breadcrumbs */
+.breadcrumb-container {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    /* Light background for breadcrumbs */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #303030;
+    /* Bootstrap primary color */
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+    /* Darker shade on hover */
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+    /* Muted color for the active breadcrumb */
 }

@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<main>
+<main class="cart-page">
+    <div class="breadcrumb-container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+            </ol>
+        </nav>
+    </div>
     <div class="container">
         <h1 class="text-center">Your Shopping Cart</h1>
 
@@ -34,10 +42,11 @@
 
                     <!-- Quantity Dropdown -->
                     <td>
-                        <form action="{{ url_for('cart.update_quantity', product_id=item.product.id) }}" method="POST" class="d-inline">
+                        <form action="{{ url_for('cart.update_quantity', product_id=item.product.id) }}" method="POST"
+                            class="d-inline">
                             <select name="quantity" class="form-select" onchange="this.form.submit()">
                                 {% for i in range(1, 11) %}
-                                <option value="{{ i }}" {% if i == item.quantity %}selected{% endif %}>{{ i }}</option>
+                                <option value="{{ i }}" {% if i==item.quantity %}selected{% endif %}>{{ i }}</option>
                                 {% endfor %}
                             </select>
                         </form>
@@ -61,7 +70,8 @@
         <div class="row justify-content-end">
             <div class="col-md-4">
                 <h3>Total: $<span id="cart-total">{{ total }}</span></h3>
-                <a href="{{ url_for('checkout.show') }}" class="btn btn-success btn-block mt-3 checkout-btn">Proceed to Checkout</a>
+                <a href="{{ url_for('checkout.show') }}" class="btn btn-success btn-block mt-3 checkout-btn">Proceed to
+                    Checkout</a>
             </div>
         </div>
         {% else %}

@@ -1,0 +1,19 @@
+.cart_table {
+    width: 100%;
+}
+
+.cart-page {
+    padding-bottom: 50px;
+}
+
+.checkout-btn {
+    width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .checkout-btn {
+        width: 250px;
+    }
+}

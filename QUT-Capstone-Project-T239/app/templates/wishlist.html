@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Wishlist Page</li>
+        </ol>
+    </nav>
+</div>
+<div class="container mt-5">
+    <h2>Your Wishlist</h2>
+    <hr />
+    {% if wishlist_items %}
+    <div class="row">
+        {% for item in wishlist_items %}
+        <div class="col-md-4 mb-4">
+            <div class="wishlist-card">
+                <img src="{{ item.image }}" class="card-img-top" alt="{{ item.name }}">
+                <div class="wishlist-card-body">
+                    <h5 class="wishlist-card-title">{{ item.name }}</h5>
+                    <p class="wishlist-card-text">${{ '%.2f'|format(item.price) }}</p>
+                    <!-- View Product Button -->
+                    <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-primary">View Product</a>
+
+                    <!-- Add to Cart Button -->
+                    <form action="{{ url_for('cart.add_to_cart', product_id=item.id) }}" method="POST">
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                    </form>
+
+                    <!-- Remove from Wishlist Button -->
+                    <form action="{{ url_for('wishlist.remove_from_wishlist', id=item.id) }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No items in your wishlist.</p>
+    <a href="{{ url_for('main.index') }}#all-products" class="btn btn-success mt-3">Create Your Wishlist!</a>
+    {% endif %}
+</div>
+{% endblock %}

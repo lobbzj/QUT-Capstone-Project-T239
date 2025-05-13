@@ -1,0 +1,51 @@
+.wishlist-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    height: 480px;
+    /* Set a fixed height for all cards */
+    max-width: 300px;
+    /* Optional: Set a max width for consistency */
+    margin: auto;
+    /* Center the cards */
+}
+
+.wishlist-card img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.wishlist-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.wishlist-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.wishlist-card-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.wishlist-card .btn {
+    margin-top: auto;
+    width: 80%;
+    margin: 5px auto;
+    display: block;
+}
