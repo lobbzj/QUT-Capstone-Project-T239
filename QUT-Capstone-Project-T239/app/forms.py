@@ -3,6 +3,7 @@ from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordFiel
 from wtforms.validators import InputRequired, Email, EqualTo, DataRequired
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 from wtforms import ValidationError
+from config import BUSINESS_PARTNER_VALIDATION_CODE
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 
@@ -33,7 +34,7 @@ class RegisterForm(FlaskForm):
     # Custom validation for validation_code
     def validate_validation_code(self, field):
         if self.member_type.data == 'business_partner':
-            if not field.data or field.data.strip() != '123456':
+            if not field.data or field.data.strip() != BUSINESS_PARTNER_VALIDATION_CODE:
                 raise ValidationError('Invalid validation code. Please enter the correct code.')
             
     submit = SubmitField('Register')
