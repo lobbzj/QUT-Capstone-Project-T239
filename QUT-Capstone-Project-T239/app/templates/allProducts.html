@@ -1,66 +1,49 @@
 {% extends 'base.html' %}
 
+{% import 'bootstrap4/form.html' as wtf %}
+
 {% block content %}
-  <!-- Recent Sports Techs -->
+  <!-- This is for browsing all available products -->
+  <section class="all-products-section" id="all-products">
+    <div class="all-products-container">
+      <h2>All Products</h2>
+      <p>Browse through all available products. Use the filters to narrow down your search.</p>
 
-  <!-- <main role="main" aria-label="Home Page"> -->
+      <!-- Filters -->
+      <div class="all-products-filters">
+        <!-- Category Filter -->
+        <select id="category-filter" class="all-products-select" aria-label="Filter by category">
+          <option value="" selected>All Categories</option>
+          {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+          {% endfor %}
+        </select>
 
-  <div class="video-header">
-    <video autoplay muted loop id="bg-video">
-      <source src="../static/img/video.mp4" type="video/mp4" />Your browser does not support the video tag.
-    </video>
-    <div class="video-overlay">
-      <h1>The Sports Tech Shop</h1>
-      <h3>Exploring The Sports Tech products</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <a href="#row1" class="cta-button">Start Shopping</a>
-    </div>
-  </div>
+        <!-- Price Filter -->
+        <select id="price-filter" class="all-products-select" aria-label="Filter by price range">
+          <option value="" selected>All Prices</option>
+          <option value="0-50">Under $50</option>
+          <option value="50-100">$50 - $100</option>
+          <option value="100-200">$100 - $200</option>
+          <option value="200+">Above $200</option>
+        </select>
+      </div>
 
-  <div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-      </ol>
-    </nav>
-  </div>
-
-  <!-- Created Products Display -->
-  <section class="Recent" aria-labelledby="recent-products-section">
-    <h1 id="recent-products-section">Recently Added Products</h1>
-    <p>Check out the 9 latest additions to our shop.</p>
-    <div class="product-container">
-      <div class="product-grid">
+      <!-- Product Grid -->
+      <div class="all-products-grid">
         {% for product in products %}
-          <div class="product-card">
-            <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}" class="product-image" /></a>
-            <div class="product-info">
-              <h3>{{ product.name }}</h3>
-              <p>${{ '%.2f'|format(product.price) }}</p>
+          <a href="/products/{{ product.id }}" class="all-products-card-link">
+            <div class="all-products-card">
+              <img src="{{ product.image }}" alt="{{ product.name }}" class="all-products-img" />
+              <h3 class="all-products-title">{{ product.name }}</h3>
+              <p class="all-products-price">Price: ${{ product.price }}</p>
+              <p class="all-products-category">Category: {{ product.category }}</p>
             </div>
-          </div>
+          </a>
         {% endfor %}
       </div>
     </div>
   </section>
-
-  
-
-  <!-- Contact HTML -->
-  <!-- deleted the browse here -->
-  <section class="contact-section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Do you have any lingering question if so dont hestitate to contact us, we will get back to us as soon as possible</p>
-    <form action="/contact" method="POST" class="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const categoryFilter = document.getElementById('category-filter')

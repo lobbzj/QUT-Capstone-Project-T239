@@ -11,6 +11,14 @@ from flask_login import login_required, current_user
 productsbp = Blueprint('product', __name__, url_prefix='/products')
 
 
+@productsbp.route('/')
+def index():
+    products = Product.query.order_by(Product.id.desc()).limit(8).all()
+    # Fetch unique categories for filtering
+    categories = {product.category for product in products if product.category}
+    return render_template('allProducts.html', products=products, categories=categories)
+
+
 @productsbp.route("/<id>", methods=['GET'])
 @productsbp.route("/<id>", methods=['GET', 'POST'])
 def show(id):
