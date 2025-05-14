@@ -3,149 +3,135 @@
 {% import 'bootstrap4/form.html' as wtf %}
 
 {% block content %}
-<main role="main" aria-label="Product Purchase Page">
-  <div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Products</li>
-      </ol>
-    </nav>
-  </div>
-  <div class="container">
-    <!-- Product Image -->
-    <div class="row">
-      <div class="col-12">
-        <img id="productImage" src="{{ product.image }}" class="rounded img-fluid"
-          alt="Main product image of {{ product.name }}" />
-      </div>
+  <main role="main" aria-label="Product Purchase Page">
+    <div class="breadcrumb-container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ url_for('main.index') }}">Home</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Products</li>
+        </ol>
+      </nav>
     </div>
-
-    <br />
-
-    <!-- Product Info Section -->
-    <div class="row" id="product-info">
-      <div class="col-12 col-md-8">
-        <p class="text-muted">{{ product.list_date or 'DD/MM/YYYY' }}</p>
-        <h1>{{ product.name }}</h1>
-        <p>{{ product.description }}</p>
-
-        <div class="row">
-          <div class="col-12 col-md-6 d-flex align-items-center">
-            <img class="profile-pic" src="../static/img/default_profile.jpg" alt="Seller profile image" height="50" />
-            <a href="#" class="ml-2" aria-label="Visit seller's profile">Seller Name</a>
-          </div>
-          <div class="col-12 col-md-6 mt-2 mt-md-1 text-md-end">
-            <button class="btn btn-tertiary" aria-label="Visit Shop">Visit Shop</button>
-          </div>
+    <div class="container">
+      <!-- Product Image -->
+      <div class="row">
+        <div class="col-12">
+          <img id="productImage" src="{{ product.image }}" class="rounded img-fluid" alt="Main product image of {{ product.name }}" />
         </div>
       </div>
 
-      <!-- Purchase Box -->
-      <div class="col-12 col-md-4 mt-3 mt-md-0">
-        <div class="container">
-          <form action="{{ url_for('cart.add_to_cart', product_id=product.id) }}" method="POST" id="purchaseForm"
-            aria-labelledby="purchaseForm">
-            <div class="form-group form-container">
-              <p class="mb-3 fw-bold">{{ product.name }}</p>
-              <p id="productPriceLabel" class="fw-semibold">${{ product.price }}</p>
+      <br />
 
-              <!-- Quantity Adjustment -->
-              <div class="quantity-control d-flex justify-content-between align-items-center">
-                <button class="qty-count qty-count--minus btn" type="button" data-action="minus"
-                  aria-label="Decrease quantity">-</button>
-                <input class="product-qty form-control text-center mx-2" type="number" name="product_qty" min="1"
-                  max="{{ product.stock }}" value="1" aria-label="Product quantity" />
-                <button class="qty-count qty-count--add btn" type="button" data-action="add"
-                  aria-label="Increase quantity">+</button>
+      <!-- Product Info Section -->
+      <div class="row" id="product-info">
+        <div class="col-12 col-md-8">
+          <p class="text-muted">{{ product.list_date or 'DD/MM/YYYY' }}</p>
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.description }}</p>
+
+          <div class="row">
+            <div class="col-12 col-md-6 d-flex align-items-center">
+              <img class="profile-pic" src="../static/img/default_profile.jpg" alt="Seller profile image" height="50" />
+              <a href="#" class="ml-2" aria-label="Visit seller's profile">Seller Name</a>
+            </div>
+            <div class="col-12 col-md-6 mt-2 mt-md-1 text-md-end">
+              <button class="btn btn-tertiary" aria-label="Visit Shop">Visit Shop</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Purchase Box -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+          <div class="container">
+            <form action="{{ url_for('cart.add_to_cart', product_id=product.id) }}" method="POST" id="purchaseForm" aria-labelledby="purchaseForm">
+              <div class="form-group form-container">
+                <p class="mb-3 fw-bold">{{ product.name }}</p>
+                <p id="productPriceLabel" class="fw-semibold">${{ product.price }}</p>
+
+                <!-- Quantity Adjustment -->
+                <div class="quantity-control d-flex justify-content-between align-items-center">
+                  <button class="qty-count qty-count--minus btn" type="button" data-action="minus" aria-label="Decrease quantity">-</button>
+                  <input class="product-qty form-control text-center mx-2" type="number" name="product_qty" min="1" max="{{ product.stock }}" value="1" aria-label="Product quantity" />
+                  <button class="qty-count qty-count--add btn" type="button" data-action="add" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <!-- Purchase Button -->
+              <button type="submit" name="action" value="purchase" class="btn btn-primary w-100 mt-3 mb-3" aria-label="Submit purchase">Purchase</button>
+              <!-- Add to Cart Button -->
+              <button type="submit" name="action" value="add_to_cart" class="btn btn-success w-100 mt-3 mb-3" aria-label="Add to Cart">Add to Cart</button>
+            </form>
+            <!-- Wishlist Button -->
+            <form action="{{ url_for('wishlist.add_to_wishlist', id=product.id) }}" method="POST">
+              <button type="submit" class="btn btn-warning w-100 mt-3 mb-3" aria-label="Add to Wishlist">Add to Wishlist</button>
+            </form>
+
+            <button type="button" class="btn btn-secondary w-100 mb-3" aria-label="Go to tech details">Tech Details</button>
+            <p class="small">To read more about this technology, visit the Tech Details page by clicking the above button.</p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <hr />
+        </div>
+      </div>
+      <!-- Related Products -->
+      <div class="row other-products-section" aria-labelledby="other-products-section">
+        <div class="col-12">
+          <h2 id="other-products-section">Other Products You May Like</h2>
+        </div>
+        {% for item in related_products %}
+          <div class="col-12 col-md-4 mb-3">
+            <div class="card other-product-card" role="region" aria-labelledby="product{{ loop.index }}">
+              <a href="{{ url_for('product.show', id=item.id) }}" aria-label="Visit {{ item.name }} details"><img src="{{ item.image }}" class="card-img-top other-product-img" alt="Image of {{ item.name }}" /></a>
+              <div class="card-body">
+                <a href="{{ url_for('product.show', id=item.id) }}" class="text-decoration-none"><h5 class="card-title text-center">{{ item.name }}</h5></a>
+                <p class="card-text text-center">{{ item.category }}</p>
+                <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-quaternary w-100" aria-label="Visit {{ item.name }} details">Visit</a>
               </div>
             </div>
-
-            <!-- Purchase Button -->
-            <button type="submit" name="action" value="purchase" class="btn btn-primary w-100 mt-3 mb-3"
-              aria-label="Submit purchase">Purchase</button>
-            <!-- Add to Cart Button -->
-            <button type="submit" name="action" value="add_to_cart" class="btn btn-success w-100 mt-3 mb-3"
-              aria-label="Add to Cart">Add to Cart</button>
-          </form>
-          <!-- Wishlist Button-->
-          <form action="{{ url_for('wishlist.add_to_wishlist', id=product.id) }}" method="POST">
-            <button type="submit" class="btn btn-warning w-100 mt-3 mb-3" aria-label="Add to Wishlist">Add to
-              Wishlist</button>
-          </form>
-
-
-
-          <button type="button" class="btn btn-secondary w-100 mb-3" aria-label="Go to tech details">Tech
-            Details</button>
-          <p class="small">To read more about this technology, visit the Tech Details page by clicking the above button.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-12">
-        <hr />
-      </div>
-    </div>
-    <!-- Related Products -->
-    <div class="row other-products-section" aria-labelledby="other-products-section">
-      <div class="col-12">
-        <h2 id="other-products-section">Other Products You May Like</h2>
-      </div>
-      {% for item in related_products %}
-      <div class="col-12 col-md-4 mb-3">
-        <div class="card other-product-card" role="region" aria-labelledby="product{{ loop.index }}">
-          <a href="{{ url_for('product.show', id=item.id) }}" aria-label="Visit {{ item.name }} details"><img
-              src="{{ item.image }}" class="card-img-top other-product-img" alt="Image of {{ item.name }}" /></a>
-          <div class="card-body">
-            <a href="{{ url_for('product.show', id=item.id) }}" class="text-decoration-none">
-              <h5 class="card-title text-center">{{ item.name }}</h5>
-            </a>
-            <p class="card-text text-center">{{ item.category }}</p>
-            <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-quaternary w-100"
-              aria-label="Visit {{ item.name }} details">Visit</a>
           </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <!-- Comments Section -->
-    <div class="row">
-      <div class="col-md-12">
-        <h3 class="mb-4 fs-3 fw-semibold">Comments</h3>
-        <form action="/products/{{ product.id }}/comment" method="POST">
-          <div class="form-group">
-            <div class="d-flex align-items-center mb-2">
-              <img src="../static/img/anoncat.jpeg" class="rounded-circle me-3" alt="Your user image" height="64"
-                width="64" />
-              <h5 class="mb-0">Logged in User <small class="text-muted">(Log in to comment as yourself!)</small></h5>
-            </div>
-            {{ wtf.render_form(form, '/products/{0}/comment'.format(product.id)) }}
-          </div>
-        </form>
-        <hr />
-
-        <!-- Comment Section -->
-        {% if product.comments %}
-        {% for comment in product.comments %}
-        <div class="media bg-light p-4 rounded mb-3">
-          <img src="../static/img/default_profile.jpg" class="rounded-circle me-3" alt="User profile image" height="64"
-            width="64" />
-          <div class="media-body">
-            <h5 class="mb-2">{{ comment.user.name }}</h5>
-            <p>{{ comment.text }}</p>
-          </div>
-        </div>
         {% endfor %}
-        {% else %}
-        <p class="text-muted">No comments yet. Be the first to comment!</p>
-        {% endif %}
-
-        <hr />
       </div>
-    </div>
+      <!-- Comments Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="mb-4 fs-3 fw-semibold">Comments</h3>
+          <form action="/products/{{ product.id }}/comment" method="POST">
+            <div class="form-group">
+              <div class="d-flex align-items-center mb-2">
+                <img src="../static/img/anoncat.jpeg" class="rounded-circle me-3" alt="Your user image" height="64" width="64" />
+                <h5 class="mb-0">Logged in User <small class="text-muted">(Log in to comment as yourself!)</small></h5>
+              </div>
+              {{ wtf.render_form(form, '/products/{0}/comment'.format(product.id)) }}
+            </div>
+          </form>
+          <hr />
 
-    <br />
-  </div>
-</main>
+          <!-- Scrollable Comments Wrapper -->
+          <div style="max-height: 400px; overflow-y: auto;">
+            {% if product.comments %}
+              {% for comment in product.comments %}
+                <div class="media bg-light p-4 rounded mb-3">
+                  <img src="../static/img/default_profile.jpg" class="rounded-circle me-3" alt="User profile image" height="64" width="64" />
+                  <div class="media-body">
+                    <h5 class="mb-2">{{ comment.user.name }}</h5>
+                    <p>{{ comment.text }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+              <p class="text-muted">No comments yet. Be the first to comment!</p>
+            {% endif %}
+          </div>
+
+          <hr />
+        </div>
+      </div>
+
+      <br />
+    </div>
+  </main>
 {% endblock %}
