@@ -1,189 +1,176 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Recent Sports Techs -->
+  <!-- Recent Sports Techs -->
 
-<!-- <main role="main" aria-label="Home Page"> -->
+  <!-- <main role="main" aria-label="Home Page"> -->
 
-<div class="video-header">
-  <video autoplay muted loop id="bg-video">
-    <source src="../static/img/video.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-overlay">
-    <h1>The Sports Tech</h1>
-    <h3>Exploring The Sports Tech products</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</p>
-    <a href="#row1" class="cta-button">Start Shopping</a>
-  </div>
-</div>
-
-<div class="breadcrumb-container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
-    </ol>
-  </nav>
-</div>
-
-<!-- Created Products Display -->
-<section class="Recent" aria-labelledby="recent-products-section">
-  <h1 id="recent-products-section">Recently Added Products</h1>
-  <p>Check out the 9 latest additions to our shop.</p>
-  <div class="product-container">
-    <div class="product-grid">
-      {% for product in products %}
-      <div class="product-card">
-        <a href="{{ url_for('product.show', id=product.id) }}">
-          <img src="{{ product.image }}" class="product-image" />
-        </a>
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p>${{ "%.2f"|format(product.price) }}</p>
-        </div>
-      </div>
-      {% endfor %}
+  <div class="video-header">
+    <video autoplay muted loop id="bg-video">
+      <source src="../static/img/video.mp4" type="video/mp4" />Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay">
+      <h1>The Sports Tech Shop</h1>
+      <h3>Exploring The Sports Tech products</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <a href="#row1" class="cta-button">Start Shopping</a>
     </div>
   </div>
-</section>
 
+  <div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
 
-<!-- This is for browsing all available products-->
-<section class="all-products-section" id="all-products">
-  <div class="all-products-container">
-    <h2>All Products</h2>
-    <p>Browse through all available products. Use the filters to narrow down your search.</p>
-
-    <!-- Filters -->
-    <div class="all-products-filters">
-      <!-- Category Filter -->
-      <select id="category-filter" class="all-products-select" aria-label="Filter by category">
-        <option value="" selected>All Categories</option>
-        {% for category in categories %}
-        <option value="{{ category }}">{{ category }}</option>
+  <!-- Created Products Display -->
+  <section class="Recent" aria-labelledby="recent-products-section">
+    <h1 id="recent-products-section">Recently Added Products</h1>
+    <p>Check out the 9 latest additions to our shop.</p>
+    <div class="product-container">
+      <div class="product-grid">
+        {% for product in products %}
+          <div class="product-card">
+            <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}" class="product-image" /></a>
+            <div class="product-info">
+              <h3>{{ product.name }}</h3>
+              <p>${{ '%.2f'|format(product.price) }}</p>
+            </div>
+          </div>
         {% endfor %}
-      </select>
-
-      <!-- Price Filter -->
-      <select id="price-filter" class="all-products-select" aria-label="Filter by price range">
-        <option value="" selected>All Prices</option>
-        <option value="0-50">Under $50</option>
-        <option value="50-100">$50 - $100</option>
-        <option value="100-200">$100 - $200</option>
-        <option value="200+">Above $200</option>
-      </select>
+      </div>
     </div>
+  </section>
 
-    <!-- Product Grid -->
-    <div class="all-products-grid">
-      {% for product in products %}
-      <a href="/products/{{ product.id }}" class="all-products-card-link">
-        <div class="all-products-card">
-          <img src="{{ product.image }}" alt="{{ product.name }}" class="all-products-img" />
-          <h3 class="all-products-title">{{ product.name }}</h3>
-          <p class="all-products-price">Price: ${{ product.price }}</p>
-          <p class="all-products-category">Category: {{ product.category }}</p>
-        </div>
-      </a>
-      {% endfor %}
+  <!-- This is for browsing all available products -->
+  <section class="all-products-section" id="all-products">
+    <div class="all-products-container">
+      <h2>All Products</h2>
+      <p>Browse through all available products. Use the filters to narrow down your search.</p>
+
+      <!-- Filters -->
+      <div class="all-products-filters">
+        <!-- Category Filter -->
+        <select id="category-filter" class="all-products-select" aria-label="Filter by category">
+          <option value="" selected>All Categories</option>
+          {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+          {% endfor %}
+        </select>
+
+        <!-- Price Filter -->
+        <select id="price-filter" class="all-products-select" aria-label="Filter by price range">
+          <option value="" selected>All Prices</option>
+          <option value="0-50">Under $50</option>
+          <option value="50-100">$50 - $100</option>
+          <option value="100-200">$100 - $200</option>
+          <option value="200+">Above $200</option>
+        </select>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="all-products-grid">
+        {% for product in products %}
+          <a href="/products/{{ product.id }}" class="all-products-card-link">
+            <div class="all-products-card">
+              <img src="{{ product.image }}" alt="{{ product.name }}" class="all-products-img" />
+              <h3 class="all-products-title">{{ product.name }}</h3>
+              <p class="all-products-price">Price: ${{ product.price }}</p>
+              <p class="all-products-category">Category: {{ product.category }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- Contact HTML -->
+  <!-- deleted the browse here -->
+  <section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Do you have any lingering question if so dont hestitate to contact us, we will get back to us as soon as possible</p>
+    <form action="/contact" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-<!-- Contact HTML -->
-<!-- deleted the browse here -->
-<section class="contact-section" id="contact">
-  <h2>Contact Us</h2>
-  <p>Do you have any lingering question if so dont hestitate to contact us,
-    we will get back to us as soon as possible <3< /p>
-      <form action="/contact" method="POST" class="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-</section>
-</main>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const categoryFilter = document.getElementById('category-filter');
-    const priceFilter = document.getElementById('price-filter');
-    const allProductsSection = document.getElementById('all-products');
-    const productCards = allProductsSection ? allProductsSection.querySelectorAll('.all-products-card-link') : null;
-
-    // Check if all required elements exist
-    if (categoryFilter && priceFilter && allProductsSection && productCards) {
-      function filterProducts() {
-        const selectedCategory = categoryFilter.value.toLowerCase().trim();
-        const selectedPrice = priceFilter.value;
-
-        // Debugging: Log the selected filters
-        console.log("Selected Category:", selectedCategory);
-        console.log("Selected Price:", selectedPrice);
-
-        productCards.forEach(cardLink => {
-          const productCategoryElement = cardLink.querySelector('.all-products-category');
-          const productPriceElement = cardLink.querySelector('.all-products-price');
-
-          const productCategory = productCategoryElement
-            ? productCategoryElement.textContent.replace('Category: ', '').toLowerCase().trim()
-            : '';
-          const productPrice = productPriceElement
-            ? parseFloat(productPriceElement.textContent.replace('Price: $', ''))
-            : 0;
-
-          let isVisible = true;
-
-          if (selectedCategory && productCategory !== selectedCategory) {
-            isVisible = false;
-          }
-
-          if (selectedPrice) {
-            const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number);
-            if (max) {
-              if (productPrice < min || productPrice > max) {
-                isVisible = false;
-              }
-            } else {
-              if (productPrice < min) {
-                isVisible = false;
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const categoryFilter = document.getElementById('category-filter')
+      const priceFilter = document.getElementById('price-filter')
+      const allProductsSection = document.getElementById('all-products')
+      const productCards = allProductsSection ? allProductsSection.querySelectorAll('.all-products-card-link') : null
+    
+      // Check if all required elements exist
+      if (categoryFilter && priceFilter && allProductsSection && productCards) {
+        function filterProducts() {
+          const selectedCategory = categoryFilter.value.toLowerCase().trim()
+          const selectedPrice = priceFilter.value
+    
+          // Debugging: Log the selected filters
+          console.log('Selected Category:', selectedCategory)
+          console.log('Selected Price:', selectedPrice)
+    
+          productCards.forEach((cardLink) => {
+            const productCategoryElement = cardLink.querySelector('.all-products-category')
+            const productPriceElement = cardLink.querySelector('.all-products-price')
+    
+            const productCategory = productCategoryElement ? productCategoryElement.textContent.replace('Category: ', '').toLowerCase().trim() : ''
+            const productPrice = productPriceElement ? parseFloat(productPriceElement.textContent.replace('Price: $', '')) : 0
+    
+            let isVisible = true
+    
+            if (selectedCategory && productCategory !== selectedCategory) {
+              isVisible = false
+            }
+    
+            if (selectedPrice) {
+              const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number)
+              if (max) {
+                if (productPrice < min || productPrice > max) {
+                  isVisible = false
+                }
+              } else {
+                if (productPrice < min) {
+                  isVisible = false
+                }
               }
             }
-          }
-
-          if (isVisible) {
-            cardLink.classList.remove('hidden');
-          } else {
-            cardLink.classList.add('hidden');
-          }
-        });
-      }
-
-      // Attach event listeners to the dropdowns
-      categoryFilter.addEventListener('change', filterProducts);
-      priceFilter.addEventListener('change', filterProducts);
-    }
-    else {
-      console.error('One or more elements required for filtering are missing in the DOM.');
-    }
-
-    // Smooth scrolling for anchor links
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) {
-      ctaButton.addEventListener('click', function (event) {
-        event.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+    
+            if (isVisible) {
+              cardLink.classList.remove('hidden')
+            } else {
+              cardLink.classList.add('hidden')
+            }
+          })
         }
-      });
-    }
-  });
-</script>
+    
+        // Attach event listeners to the dropdowns
+        categoryFilter.addEventListener('change', filterProducts)
+        priceFilter.addEventListener('change', filterProducts)
+      } else {
+        console.error('One or more elements required for filtering are missing in the DOM.')
+      }
+    
+      // Smooth scrolling for anchor links
+      const ctaButton = document.querySelector('.cta-button')
+      if (ctaButton) {
+        ctaButton.addEventListener('click', function (event) {
+          event.preventDefault()
+          const targetId = this.getAttribute('href').substring(1)
+          const targetElement = document.getElementById(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' })
+          }
+        })
+      }
+    })
+  </script>
 {% endblock %}
