@@ -160,7 +160,8 @@ main {
 
 #checkout-main,
 .wishlist-container,
-.cart-page {
+.cart-page,
+.all-products-container {
     min-height: 100vh;
 }
 
