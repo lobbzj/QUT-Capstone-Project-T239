@@ -119,6 +119,10 @@ footer {
 }
 
 /* Form and Card Styles */
+.form-container {
+    margin-bottom: 15px !important;
+}
+
 .form-container,
 .card {
     border: 1px solid #5f5e5e;
@@ -242,4 +246,26 @@ body {
 .breadcrumb-item.active {
     color: #6c757d;
     /* Muted color for the active breadcrumb */
+}
+
+/* Cart Table Styles */
+h1.text-center {
+    margin-top: 20px;
+    /* Adjust the value as needed */
+}
+
+.container {
+    margin-top: 20px;
+    /* Adjust the value as needed */
+}
+
+.cart-page h1.text-center {
+    margin-top: 125px;
+    /* Push the title down */
+    margin-bottom: 80px;
+}
+
+#checkout-main form {
+    margin-bottom: 40px;
+    /* Adjust the value as needed */
 }
