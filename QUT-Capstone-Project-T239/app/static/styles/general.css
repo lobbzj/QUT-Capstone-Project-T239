@@ -155,6 +155,7 @@ main {
 
     /* Adjust this based on the navbar height */
     flex: 1;
+    min-height: 100vh;
 }
 
 /* Divider (Horizontal Rule) Styles */
