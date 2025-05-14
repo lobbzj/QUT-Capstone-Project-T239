@@ -155,6 +155,12 @@ main {
 
     /* Adjust this based on the navbar height */
     flex: 1;
+
+}
+
+#checkout-main,
+.wishlist-container,
+.cart-page {
     min-height: 100vh;
 }
 
