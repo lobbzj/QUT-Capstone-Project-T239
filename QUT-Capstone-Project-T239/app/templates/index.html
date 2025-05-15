@@ -1,137 +1,134 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <!-- Recent Sports Techs -->
+<!-- Recent Sports Techs -->
 
-  <!-- <main role="main" aria-label="Home Page"> -->
+<!-- <main role="main" aria-label="Home Page"> -->
 
-  <div class="video-header">
-    <video autoplay muted loop id="bg-video">
-      <source src="../static/img/video.mp4" type="video/mp4" />Your browser does not support the video tag.
-    </video>
-    <div class="video-overlay">
-      <h1>The Sports Tech Shop</h1>
-      <h3>Exploring The Sports Tech products</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <a href="#row1" class="cta-button">Start Shopping</a>
-    </div>
+<div class="video-header">
+  <video autoplay muted loop id="bg-video">
+    <source src="../static/img/video.mp4" type="video/mp4" />Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay">
+    <h1>The Sports Tech Shop</h1>
+    <h3>Exploring The Sports Tech products</h3>
+    <p class="hero-description">
+      Discover the latest innovations in sports technology — from performance-tracking wearables and smart equipment to
+      cutting-edge tools used by athletes and professionals...
+    </p>
+    <a href="{{ url_for('product.index') }}" class="cta-button">Start Shopping</a>
   </div>
+</div>
 
-  <div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="{{ url_for('main.index') }}">Home</a>
-        </li>
-      </ol>
-    </nav>
-  </div>
-
-  <!-- Created Products Display -->
-  <section class="Recent" aria-labelledby="recent-products-section">
-    <h1 id="recent-products-section">Recently Added Products</h1>
-    <p>Check out the 9 latest additions to our shop.</p>
-    <div class="product-container">
-      <div class="product-grid">
-        {% for product in products %}
-          <div class="product-card">
-            <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}" class="product-image" /></a>
-            <div class="product-info">
-              <h3>{{ product.name }}</h3>
-              <p>${{ '%.2f'|format(product.price) }}</p>
-            </div>
-          </div>
-        {% endfor %}
+<!-- Created Products Display -->
+<section class="Recent" aria-labelledby="recent-products-section">
+  <h1 id="recent-products-section">Recently Added Products</h1>
+  <p>Check out the 9 latest additions to our shop.</p>
+  <div class="product-container">
+    <div class="product-grid">
+      {% for product in products %}
+      <div class="product-card">
+        <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}"
+            class="product-image" /></a>
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+          <p>${{ '%.2f'|format(product.price) }}</p>
+        </div>
       </div>
+      {% endfor %}
     </div>
-  </section>
-  <div class="all-products-button-container" style="text-align: center; margin-top: 1.5rem;">
-    <a href="{{ url_for('product.index') }}" class="cta-button">View All Products</a>
   </div>
+</section>
+<div class="all-products-button-container" style="text-align: center; margin-top: 1.5rem;">
+  <a href="{{ url_for('product.index') }}" class="cta-button">View All Products</a>
+</div>
 
-  <!-- Contact HTML -->
-  <!-- deleted the browse here -->
-  <section class="contact-section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Do you have any lingering question if so dont hestitate to contact us, we will get back to us as soon as possible</p>
-    <form action="/contact" method="POST" class="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<!-- Contact HTML -->
+<!-- deleted the browse here -->
+<section class="contact-section" id="contact">
+  <h2>Contact Us</h2>
+  <p>Do you have any lingering question if so dont hestitate to contact us, we will get back to us as soon as possible
+  </p>
+  <form action="/contact" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const categoryFilter = document.getElementById('category-filter')
-      const priceFilter = document.getElementById('price-filter')
-      const allProductsSection = document.getElementById('all-products')
-      const productCards = allProductsSection ? allProductsSection.querySelectorAll('.all-products-card-link') : null
-    
-      // Check if all required elements exist
-      if (categoryFilter && priceFilter && allProductsSection && productCards) {
-        function filterProducts() {
-          const selectedCategory = categoryFilter.value.toLowerCase().trim()
-          const selectedPrice = priceFilter.value
-    
-          // Debugging: Log the selected filters
-          console.log('Selected Category:', selectedCategory)
-          console.log('Selected Price:', selectedPrice)
-    
-          productCards.forEach((cardLink) => {
-            const productCategoryElement = cardLink.querySelector('.all-products-category')
-            const productPriceElement = cardLink.querySelector('.all-products-price')
-    
-            const productCategory = productCategoryElement ? productCategoryElement.textContent.replace('Category: ', '').toLowerCase().trim() : ''
-            const productPrice = productPriceElement ? parseFloat(productPriceElement.textContent.replace('Price: $', '')) : 0
-    
-            let isVisible = true
-    
-            if (selectedCategory && productCategory !== selectedCategory) {
-              isVisible = false
-            }
-    
-            if (selectedPrice) {
-              const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number)
-              if (max) {
-                if (productPrice < min || productPrice > max) {
-                  isVisible = false
-                }
-              } else {
-                if (productPrice < min) {
-                  isVisible = false
-                }
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const categoryFilter = document.getElementById('category-filter')
+    const priceFilter = document.getElementById('price-filter')
+    const allProductsSection = document.getElementById('all-products')
+    const productCards = allProductsSection ? allProductsSection.querySelectorAll('.all-products-card-link') : null
+
+    // Check if all required elements exist
+    if (categoryFilter && priceFilter && allProductsSection && productCards) {
+      function filterProducts() {
+        const selectedCategory = categoryFilter.value.toLowerCase().trim()
+        const selectedPrice = priceFilter.value
+
+        // Debugging: Log the selected filters
+        console.log('Selected Category:', selectedCategory)
+        console.log('Selected Price:', selectedPrice)
+
+        productCards.forEach((cardLink) => {
+          const productCategoryElement = cardLink.querySelector('.all-products-category')
+          const productPriceElement = cardLink.querySelector('.all-products-price')
+
+          const productCategory = productCategoryElement ? productCategoryElement.textContent.replace('Category: ', '').toLowerCase().trim() : ''
+          const productPrice = productPriceElement ? parseFloat(productPriceElement.textContent.replace('Price: $', '')) : 0
+
+          let isVisible = true
+
+          if (selectedCategory && productCategory !== selectedCategory) {
+            isVisible = false
+          }
+
+          if (selectedPrice) {
+            const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number)
+            if (max) {
+              if (productPrice < min || productPrice > max) {
+                isVisible = false
+              }
+            } else {
+              if (productPrice < min) {
+                isVisible = false
               }
             }
-    
-            if (isVisible) {
-              cardLink.classList.remove('hidden')
-            } else {
-              cardLink.classList.add('hidden')
-            }
-          })
-        }
-    
-        // Attach event listeners to the dropdowns
-        categoryFilter.addEventListener('change', filterProducts)
-        priceFilter.addEventListener('change', filterProducts)
-      } else {
-        console.error('One or more elements required for filtering are missing in the DOM.')
-      }
-    
-      // Smooth scrolling for anchor links
-      const ctaButton = document.querySelector('.cta-button')
-      if (ctaButton) {
-        ctaButton.addEventListener('click', function (event) {
-          event.preventDefault()
-          const targetId = this.getAttribute('href').substring(1)
-          const targetElement = document.getElementById(targetId)
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' })
+          }
+
+          if (isVisible) {
+            cardLink.classList.remove('hidden')
+          } else {
+            cardLink.classList.add('hidden')
           }
         })
       }
-    })
-  </script>
+
+      // Attach event listeners to the dropdowns
+      categoryFilter.addEventListener('change', filterProducts)
+      priceFilter.addEventListener('change', filterProducts)
+    } else {
+      console.error('One or more elements required for filtering are missing in the DOM.')
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('.cta-button').forEach(button => {
+      const href = button.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    });
+  });
+</script>
 {% endblock %}
