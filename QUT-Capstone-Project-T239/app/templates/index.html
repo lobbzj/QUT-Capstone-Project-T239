@@ -22,26 +22,28 @@
 
 <!-- Created Products Display -->
 <section class="Recent" aria-labelledby="recent-products-section">
-  <h1 id="recent-products-section">Recently Added Products</h1>
-  <p>Check out the 9 latest additions to our shop.</p>
-  <div class="product-container">
-    <div class="product-grid">
-      {% for product in products %}
-      <div class="product-card">
-        <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}"
-            class="product-image" /></a>
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p>${{ '%.2f'|format(product.price) }}</p>
+  <div class="recent-products-container">
+    <h1 id="recent-products-section">Recently Added Products</h1>
+    <p>Check out the 9 latest additions to our shop.</p>
+    <div class="product-container">
+      <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+          <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}"
+              class="product-image" /></a>
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>${{ '%.2f'|format(product.price) }}</p>
+          </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+    </div>
+    <div class="all-products-button-container" style="text-align: center; margin-top: 1.5rem;">
+      <a href="{{ url_for('product.index') }}" class="cta-button">View All Products</a>
     </div>
   </div>
 </section>
-<div class="all-products-button-container" style="text-align: center; margin-top: 1.5rem;">
-  <a href="{{ url_for('product.index') }}" class="cta-button">View All Products</a>
-</div>
 
 <!-- Contact HTML -->
 <!-- deleted the browse here -->
