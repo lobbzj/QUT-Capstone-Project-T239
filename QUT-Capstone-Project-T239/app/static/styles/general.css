@@ -277,3 +277,15 @@ h1.text-center {
     margin-bottom: 40px;
     /* Adjust the value as needed */
 }
+
+/* Make product name links in the cart table black and remove underline */
+.cart_table a {
+    color: #222 !important;
+    text-decoration: none;
+}
+
+.cart_table a:hover,
+.cart_table a:focus {
+    color: #1458ec;
+    text-decoration: underline;
+}

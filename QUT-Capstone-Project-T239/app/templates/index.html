@@ -29,8 +29,10 @@
       <div class="product-grid">
         {% for product in products %}
         <div class="product-card">
-          <a href="{{ url_for('product.show', id=product.id) }}"><img src="{{ product.image }}"
-              class="product-image" /></a>
+          <a href="{{ url_for('product.show', id=product.id) }}"
+            aria-label="View details for {{ product.name }}, price ${{ '%.2f'|format(product.price) }}">
+            <img src="{{ product.image }}" class="product-image" alt="{{ product.name }}">
+          </a>
           <div class="product-info">
             <h3>{{ product.name }}</h3>
             <p>${{ '%.2f'|format(product.price) }}</p>

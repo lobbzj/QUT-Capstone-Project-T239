@@ -30,14 +30,22 @@
                 <!-- Loop through cart items -->
                 {% for item in items %}
                 <tr data-item-id="{{ item.product.id }}">
-                    <!-- Product Image -->
+                    <!-- Product Image (Clickable) -->
                     <td>
-                        <img src="{{ item.product.image }}" alt="{{ item.product.name }}" class="img-fluid"
-                            style="max-width: 200px; height: auto;">
+                        <a href="{{ url_for('product.show', id=item.product.id) }}"
+                            aria-label="View details for {{ item.product.name }}">
+                            <img src="{{ item.product.image }}" alt="{{ item.product.name }}" class="img-fluid"
+                                style="max-width: 200px; height: auto;">
+                        </a>
                     </td>
 
-                    <!-- Product Details -->
-                    <td>{{ item.product.name }}</td>
+                    <!-- Product Name (Clickable) -->
+                    <td>
+                        <a href="{{ url_for('product.show', id=item.product.id) }}"
+                            aria-label="View details for {{ item.product.name }}">
+                            {{ item.product.name }}
+                        </a>
+                    </td>
                     <td>${{ item.product.price }}</td>
 
                     <!-- Quantity Dropdown -->

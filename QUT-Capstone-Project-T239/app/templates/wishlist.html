@@ -24,7 +24,10 @@
                     <h5 class="wishlist-card-title">{{ item.name }}</h5>
                     <p class="wishlist-card-text">${{ '%.2f'|format(item.price) }}</p>
                     <!-- View Product Button -->
-                    <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-primary">View Product</a>
+                    <a href="{{ url_for('product.show', id=item.id) }}" class="btn btn-primary"
+                        aria-label="View details for {{ item.name }}">
+                        View Product
+                    </a>
 
                     <!-- Add to Cart Button -->
                     <form action="{{ url_for('cart.add_to_cart', product_id=item.id) }}" method="POST">
