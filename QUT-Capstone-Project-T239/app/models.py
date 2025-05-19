@@ -99,15 +99,28 @@ class Contact(db.Model):
         return f'<Contact {self.name}>'
     
 # added by Minh
-class Cart(db.Model):
+# cart table deleted by Jonas
+    
+    
+# added by Jonas
+class ShippingOrder(db.Model):
+    __tablename__ = 'shippingaddress'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Correct table name is 'users'
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)  # Correct table name is 'products'
-    quantity = db.Column(db.Integer, nullable=False, default=1)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    order = db.relationship('Order', backref='shipping_orders')
 
-    # Relationships
-    product = db.relationship('Product', backref='cart_items')
-    user = db.relationship('User', backref='cart_items')
+    first_name = db.Column(db.String(50))
+    middle_name = db.Column(db.String(50))
+    surname = db.Column(db.String(50))
+    phone_number = db.Column(db.String(20))
+    email = db.Column(db.String(120))
+    address_line1 = db.Column(db.String(200))
+    address_line2 = db.Column(db.String(200))
+    suburb = db.Column(db.String(100))
+    postal_code = db.Column(db.String(20))
+    city = db.Column(db.String(100))
+    state = db.Column(db.String(100))
+    country = db.Column(db.String(100))
 
     def __repr__(self):
-        return f"<Cart User {self.user_id} Product {self.product_id} Quantity {self.quantity}>"
+        return f"Shipping for Order ID: {self.order_id}"
