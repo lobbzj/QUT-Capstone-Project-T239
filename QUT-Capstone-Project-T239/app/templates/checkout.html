@@ -13,89 +13,104 @@
     </nav>
   </div>
   <div class="container" style="display: flex; align-items: flex-start; gap: 20px;">
-    <!-- Left Side: Order Details, Customer Information, Shipping Method, Shipping Address, Payment Method, Buttons -->
+    <!-- Left Side: Order Details and Form -->
     <div class="left-container" style="flex: 2;">
-      <!-- Order Details -->
       <div class="order-details" style="font-size: 30px; font-weight: bold; margin-bottom: 20px;">
         <p>Order Details</p>
       </div>
-
-      <!-- Customer Information -->
-      <div class="customer-information" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
-        <p>Customer Information</p>
-        <div style="font-size: 15px; font-weight: bold;">
-          <p><input class="input" type="text" placeholder="First Name" name="FirstName" required> <input class="input"
-              type="text" placeholder="Middle Name (Optional)" name="MiddleName"></p>
-          <p><input class="input" type="text" placeholder="Surname" name="SurName" required></p>
-          <p><input class="input" type="text" placeholder="Phone Number" name="PhoneNumber" required></p>
-          <p><input class="input" type="text" placeholder="Email" name="Email" required></p>
+      <form method="POST" action="/checkout/save" style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Customer Information -->
+        <div class="customer-information" style="font-size: 20px; font-weight: bold;">
+          <p>Customer Information</p>
+          <div style="font-size: 15px; font-weight: bold;">
+            <p>
+              <input class="input" type="text" placeholder="First Name" name="FirstName" required>
+              <input class="input" type="text" placeholder="Middle Name (Optional)" name="MiddleName">
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="Surname" name="SurName" required>
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="Phone Number" name="PhoneNumber" required>
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="Email" name="Email" required>
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- Shipping Address -->
-      <div class="shipping-address" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
-        <p>Shipping Address</p>
-        <div style="font-size: 15px; font-weight: bold;">
-          <p><input class="input" type="text" placeholder="Address line 1" name="Addressline1" required></p>
-          <p><input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2"></p>
-          <p>
-            <input class="input" type="text" placeholder="Suburb" name="Suburb" required>
-            <input class="input" type="text" placeholder="Postal code" name="PostalCode">
-          </p>
-          <p><input class="input" type="text" placeholder="City" name="City" required></p>
-          <p><input class="input" type="text" placeholder="State" name="State" required></p>
+        <!-- Shipping Address -->
+        <div class="shipping-address" style="font-size: 20px; font-weight: bold;">
+          <p>Shipping Address</p>
+          <div style="font-size: 15px; font-weight: bold;">
+            <p>
+              <input class="input" type="text" placeholder="Address line 1" name="Addressline1" required>
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="Address line 2 (Optional)" name="Addressline2">
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="Suburb" name="Suburb" required>
+              <input class="input" type="text" placeholder="Postal code" name="PostalCode" required>
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="City" name="City" required>
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="State" name="State" required>
+            </p>
+            <p>
+              <input class="input" type="text" placeholder="Country" name="Country" required>
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- Shipping Method -->
-      <div class="shipping-method" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
-        <p>Shipping Method</p>
-        <div style="font-size: 15px; font-weight: bold;">
-          <label for="shipping">Select Shipping Method:</label><br>
-          <select id="ship" name="ship" style="margin-top: 10px;">
-            <!-- Options will be dynamically updated -->
-          </select>
+        <!-- Shipping Method -->
+        <div class="shipping-method" style="font-size: 20px; font-weight: bold;">
+          <p>Shipping Method</p>
+          <div style="font-size: 15px; font-weight: bold;">
+            <label for="shipping">Select Shipping Method:</label><br>
+            <select id="ship" name="ship" style="margin-top: 10px;">
+              <!-- Options will be dynamically updated by JS -->
+            </select>
+          </div>
         </div>
-      </div>
 
-      <!-- Payment Method -->
-      <div class="payment-method" style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
-        <p>Payment Method</p>
-        <div>
-          <button class="image-button">
-            <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
-          </button>
-          <button class="image-button">
-            <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
-          </button>
+        <!-- Payment Method (optional, can add more fields here) -->
+        <div class="payment-method" style="font-size: 20px; font-weight: bold;">
+          <p>Payment Method</p>
+          <div>
+            <button class="image-button" type="button">
+              <img src="../static/img/visa.jpeg" alt="visa" style="width: 40px; height: 30px;">
+            </button>
+            <button class="image-button" type="button">
+              <img src="../static/img/mastercard.jpeg" alt="mastercard" style="width: 40px; height: 30px;">
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- New Buttons -->
-      <div style="margin-top: 20px;">
-        <form method="POST" action="/checkout/save" style="display: flex; gap: 10px; align-items: center;">
-          <!-- Hidden input for total price -->
-          <input type="hidden" id="totalPriceInput" name="total_price" value="{{ total }}">
+        <!-- Hidden input for total price -->
+        <input type="hidden" id="totalPriceInput" name="total_price" value="{{ total }}">
 
-          <!-- Hidden input for shipping method -->
-          <input type="hidden" id="selectedShippingMethod" name="shipping_method" value="">
+        <!-- Hidden input for shipping method -->
+        <input type="hidden" id="selectedShippingMethod" name="shipping_method" value="">
 
+        <!-- Submit and Cancel Buttons -->
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
           <button type="submit"
             style="background-color: green; color: white; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;">
             Place Order
           </button>
-
-          <!-- Cancel Button -->
           <button type="button"
             style="background-color: lightgrey; color: black; border: none; padding: 10px 20px; font-weight: bold; font-size: 14px; cursor: pointer; border-radius: 10px;"
-            onclick="window.location.href='/';">
+            onclick="window.location.href='/'">
             Cancel
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
 
-    <!-- Right Side: Table -->
+    <!-- Right Side: Cart Table -->
     <div class="right-container" style="flex: 1; position: relative;">
       <!-- Toggle Button -->
       <button id="toggleTableButton"
@@ -122,16 +137,12 @@
               <td id="shippingCost"
                 style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">Free</td>
             </tr>
-
             <!-- Cart Items -->
             {% for item in items %}
             <tr style="text-align: center;">
-              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{
-                item.product.name }}</td>
-              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.quantity
-                }}</td>
-              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${{
-                item.total_price }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.product.name }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">{{ item.quantity }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd; font-size: 14px; font-weight: normal;">${{ item.total_price }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -147,7 +158,6 @@
     </div>
   </div>
 </main>
-
 
 <script>
   // Get the current date
@@ -176,9 +186,7 @@
     optionElement.textContent = `${option.text} (${minDate} - ${maxDate}) ${option.extraCost || ''}`;
     shipSelect.appendChild(optionElement);
   });
-</script>
 
-<script>
   // Toggle table visibility
   const toggleButton = document.getElementById('toggleTableButton');
   const tableContainer = document.getElementById('tableContainer');
@@ -187,28 +195,26 @@
     if (tableContainer.style.display === 'none') {
       // Show the table
       tableContainer.style.display = 'block';
-      toggleButton.textContent = '▲'; // Upwards arrow
-      toggleButton.style.top = '50px'; // Reset to original position
-      toggleButton.style.backgroundColor = 'blue'; // Blue background
-      toggleButton.style.color = 'white'; // White arrow
+      toggleButton.textContent = '▲';
+      toggleButton.style.top = '50px';
+      toggleButton.style.backgroundColor = 'blue';
+      toggleButton.style.color = 'white';
     } else {
       // Hide the table
       tableContainer.style.display = 'none';
-      toggleButton.textContent = '▼'; // Downwards arrow
-      toggleButton.style.top = '0'; // Move to the top edge
-      toggleButton.style.backgroundColor = 'blue'; // Blue background
-      toggleButton.style.color = 'white'; // White arrow
+      toggleButton.textContent = '▼';
+      toggleButton.style.top = '0';
+      toggleButton.style.backgroundColor = 'blue';
+      toggleButton.style.color = 'white';
     }
   });
 
   // Set initial state
-  tableContainer.style.display = 'block'; // Ensure the table is visible initially
-  toggleButton.textContent = '▲'; // Upwards arrow initially
-  oggleButton.style.backgroundColor = 'blue'; // Blue background
-  toggleButton.style.color = 'white'; // White arrow
-</script>
+  tableContainer.style.display = 'block';
+  toggleButton.textContent = '▲';
+  toggleButton.style.backgroundColor = 'blue';
+  toggleButton.style.color = 'white';
 
-<script>
   // Update the hidden input for the selected shipping method and total price
   const shippingDropdown = document.getElementById('ship');
   const selectedShippingMethodInput = document.getElementById('selectedShippingMethod');
@@ -246,10 +252,5 @@
   selectedShippingMethodInput.value = shippingDropdown.value;
   totalPriceInput.value = parseFloat("{{ total|default(0) }}").toFixed(2);
 </script>
-</div>
-</div>
-</div>
-</div>
-</main>
 
 {% endblock %}
