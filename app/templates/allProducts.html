@@ -3,125 +3,127 @@
 {% import 'bootstrap4/form.html' as wtf %}
 
 {% block content %}
-<!-- This is for browsing all available products -->
-<div class="breadcrumb-container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">All Products</li>
-    </ol>
-  </nav>
-</div>
-<section class="all-products-section" id="all-products">
-  <div class="all-products-container">
-    <h2>All Products</h2>
-    <p>Browse through all available products. Use the filters to narrow down your search.</p>
-
-    <!-- Filters -->
-    <div class="all-products-filters">
-      <!-- Category Filter -->
-      <select id="category-filter" class="all-products-select" aria-label="Filter by category">
-        <option value="" selected>All Categories</option>
-        {% for category in categories %}
-        <option value="{{ category }}">{{ category }}</option>
-        {% endfor %}
-      </select>
-
-      <!-- Price Filter -->
-      <select id="price-filter" class="all-products-select" aria-label="Filter by price range">
-        <option value="" selected>All Prices</option>
-        <option value="0-50">Under $50</option>
-        <option value="50-100">$50 - $100</option>
-        <option value="100-200">$100 - $200</option>
-        <option value="200+">Above $200</option>
-      </select>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="all-products-grid">
-      {% for product in products %}
-      <a href="/products/{{ product.id }}" class="all-products-card-link">
-        <div class="all-products-card">
-          <img src="{{ product.image }}" alt="{{ product.name }}" class="all-products-img" />
-          <h3 class="all-products-title">{{ product.name }}</h3>
-          <p class="all-products-price">Price: ${{ product.price }}</p>
-          <p class="all-products-category">Category: {{ product.category }}</p>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
+  <!-- This is for browsing all available products -->
+  <div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">All Products</li>
+      </ol>
+    </nav>
   </div>
-</section>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const categoryFilter = document.getElementById('category-filter')
-    const priceFilter = document.getElementById('price-filter')
-    const allProductsSection = document.getElementById('all-products')
-    const productCards = allProductsSection ? allProductsSection.querySelectorAll('.all-products-card-link') : null
+  <section class="all-products-section" id="all-products">
+    <div class="all-products-container">
+      <h2>All Products</h2>
+      <p>Browse through all available products. Use the filters to narrow down your search.</p>
 
-    // Check if all required elements exist
-    if (categoryFilter && priceFilter && allProductsSection && productCards) {
-      function filterProducts() {
-        const selectedCategory = categoryFilter.value.toLowerCase().trim()
-        const selectedPrice = priceFilter.value
+      <!-- Filters -->
+      <div class="all-products-filters">
+        <!-- Category Filter -->
+        <select id="category-filter" class="all-products-select" aria-label="Filter by category">
+          <option value="" selected>All Categories</option>
+          {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+          {% endfor %}
+        </select>
 
-        // Debugging: Log the selected filters
-        console.log('Selected Category:', selectedCategory)
-        console.log('Selected Price:', selectedPrice)
+        <!-- Price Filter -->
+        <select id="price-filter" class="all-products-select" aria-label="Filter by price range">
+          <option value="" selected>All Prices</option>
+          <option value="0-50">Under $50</option>
+          <option value="50-100">$50 - $100</option>
+          <option value="100-200">$100 - $200</option>
+          <option value="200+">Above $200</option>
+        </select>
+      </div>
 
-        productCards.forEach((cardLink) => {
-          const productCategoryElement = cardLink.querySelector('.all-products-category')
-          const productPriceElement = cardLink.querySelector('.all-products-price')
-
-          const productCategory = productCategoryElement ? productCategoryElement.textContent.replace('Category: ', '').toLowerCase().trim() : ''
-          const productPrice = productPriceElement ? parseFloat(productPriceElement.textContent.replace('Price: $', '')) : 0
-
-          let isVisible = true
-
-          if (selectedCategory && productCategory !== selectedCategory) {
-            isVisible = false
-          }
-
-          if (selectedPrice) {
-            const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number)
-            if (max) {
-              if (productPrice < min || productPrice > max) {
-                isVisible = false
-              }
-            } else {
-              if (productPrice < min) {
-                isVisible = false
+      <!-- Product Grid -->
+      <div class="all-products-grid">
+        {% for product in products %}
+          <a href="/products/{{ product.id }}" class="all-products-card-link">
+            <div class="all-products-card">
+              <img src="{{ product.image }}" alt="{{ product.name }}" class="all-products-img" />
+              <h3 class="all-products-title">{{ product.name }}</h3>
+              <p class="all-products-price">Price: ${{ product.price }}</p>
+              <p class="all-products-category">Category: {{ product.category }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const categoryFilter = document.getElementById('category-filter')
+      const priceFilter = document.getElementById('price-filter')
+      const allProductsSection = document.getElementById('all-products')
+      const productCards = allProductsSection ? allProductsSection.querySelectorAll('.all-products-card-link') : null
+    
+      // Check if all required elements exist
+      if (categoryFilter && priceFilter && allProductsSection && productCards) {
+        function filterProducts() {
+          const selectedCategory = categoryFilter.value.toLowerCase().trim()
+          const selectedPrice = priceFilter.value
+    
+          // Debugging: Log the selected filters
+          console.log('Selected Category:', selectedCategory)
+          console.log('Selected Price:', selectedPrice)
+    
+          productCards.forEach((cardLink) => {
+            const productCategoryElement = cardLink.querySelector('.all-products-category')
+            const productPriceElement = cardLink.querySelector('.all-products-price')
+    
+            const productCategory = productCategoryElement ? productCategoryElement.textContent.replace('Category: ', '').toLowerCase().trim() : ''
+            const productPrice = productPriceElement ? parseFloat(productPriceElement.textContent.replace('Price: $', '')) : 0
+    
+            let isVisible = true
+    
+            if (selectedCategory && productCategory !== selectedCategory) {
+              isVisible = false
+            }
+    
+            if (selectedPrice) {
+              const [min, max] = selectedPrice.includes('+') ? [parseFloat(selectedPrice), null] : selectedPrice.split('-').map(Number)
+              if (max) {
+                if (productPrice < min || productPrice > max) {
+                  isVisible = false
+                }
+              } else {
+                if (productPrice < min) {
+                  isVisible = false
+                }
               }
             }
-          }
-
-          if (isVisible) {
-            cardLink.classList.remove('hidden')
-          } else {
-            cardLink.classList.add('hidden')
+    
+            if (isVisible) {
+              cardLink.classList.remove('hidden')
+            } else {
+              cardLink.classList.add('hidden')
+            }
+          })
+        }
+    
+        // Attach event listeners to the dropdowns
+        categoryFilter.addEventListener('change', filterProducts)
+        priceFilter.addEventListener('change', filterProducts)
+      } else {
+        console.error('One or more elements required for filtering are missing in the DOM.')
+      }
+    
+      // Smooth scrolling for anchor links
+      const ctaButton = document.querySelector('.cta-button')
+      if (ctaButton) {
+        ctaButton.addEventListener('click', function (event) {
+          event.preventDefault()
+          const targetId = this.getAttribute('href').substring(1)
+          const targetElement = document.getElementById(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' })
           }
         })
       }
-
-      // Attach event listeners to the dropdowns
-      categoryFilter.addEventListener('change', filterProducts)
-      priceFilter.addEventListener('change', filterProducts)
-    } else {
-      console.error('One or more elements required for filtering are missing in the DOM.')
-    }
-
-    // Smooth scrolling for anchor links
-    const ctaButton = document.querySelector('.cta-button')
-    if (ctaButton) {
-      ctaButton.addEventListener('click', function (event) {
-        event.preventDefault()
-        const targetId = this.getAttribute('href').substring(1)
-        const targetElement = document.getElementById(targetId)
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' })
-        }
-      })
-    }
-  })
-</script>
+    })
+  </script>
 {% endblock %}
